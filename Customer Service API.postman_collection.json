@@ -29,7 +29,7 @@
 					},
 					"response": [
 						{
-							"id": "132084b1-f8a1-40a8-93cc-230fd2436b14",
+							"id": "2dd9d72f-081b-4fb6-b6f6-e819cec6babe",
 							"name": "/tickets",
 							"originalRequest": {
 								"method": "POST",
@@ -87,7 +87,7 @@
 					},
 					"response": [
 						{
-							"id": "442bf4fe-5eb4-4a40-908d-5c54517ff5e9",
+							"id": "3c6f51f7-9d37-476a-9979-79554f4825d9",
 							"name": "/tickets",
 							"originalRequest": {
 								"method": "GET",
@@ -99,7 +99,7 @@
 								],
 								"body": {},
 								"url": {
-									"raw": "{{domain}}/v1/tickets?agentId=2&clientId=1",
+									"raw": "{{domain}}/v1/tickets?agentId=2&clientId=1&deviceId=3",
 									"host": [
 										"{{domain}}"
 									],
@@ -117,6 +117,11 @@
 											"key": "clientId",
 											"value": "1",
 											"description": "Optional filter by clientId"
+										},
+										{
+											"key": "deviceId",
+											"value": "3",
+											"description": "Optional filter by deviceid"
 										}
 									]
 								}
@@ -150,7 +155,7 @@
 					},
 					"response": [
 						{
-							"id": "378e507b-5d74-41a1-b418-dd4f85841b45",
+							"id": "b3713335-cf6d-4702-bb48-ac7311365ed1",
 							"name": "/tickets/:ticketId",
 							"originalRequest": {
 								"method": "GET",
@@ -202,7 +207,7 @@
 					},
 					"response": [
 						{
-							"id": "24036d0b-728b-4abb-9886-b3bae4225b60",
+							"id": "2e23f513-bc8d-4c7d-a416-68234e6b322b",
 							"name": "/tickets/:ticketId",
 							"originalRequest": {
 								"method": "PUT",
@@ -263,7 +268,7 @@
 					},
 					"response": [
 						{
-							"id": "b199dc01-b601-4449-ba57-d9df9b623316",
+							"id": "53bae8c4-a47a-46ac-bdfd-72f0b5722075",
 							"name": "/tickets/:ticketId",
 							"originalRequest": {
 								"method": "DELETE",
@@ -321,12 +326,21 @@
 					},
 					"response": [
 						{
-							"id": "89fde392-a1b3-478e-b2b5-77b83e29fefb",
+							"id": "2a11ce4f-619c-428f-b235-02359ba46a70",
 							"name": "/clients",
 							"originalRequest": {
 								"method": "POST",
-								"header": [],
-								"body": {},
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
+								},
 								"url": {
 									"raw": "http://{{domain}}/v1/clients",
 									"protocol": "http",
@@ -344,7 +358,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"secure-password\"\n}"
+							"body": "{\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\"\n}"
 						}
 					]
 				},
@@ -368,7 +382,7 @@
 					},
 					"response": [
 						{
-							"id": "ccca6572-7109-4feb-ae0e-35df0064826c",
+							"id": "af7c0b84-ff0c-4e28-b50c-3dc34d049ef4",
 							"name": "/clients",
 							"originalRequest": {
 								"method": "GET",
@@ -421,7 +435,7 @@
 					},
 					"response": [
 						{
-							"id": "18bc6564-d603-4afe-b70b-9342d007b7ce",
+							"id": "421e9990-6b00-4480-ad23-4727c156745a",
 							"name": "/clients/:ticketId",
 							"originalRequest": {
 								"method": "GET",
@@ -475,7 +489,7 @@
 					},
 					"response": [
 						{
-							"id": "e0b0cd67-501d-4575-a2d8-111cffb2cc68",
+							"id": "979196b4-5277-48fa-ac86-3b6e5851e5a9",
 							"name": "/clients/:ticketId",
 							"originalRequest": {
 								"method": "PUT",
@@ -536,7 +550,7 @@
 					},
 					"response": [
 						{
-							"id": "27545239-78de-41ca-b87b-90f64ca2b0d9",
+							"id": "6e23308b-1ed3-4db9-8335-643bb9fe9e24",
 							"name": "/clients/:ticketId",
 							"originalRequest": {
 								"method": "DELETE",
@@ -556,6 +570,331 @@
 									"path": [
 										"v1",
 										"clients",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"description": "",
+			"item": [
+				{
+					"name": "/reviews",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{domain}}/v1/reviews",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"reviews"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ced10e39-6de9-4aa2-81fa-3d5e15797fe0",
+							"name": "/reviews",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"content\": \"This agent sucks\",\n\t\"agentId\": 1,\n\t\"clientId\": 2\n}"
+								},
+								"url": {
+									"raw": "http://{{domain}}/v1/reviews",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"reviews"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"content\": \"This agent sucks\",\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/reviews",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{domain}}/v1/reviews/",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "148b6d9c-37ab-4c91-b862-8eea561ac2ec",
+							"name": "/reviews",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{domain}}/v1/reviews/?clientId=1&agentId=2",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"reviews",
+										""
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "1",
+											"description": "Optional filter by clientId"
+										},
+										{
+											"key": "agentId",
+											"value": "2",
+											"description": "Optional filter by agentId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n\t    \"id\": 1,\n\t    \"content\": \"This agent sucks\",\n\t    \"client\": {\n\t        \"id\": 1,\n\t        \"firstName\": \"John\",\n\t        \"lastName\": \"Doe\",\n\t        \"email\": \"johndoe@gmail.com\",\n\t        \"address\": {\n\t            \"line1\": \"101 ritchy st\",\n\t            \"line2\": \"apt 1\",\n\t            \"city\": \"rochester\",\n\t            \"state\": \"ny\",\n\t            \"zipcode\": \"12345\"\n\t        }\n\t    },\n\t    \"agent\": {\n\t        \"id\": 1,\n\t        \"firstName\": \"johnny\",\n\t        \"lastName\": \"Five\"\n\t    },\n\t    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n\t},\n\t{\n\t    \"id\": 2,\n\t    \"content\": \"This agent is gucci\",\n\t    \"client\": {\n\t        \"id\": 1,\n\t        \"firstName\": \"John\",\n\t        \"lastName\": \"Doe\",\n\t        \"email\": \"johndoe@gmail.com\",\n\t        \"address\": {\n\t            \"line1\": \"101 ritchy st\",\n\t            \"line2\": \"apt 1\",\n\t            \"city\": \"rochester\",\n\t            \"state\": \"ny\",\n\t            \"zipcode\": \"12345\"\n\t        }\n\t    },\n\t    \"agent\": {\n\t        \"id\": 68,\n\t        \"firstName\": \"MyMan\",\n\t        \"lastName\": \"Tom\"\n\t    },\n\t    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n\t}\n]"
+						}
+					]
+				},
+				{
+					"name": "/reviews/:reviewId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{domain}}/v1/reviews/1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "64101e2b-5a09-47ce-8835-faae0a6bc67a",
+							"name": "/reviews/:reviewId",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{domain}}/v1/reviews/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"content\": \"This agent sucks\",\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/reviews/:reviewId",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{domain}}/v1/reviews/1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "d03f9f4a-176b-4e1f-b61d-644436b593b3",
+							"name": "/reviews/:reviewId",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"This agent sucks\",\n    \"agentId\": 1,\n    \"clientId\": 4\n}"
+								},
+								"url": {
+									"raw": "http://{{domain}}/v1/reviews/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/reviews/:reviewId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{domain}}/v1/reviews/1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "2e7aea5d-c45f-415b-b7b4-741b8869ea97",
+							"name": "/reviews/:reviewId",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{domain}}/v1/reviews/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"reviews",
 										"1"
 									]
 								}
@@ -596,7 +935,7 @@
 	],
 	"variable": [
 		{
-			"id": "3c45b816-f54b-4d6e-9a35-3b630ad9089b",
+			"id": "db8f0982-00dc-4b63-9542-e1d2af5cbfff",
 			"key": "domain",
 			"value": "localhost:5000",
 			"type": "string",
