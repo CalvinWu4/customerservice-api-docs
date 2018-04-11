@@ -16,20 +16,18 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/tickets",
-							"protocol": "http",
+							"raw": "{{domain}}/tickets",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"tickets"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "2dd9d72f-081b-4fb6-b6f6-e819cec6babe",
+							"id": "cad7abb0-6c4f-4bf8-99aa-590eeacffd81",
 							"name": "/tickets",
 							"originalRequest": {
 								"method": "POST",
@@ -74,20 +72,18 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/tickets",
-							"protocol": "http",
+							"raw": "{{domain}}/tickets",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"tickets"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "3c6f51f7-9d37-476a-9979-79554f4825d9",
+							"id": "e7cbc450-d5d3-4260-af6c-367b5a1e79e6",
 							"name": "/tickets",
 							"originalRequest": {
 								"method": "GET",
@@ -142,20 +138,18 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/tickets",
-							"protocol": "http",
+							"raw": "{{domain}}/tickets",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"tickets"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "b3713335-cf6d-4702-bb48-ac7311365ed1",
+							"id": "4ca1a9a6-c911-4c26-a133-428179df3625",
 							"name": "/tickets/:ticketId",
 							"originalRequest": {
 								"method": "GET",
@@ -194,12 +188,11 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "{{domain}}/v1/tickets/1",
+							"raw": "{{domain}}/tickets/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"tickets",
 								"1"
 							]
@@ -207,7 +200,7 @@
 					},
 					"response": [
 						{
-							"id": "2e23f513-bc8d-4c7d-a416-68234e6b322b",
+							"id": "21cc3daf-9bd0-4d07-83c2-09a4024d741d",
 							"name": "/tickets/:ticketId",
 							"originalRequest": {
 								"method": "PUT",
@@ -255,12 +248,11 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "{{domain}}/v1/tickets/1",
+							"raw": "{{domain}}/tickets/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"tickets",
 								"1"
 							]
@@ -268,7 +260,7 @@
 					},
 					"response": [
 						{
-							"id": "53bae8c4-a47a-46ac-bdfd-72f0b5722075",
+							"id": "71df34cb-0a58-4793-b8c5-5d0b4fa7edea",
 							"name": "/tickets/:ticketId",
 							"originalRequest": {
 								"method": "DELETE",
@@ -313,20 +305,18 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/clients",
-							"protocol": "http",
+							"raw": "{{domain}}/clients",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"clients"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "2a11ce4f-619c-428f-b235-02359ba46a70",
+							"id": "dec69e9d-93f2-4ce2-9792-6548779707e7",
 							"name": "/clients",
 							"originalRequest": {
 								"method": "POST",
@@ -369,20 +359,18 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/clients",
-							"protocol": "http",
+							"raw": "{{domain}}/clients",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"clients"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "af7c0b84-ff0c-4e28-b50c-3dc34d049ef4",
+							"id": "d0026737-5bd9-4306-a619-97f7bb065f4b",
 							"name": "/clients",
 							"originalRequest": {
 								"method": "GET",
@@ -421,21 +409,19 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/clients/{{ticketId}}",
-							"protocol": "http",
+							"raw": "{{domain}}/clients/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"clients",
-								"{{ticketId}}"
+								"1"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "421e9990-6b00-4480-ad23-4727c156745a",
+							"id": "f3c720f8-227d-4e37-b34d-341c27a9922d",
 							"name": "/clients/:ticketId",
 							"originalRequest": {
 								"method": "GET",
@@ -475,21 +461,19 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/clients/{{ticketId}}",
-							"protocol": "http",
+							"raw": "{{domain}}/clients/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"clients",
-								"{{ticketId}}"
+								"1"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "979196b4-5277-48fa-ac86-3b6e5851e5a9",
+							"id": "fe01cdd7-6131-44f1-87d7-44d1e713e6a1",
 							"name": "/clients/:ticketId",
 							"originalRequest": {
 								"method": "PUT",
@@ -536,13 +520,11 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/clients/1",
-							"protocol": "http",
+							"raw": "{{domain}}/clients/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"clients",
 								"1"
 							]
@@ -550,7 +532,7 @@
 					},
 					"response": [
 						{
-							"id": "6e23308b-1ed3-4db9-8335-643bb9fe9e24",
+							"id": "6a586318-ba17-4be3-b9ff-310559d83fbd",
 							"name": "/clients/:ticketId",
 							"originalRequest": {
 								"method": "DELETE",
@@ -601,20 +583,18 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/reviews",
-							"protocol": "http",
+							"raw": "{{domain}}/reviews",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"reviews"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "ced10e39-6de9-4aa2-81fa-3d5e15797fe0",
+							"id": "a1828039-dafd-4beb-909e-b7fc30154e9f",
 							"name": "/reviews",
 							"originalRequest": {
 								"method": "POST",
@@ -665,13 +645,11 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/reviews/",
-							"protocol": "http",
+							"raw": "{{domain}}/reviews/",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"reviews",
 								""
 							]
@@ -679,7 +657,7 @@
 					},
 					"response": [
 						{
-							"id": "148b6d9c-37ab-4c91-b862-8eea561ac2ec",
+							"id": "f3d97e6a-d13f-4825-84be-c0a657e822cf",
 							"name": "/reviews",
 							"originalRequest": {
 								"method": "GET",
@@ -736,13 +714,11 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/reviews/1",
-							"protocol": "http",
+							"raw": "{{domain}}/reviews/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"reviews",
 								"1"
 							]
@@ -750,7 +726,7 @@
 					},
 					"response": [
 						{
-							"id": "64101e2b-5a09-47ce-8835-faae0a6bc67a",
+							"id": "023950f9-d5f0-497e-8ede-23a8e9a77571",
 							"name": "/reviews/:reviewId",
 							"originalRequest": {
 								"method": "GET",
@@ -795,13 +771,11 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/reviews/1",
-							"protocol": "http",
+							"raw": "{{domain}}/reviews/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"reviews",
 								"1"
 							]
@@ -809,7 +783,7 @@
 					},
 					"response": [
 						{
-							"id": "d03f9f4a-176b-4e1f-b61d-644436b593b3",
+							"id": "ca7a47be-cddb-440f-9043-89a198747f77",
 							"name": "/reviews/:reviewId",
 							"originalRequest": {
 								"method": "PUT",
@@ -861,13 +835,11 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://{{domain}}/v1/reviews/1",
-							"protocol": "http",
+							"raw": "{{domain}}/reviews/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"reviews",
 								"1"
 							]
@@ -875,7 +847,7 @@
 					},
 					"response": [
 						{
-							"id": "2e7aea5d-c45f-415b-b7b4-741b8869ea97",
+							"id": "330eef2f-1aa7-4479-abce-a946a6313da7",
 							"name": "/reviews/:reviewId",
 							"originalRequest": {
 								"method": "DELETE",
@@ -895,6 +867,307 @@
 									"path": [
 										"v1",
 										"reviews",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"description": "",
+			"item": [
+				{
+					"name": "/comments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/comments",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e19d49b2-bd78-4b3d-b490-1c96e99f486d",
+							"name": "/comments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ticketId\": 1,\n\t\"content\": \"Who do I contant?\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/comments",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ticketId\": 1,\n    \"content\": \"Who do I contant?\",\n    \"author\": 12,\n    \"commentedBy\": \"agent\",\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/comments",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "081db901-5418-4cb6-952e-68bf03e909d4",
+							"name": "/comments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{domain}}/v1/comments",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"comments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },\n    {\n        \"id\": 2,\n        \"ticketId\": 1,\n        \"content\": \"Me\",\n        \"author\": 21,\n        \"commentedBy\": \"client\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "/comments/:commentId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/comments/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "fa87f79f-a1f7-4eab-886d-0205a4d722e5",
+							"name": "/comments/:commentId",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{domain}}/api/comments/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },"
+						}
+					]
+				},
+				{
+					"name": "/comments/:commentId",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/comments/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "f0bee2c7-3ee8-40f6-9370-c57a08774ec8",
+							"name": "/comments/:commentId",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"content\": \"Who do I contant?\"\n}"
+								},
+								"url": {
+									"raw": "http://{{domain}}/api/comments/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/comments/:commentId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/comments/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "857b8be4-8685-4247-a6c6-60fa40f8488e",
+							"name": "/comments/:commentId",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{domain}}/api/comments/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"comments",
 										"1"
 									]
 								}
@@ -935,7 +1208,7 @@
 	],
 	"variable": [
 		{
-			"id": "db8f0982-00dc-4b63-9542-e1d2af5cbfff",
+			"id": "1c3affce-3163-49da-a827-afa97de7be99",
 			"key": "domain",
 			"value": "localhost:5000",
 			"type": "string",
