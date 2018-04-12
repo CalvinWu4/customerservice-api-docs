@@ -1,0 +1,723 @@
+{
+	"info": {
+		"_postman_id": "7eb7188f-1c5d-4cc1-8935-45dcbe1ce9fa",
+		"name": "Customer Service API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tickets",
+			"description": null,
+			"item": [
+				{
+					"name": "/tickets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/tickets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"tickets"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5ff96aa6-ba70-4c5c-a167-897cf538b161",
+							"name": "/tickets",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"my product doesn't work\",\n\t\"description\": \"Help\",\n\t\"productId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/v1/tickets",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"tickets"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n\t\"id\": 1,\n\t\"title\": \"my product doesn't work\",\n\t\"description\": \"Help\",\n\t\"status\": \"new\",\n\t\"opened\": \"2018-04-11T21:18:18.433Z\",\n\t\"closed\": null,\n\t\"client\": {\n\t\t\"id\": 1,\n\t\t\"firstName\": \"John\",\n\t\t\"lastName\": \"Doe\",\n\t\t\"email\": \"johndoe@gmail.com\",\n\t\t\"address\": {\n\t\t\t\"line1\": \"101 ritchy st\",\n\t\t\t\"line2\": \"apt 1\",\n\t\t\t\"city\": \"rochester\",\n\t\t\t\"state\": \"ny\",\n\t\t\t\"zipcode\": \"12345\"\n\t\t}\n\t},\n\t\"agent\": {\n\t\t\"id\": 1,\n\t\t\"firstName\": \"johnny\",\n\t\t\"lastName\": \"Five\"\n\t},\n\t\"product\": {\n\t\t\"serialNumber\": 2,\n\t\t\"name\": \"Phablet\",\n\t\t\"description\": \"very nice\"\n\t},\n\t\"comments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "/tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/tickets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"tickets"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "704d2962-9b2b-4e37-9856-3a56d3ecf7ac",
+							"name": "/tickets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/v1/tickets?agentId=2&clientId=1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "agentId",
+											"value": "2",
+											"description": "Optional filter by agentId"
+										},
+										{
+											"key": "clientId",
+											"value": "1",
+											"description": "Optional filter by clientId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n\t{\n\t    \"id\": 1,\n\t    \"title\": \"my product doesn't work\",\n\t    \"description\": \"Help\",\n\t    \"status\": \"new\",\n\t    \"opened\": \"2018-04-11T21:18:18.433Z\",\n\t    \"closed\": null,\n\t    \"client\": {\n\t        \"id\": 1,\n\t        \"firstName\": \"John\",\n\t        \"lastName\": \"Doe\",\n\t        \"email\": \"johndoe@gmail.com\",\n\t        \"address\": {\n\t            \"line1\": \"101 ritchy st\",\n\t            \"line2\": \"apt 1\",\n\t            \"city\": \"rochester\",\n\t            \"state\": \"ny\",\n\t            \"zipcode\": \"12345\"\n\t        }\n\t    },\n\t    \"agent\": {\n\t        \"id\": 1,\n\t        \"firstName\": \"johnny\",\n\t        \"lastName\": \"Five\"\n\t    },\n\t    \"product\": {\n\t        \"serialNumber\": 2,\n\t        \"name\": \"Phablet\",\n\t        \"description\": \"very nice\"\n\t    },\n\t    \"comments\": []\n\t},\n\t{\n\t    \"id\": 2,\n\t    \"title\": \"Screen broken\",\n\t    \"description\": \"What do i do\",\n\t    \"status\": \"new\",\n\t    \"opened\": \"2018-04-11T21:18:18.433Z\",\n\t    \"closed\": null,\n\t    \"client\": {\n\t        \"id\": 1,\n\t        \"firstName\": \"John\",\n\t        \"lastName\": \"Doe\",\n\t        \"email\": \"johndoe@gmail.com\",\n\t        \"address\": {\n\t            \"line1\": \"101 ritchy st\",\n\t            \"line2\": \"apt 1\",\n\t            \"city\": \"rochester\",\n\t            \"state\": \"ny\",\n\t            \"zipcode\": \"12345\"\n\t        }\n\t    },\n\t    \"agent\": {\n\t        \"id\": 1,\n\t        \"firstName\": \"johnny\",\n\t        \"lastName\": \"Five\"\n\t    },\n\t    \"product\": {\n\t        \"serialNumber\": 2,\n\t        \"name\": \"Phablet\",\n\t        \"description\": \"very nice\"\n\t    },\n\t    \"comments\": []\n\t}\n]"
+						}
+					]
+				},
+				{
+					"name": "/tickets/:ticketId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/tickets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"tickets"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "3e579738-25f8-40ef-883c-95c88a524b5b",
+							"name": "/tickets/:ticketId",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{domain}}/v1/tickets/1",
+									"host": [
+										"{domain}}"
+									],
+									"path": [
+										"v1",
+										"tickets",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"new\",\n    \"opened\": \"2018-04-11T21:18:18.433Z\",\n    \"closed\": null,\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"product\": {\n        \"serialNumber\": 2,\n        \"name\": \"Phablet\",\n        \"description\": \"very nice\"\n    },\n    \"comments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "/tickets/:ticketId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/v1/tickets/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"tickets",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "acd18cbf-d0f8-4b8f-98d0-967e7fcd3d3b",
+							"name": "/tickets/:ticketId",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"inProgress\",\n    \"productId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/v1/tickets/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"tickets",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/tickets/:ticketId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "471e9b9e-321a-4c18-8817-dd581b560497",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.DeleteTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/v1/tickets/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"tickets",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "6eaca776-600e-4fee-87c6-4b7b3b73d027",
+							"name": "/tickets/:ticketId",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/v1/tickets/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"tickets",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"description": null,
+			"item": [
+				{
+					"name": "/clients",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/clients",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "348e7c2c-cfb3-4fa4-8528-c5f1ba09ce3b",
+							"name": "/clients",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{domain}}/v1/clients",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"clients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"secure-password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/clients",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "b90a8578-b0ef-44c3-9067-0be436f61f49",
+							"name": "/clients",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{domain}}/v1/clients",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"clients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n\t{\n\t\t\"id\": 1,\n\t    \"firstName\": \"John\",\n\t    \"lastName\": \"Doe\",\n\t    \"email\": \"johndoe@gmail.com\"\n\t},\n\t{\n\t\t\"id\": 2,\n\t    \"firstName\": \"Camilo\",\n\t    \"lastName\": \"G\",\n\t    \"email\": \"camilog@gmail.com\"\n\t}\n]"
+						}
+					]
+				},
+				{
+					"name": "/clients/:ticketId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/clients/{{ticketId}}",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"clients",
+								"{{ticketId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "de4065ad-0952-4114-a9de-0273a3fba0d2",
+							"name": "/clients/:ticketId",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{domain}}/v1/clients/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"clients",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n\t\"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/clients/:ticketId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/clients/{{ticketId}}",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"clients",
+								"{{ticketId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "04743312-4584-4239-905f-5a332f68558d",
+							"name": "/clients/:ticketId",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"newapssword\"\n}"
+								},
+								"url": {
+									"raw": "http://{{domain}}/v1/clients/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"clients",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/clients/:ticketId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{domain}}/v1/clients/1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "bcdb1563-97b1-46eb-a540-6cc0ad1d78d7",
+							"name": "/clients/:ticketId",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{domain}}/v1/clients/1",
+									"protocol": "http",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"v1",
+										"clients",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Root API",
+			"description": "",
+			"item": [
+				{
+					"name": "Root API Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a0eec9b-928e-4a49-b3d5-2b5e3488b2ff",
+								"type": "text/javascript",
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);",
+									"",
+									"const ticketsURL = \"localhost:5000/api/tickets\";",
+									"const reviewsURL = \"localhost:5000/api/reviews\";",
+									"const commentsURL = \"localhost:5000/api/comments\";",
+									"const productsURL = \"localhost:5000/api/products\";",
+									"const agentsURL = \"localhost:5000/api/agents\";",
+									"",
+									"let {tickets_URL, clients_URL, reviews_URL, comments_URL, products_URL, agents_URL} = jsonData;",
+									"",
+									"// Tests go here",
+									"tests[\"Gets the correct tickets url\"] = tickets_URL === ticketsURL;",
+									"tests[\"Gets the correct clients url\"] = clients_URL === clientsURL;",
+									"tests[\"Gets the correct reviews url\"] = reviews_URL === reviewsURL;",
+									"tests[\"Gets the correct comments url\"] = comments_URL === commentsURL;",
+									"tests[\"Gets the correct products url\"] = products_URL === productsURL;",
+									"tests[\"Gets the correct agents url\"] = agents_URL === agentsURL;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/api",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9decc82b-dec9-47d4-910e-a4e41e1b089a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c44be200-a91e-4c11-9237-10253f7a2f5d",
+				"type": "text/javascript",
+				"exec": [
+					"// The response time must be less than 500 milliseconds",
+					"tests[\"Response time is acceptable\"] = responseTime < 500;"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3c45b816-f54b-4d6e-9a35-3b630ad9089b",
+			"key": "domain",
+			"value": "localhost:5000",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
