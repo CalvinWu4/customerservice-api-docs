@@ -15,76 +15,25 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "82578dae-c66e-4942-9b0a-8e55a4321780",
+								"id": "49bf2645-8a3b-4c2b-ad6b-a59a54526543",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.PostTests);",
-									"",
-									"// Define the JSON Schema",
-									"const customerSchema = {",
-									"  \"required\": [\"id\", \"title\"],",
-									"  \"properties\": {",
-									"    \"id\": { \"type\": \"integer\" },",
-									"    \"title\": { \"type\": \"string\" },",
-									"    \"status\": { \"type\": \"string\" },",
-									"    \"opened\": { \"type\": \"string\" },",
-									"    \"closed\": { \"type\": \"null\" },",
-									"    \"client\": {",
-									"        \"required\": [\"id\", \"firstName\", \"lastName\", \"email\"],",
-									"        \"properties\": {",
-									"            \"id\": { \"type\": \"integer\" },",
-									"            \"firstName\": { \"type\": \"string\" },",
-									"            \"lastName\": { \"type\": \"string\" },",
-									"            \"email\": { \"type\": \"string\" },",
-									"            \"address\": {",
-									"                \"required\": [\"line1\", \"city\", \"state\", \"zipcode\"],",
-									"                \"properties\": {",
-									"                    \"line1\": { \"type\": \"string\" },",
-									"                    \"line2\": { \"type\": \"string\" },",
-									"                    \"city\": { \"type\": \"string\" },",
-									"                    \"state\": { \"type\": \"string\" },",
-									"                    \"zipcode\": { \"type\": \"string\" }",
-									"                }",
-									"            }",
-									"        }",
-									"    },",
-									"    \"agent\": {",
-									"        \"required\": [\"id\", \"firstName\", \"lastName\"],",
-									"        \"properties\": {",
-									"            \"id\": { \"type\": \"integer\" },",
-									"            \"firstName\": { \"type\": \"string\" },",
-									"            \"lastName\": { \"type\": \"string\" }",
-									"        }",
-									"    },",
-									"    \"product\": {",
-									"        \"required\": [\"serialNumber\", \"name\", \"description\"],",
-									"        \"properties\": {",
-									"            \"serialNumber\": { \"type\": \"string\" },",
-									"            \"name\": { \"type\": \"string\" },",
-									"            \"description\": { \"type\": \"string\" }",
-									"        }",
-									"    },",
-									"    \"comments\": {",
-									"        \"type\": \"array\",",
-									"        \"items\": {",
-									"            \"type\": \"object\",",
-									"            \"required\": [\"ticketId\", \"content\", \"author\", \"commentedBy\", \"dateCreated\"],",
-									"            \"properties\": {",
-									"                \"ticketId\": { \"type\": \"integer\" },",
-									"                \"content\": { \"type\": \"string\" },",
-									"                \"author\": { \"type\": \"integer\" },",
-									"                \"commentedBy\": { \"type\": \"string\" },",
-									"                \"dateCreated\": { \"type\": \"string\" }",
-									"            }",
-									"        }",
-									"    }",
-									"  }",
-									"};",
-									"    ",
-									"// Test whether the response matches the schema",
-									"var customer = JSON.parse(responseBody);",
-									"tests[\"Customer is valid\"] = tv4.validate(customer, customerSchema);",
 									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9a4369de-ae23-4c48-84ec-1fa3e96eedbd",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.ticketSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
 								]
 							}
 						}
@@ -106,19 +55,27 @@
 							"raw": "{\n\t\"title\": \"my product doesn't work\",\n\t\"description\": \"Help\",\n\t\"productId\": 2\n}"
 						},
 						"url": {
-							"raw": "{{domain}}/tickets",
+							"raw": "{{domain}}/tickets?clientId=1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
 								"tickets"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "1",
+									"description": "(Required)  Client this ticket is made by"
+								}
 							]
-						}
+						},
+						"description": "[Post Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
 					},
 					"response": [
 						{
-							"id": "6ff68ce2-cb44-4774-9bac-836f12b8a21f",
-							"name": "/tickets",
+							"id": "6c885d9d-0a91-43c6-bd63-95548175894d",
+							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -136,13 +93,18 @@
 									"raw": "{\n\t\"title\": \"my product doesn't work\",\n\t\"description\": \"Help\",\n\t\"productId\": 2\n}"
 								},
 								"url": {
-									"raw": "{{domain}}/v1/tickets",
+									"raw": "{{domain}}/tickets?clientId=1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"tickets"
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -157,29 +119,75 @@
 				},
 				{
 					"name": "/tickets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cffe1a77-e6d6-4b96-8cf5-a4276241eaec",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "db3831b7-010a-4225-a816-5adbefff7845",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.ticketListSchema, function (err, response) {",
+									"    schema=response.json()",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{domain}}/v1/tickets",
-							"protocol": "http",
+							"raw": "{{domain}}/tickets?agentId=2&clientId=1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"tickets"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "2",
+									"description": "(Optional) Filter by agentId"
+								},
+								{
+									"key": "clientId",
+									"value": "1",
+									"description": "(Optional) Filter by clientId"
+								}
 							]
-						}
+						},
+						"description": "[Returned Ticket List Schema](https://drive.google.com/open?id=1MaMXQAg8raU50XSXN4VMXENUwXTwko8d)"
 					},
 					"response": [
 						{
-							"id": "3c1ade73-313e-4924-abc8-17b2a01e47d9",
-							"name": "/tickets",
+							"id": "56bdda9d-68e2-4f4f-813b-2e7e044f83a5",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -193,24 +201,21 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{domain}}/v1/tickets?agentId=2&clientId=1",
+									"raw": "{{domain}}/tickets?agentId=2&clientId=1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"tickets"
 									],
 									"query": [
 										{
 											"key": "agentId",
-											"value": "2",
-											"description": "Optional filter by agentId"
+											"value": "2"
 										},
 										{
 											"key": "clientId",
-											"value": "1",
-											"description": "Optional filter by clientId"
+											"value": "1"
 										}
 									]
 								}
@@ -226,29 +231,64 @@
 				},
 				{
 					"name": "/tickets/:ticketId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e35c7474-119d-46a2-9505-bcc6efd5acd2",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ac4792a8-5b74-4f84-af03-7427859a1942",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.ticketSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{domain}}/v1/tickets",
-							"protocol": "http",
+							"raw": "{{domain}}/tickets/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
-								"tickets"
+								"tickets",
+								"1"
 							]
-						}
+						},
+						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
 					},
 					"response": [
 						{
-							"id": "efe314be-ce47-4e54-97cd-8b4941b94020",
-							"name": "/tickets/:ticketId",
+							"id": "db7a8521-4591-4f4b-92f9-b6987f5d05a5",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -262,12 +302,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{domain}}/v1/tickets/1",
+									"raw": "{{domain}}/tickets/1",
 									"host": [
-										"{domain}}"
+										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"tickets",
 										"1"
 									]
@@ -284,29 +323,50 @@
 				},
 				{
 					"name": "/tickets/:ticketId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc376796-8c82-41f1-bef4-7dbc8214b8a6",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PutTests);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"inProgress\",\n    \"productId\": 2\n}"
 						},
 						"url": {
-							"raw": "{{domain}}/v1/tickets/1",
+							"raw": "{{domain}}/tickets/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
 								"tickets",
 								"1"
 							]
-						}
+						},
+						"description": "[Put Ticket Schema](https://drive.google.com/open?id=169rbp3UdibhNivV1SIdebnomRCqIAKk9)"
 					},
 					"response": [
 						{
-							"id": "98d8ca33-614e-4885-a186-bc1e7eb34f5a",
-							"name": "/tickets/:ticketId",
+							"id": "2f6bff6b-0356-4635-91d5-b48681684455",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -321,12 +381,11 @@
 									"raw": "{\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"inProgress\",\n    \"productId\": 2\n}"
 								},
 								"url": {
-									"raw": "{{domain}}/v1/tickets/1",
+									"raw": "{{domain}}/tickets/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"tickets",
 										"1"
 									]
@@ -347,7 +406,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "471e9b9e-321a-4c18-8817-dd581b560497",
+								"id": "15d8ae9c-af06-4915-8332-f41d17851c21",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.DeleteTests);"
@@ -361,6 +420,10 @@
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -368,21 +431,29 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{domain}}/v1/tickets/1",
+							"raw": "{{domain}}/tickets?agentId=2&clientId=1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"v1",
-								"tickets",
-								"1"
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "2"
+								},
+								{
+									"key": "clientId",
+									"value": "1"
+								}
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "b98db7f9-5f18-4399-bc6f-ab451ddcaf13",
-							"name": "/tickets/:ticketId",
+							"id": "34226936-aa3f-48cc-8690-573cb82d7498",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [
@@ -396,12 +467,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{domain}}/v1/tickets/1",
+									"raw": "{{domain}}/tickets/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"tickets",
 										"1"
 									]
@@ -416,6 +486,29 @@
 						}
 					]
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "db11a59c-03aa-4a30-afeb-2824c8556101",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2455bcfa-41d7-4fc5-a3b1-de98619c1838",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -424,12 +517,47 @@
 			"item": [
 				{
 					"name": "/clients",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6aa76f70-a753-4383-ba1b-f41835c6a2c5",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PostTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ff4110de-3539-45fa-bda1-49d6eccd034c",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.clientSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/clients",
@@ -439,12 +567,13 @@
 							"path": [
 								"clients"
 							]
-						}
+						},
+						"description": "[Post Client Schema](https://drive.google.com/open?id=1O3ynQbHdWkIH7_ozWY0hIiIemv6-vLbN)\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
 					},
 					"response": [
 						{
-							"id": "4856a7bc-ddfc-487b-9fe3-5c0c9185f2ce",
-							"name": "/clients",
+							"id": "9a72dcf5-58be-4796-aab5-56219ecd7721",
+							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -459,13 +588,11 @@
 									"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/clients",
-									"protocol": "http",
+									"raw": "{{domain}}/clients",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"clients"
 									]
 								}
@@ -481,9 +608,44 @@
 				},
 				{
 					"name": "/clients",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eaa49c4b-2834-4f25-9c49-99727fd5485b",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f632e2ed-dfb2-4bd7-88e5-286c9a9f1b19",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.clientListSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -496,12 +658,13 @@
 							"path": [
 								"clients"
 							]
-						}
+						},
+						"description": "[Returned Client List Schema](https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V)"
 					},
 					"response": [
 						{
-							"id": "759b8371-ca38-4aa0-adee-e4cd9557593f",
-							"name": "/clients",
+							"id": "1a6efd0f-91e0-434b-a137-690b4998291e",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -515,13 +678,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/clients",
-									"protocol": "http",
+									"raw": "{{domain}}/clients",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"clients"
 									]
 								}
@@ -537,9 +698,44 @@
 				},
 				{
 					"name": "/clients/:ticketId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb7439a7-494f-4e1d-9094-ab90a71192c9",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4c08026a-aa42-492c-a85d-316b5a5e13bb",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.clientSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -553,12 +749,13 @@
 								"clients",
 								"1"
 							]
-						}
+						},
+						"description": "[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
 					},
 					"response": [
 						{
-							"id": "dfe1be48-0efa-4a54-8d3e-2faacb8e90af",
-							"name": "/clients/:ticketId",
+							"id": "4bb204bb-141b-4004-848a-94ee9dc0fa0e",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -572,13 +769,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/clients/1",
-									"protocol": "http",
+									"raw": "{{domain}}/clients/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"clients",
 										"1"
 									]
@@ -599,7 +794,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "756eab50-fc84-4978-98b3-744c02a1daea",
+								"id": "7d14f221-a1c1-4a8a-be9a-dd48e33896e1",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.PutTests);"
@@ -609,10 +804,19 @@
 					],
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/clients/1",
@@ -623,12 +827,13 @@
 								"clients",
 								"1"
 							]
-						}
+						},
+						"description": "[Put Client Schema](https://drive.google.com/open?id=10WSl9gJV0FyajxTLMcRHFjmk86G-xxRy)"
 					},
 					"response": [
 						{
-							"id": "05a28501-be5a-407c-af04-6156a2dc913d",
-							"name": "/clients/:ticketId",
+							"id": "535ffed9-f4cd-47fd-8c58-6957262cf5c9",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -646,13 +851,11 @@
 									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"newapssword\"\n}"
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/clients/1",
-									"protocol": "http",
+									"raw": "{{domain}}/clients/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"clients",
 										"1"
 									]
@@ -683,7 +886,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9cf8a74f-2277-415d-82ee-603d8d74cefe",
+								"id": "3478bb6c-6334-43c5-a804-9544a9f87866",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.DeleteTests);"
@@ -693,7 +896,16 @@
 					],
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -711,8 +923,8 @@
 					},
 					"response": [
 						{
-							"id": "5f239486-1e93-49dc-be78-24f76b3618de",
-							"name": "/clients/:ticketId",
+							"id": "198b41ee-d549-4c22-af8c-97491db9de41",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [
@@ -726,13 +938,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/clients/1",
-									"protocol": "http",
+									"raw": "{{domain}}/clients/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"clients",
 										"1"
 									]
@@ -781,16 +991,16 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1a0eec9b-928e-4a49-b3d5-2b5e3488b2ff",
+								"id": "9da006f6-c062-48ca-a647-df404da65c90",
 								"type": "text/javascript",
 								"exec": [
 									"const jsonData = JSON.parse(responseBody);",
 									"",
-									"const ticketsURL = \"localhost:5000/api/tickets\";",
-									"const reviewsURL = \"localhost:5000/api/reviews\";",
-									"const commentsURL = \"localhost:5000/api/comments\";",
-									"const productsURL = \"localhost:5000/api/products\";",
-									"const agentsURL = \"localhost:5000/api/agents\";",
+									"const ticketsURL = {domain} + \"/tickets\";",
+									"const reviewsURL = {domain} + \"/reviews\";",
+									"const commentsURL = {domain} + \"/comments\";",
+									"const productsURL = {domain} + \"/products\";",
+									"const agentsURL = {domain} + \"/agents\";",
 									"",
 									"let {tickets_URL, clients_URL, reviews_URL, comments_URL, products_URL, agents_URL} = jsonData;",
 									"",
@@ -800,8 +1010,7 @@
 									"tests[\"Gets the correct reviews url\"] = reviews_URL === reviewsURL;",
 									"tests[\"Gets the correct comments url\"] = comments_URL === commentsURL;",
 									"tests[\"Gets the correct products url\"] = products_URL === productsURL;",
-									"tests[\"Gets the correct agents url\"] = agents_URL === agentsURL;",
-									""
+									"tests[\"Gets the correct agents url\"] = agents_URL === agentsURL;"
 								]
 							}
 						}
@@ -814,12 +1023,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{domain}}/api",
+							"raw": "{{domain}}",
 							"host": [
 								"{{domain}}"
-							],
-							"path": [
-								"api"
 							]
 						}
 					},
@@ -833,17 +1039,47 @@
 			"item": [
 				{
 					"name": "/reviews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b8b0ffe4-7887-427e-a841-f9240dd9a11c",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PostTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "67a827aa-38f7-4c2a-a520-18f92bd98463",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.commentSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/reviews",
@@ -853,12 +1089,13 @@
 							"path": [
 								"reviews"
 							]
-						}
+						},
+						"description": "[Post Review Schema](https://drive.google.com/open?id=1EZaSrEZCOfwJpcwrG9G_DT_cIGSDmjdr)\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
 					},
 					"response": [
 						{
-							"id": "faea460e-20ec-4962-bfc2-442565e67d24",
-							"name": "/reviews",
+							"id": "fd481a45-8f83-4ee3-a198-b6cfa090079a",
+							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -876,13 +1113,11 @@
 									"raw": "{\n\t\"content\": \"This agent sucks\",\n\t\"agentId\": 1,\n\t\"clientId\": 2\n}"
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/reviews",
-									"protocol": "http",
+									"raw": "{{domain}}/reviews",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"reviews"
 									]
 								}
@@ -898,12 +1133,42 @@
 				},
 				{
 					"name": "/reviews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "604d6bbf-035a-4005-b22a-fc3b18136531",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2392273f-b64e-4613-8b21-e0e85e7c692b",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.reviewListSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -911,20 +1176,33 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{domain}}/reviews/",
+							"raw": "{{domain}}/reviews/?clientId=1&agentId=2",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
 								"reviews",
 								""
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "1",
+									"description": "(Optional) Filter reviews by client"
+								},
+								{
+									"key": "agentId",
+									"value": "2",
+									"description": "(Optional) Filter reviews by agent"
+								}
 							]
-						}
+						},
+						"description": "[Returned Review List Schema](https://drive.google.com/open?id=1r-NYUoPDhyr7TmSkKIoOxnyXVAJ8HnFs)"
 					},
 					"response": [
 						{
-							"id": "b796d264-6b98-41c9-8015-7c38bb8d47bd",
-							"name": "/reviews",
+							"id": "97ee2cd0-cc0c-4780-926e-12262014dc54",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -938,13 +1216,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/reviews/?clientId=1&agentId=2",
-									"protocol": "http",
+									"raw": "{{domain}}/reviews/?clientId=1&agentId=2",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"reviews",
 										""
 									],
@@ -973,12 +1249,42 @@
 				},
 				{
 					"name": "/reviews/:reviewId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c1295f18-60bf-4853-9e29-86f555881dfc",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f0a60952-798d-4f20-84fd-f44bb8792688",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.commentSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -994,12 +1300,13 @@
 								"reviews",
 								"1"
 							]
-						}
+						},
+						"description": "[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
 					},
 					"response": [
 						{
-							"id": "b52c3dee-2905-40af-8178-69b9bfa43525",
-							"name": "/reviews/:reviewId",
+							"id": "0836c47a-3cc2-40a6-a312-88a94c45674f",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -1013,13 +1320,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/reviews/1",
-									"protocol": "http",
+									"raw": "{{domain}}/reviews/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"reviews",
 										"1"
 									]
@@ -1040,7 +1345,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "494d62c1-9560-4e85-85f7-6b72c6afcafe",
+								"id": "dd7fb0b0-641e-4e30-9c04-58d501f2e64a",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.PutTests);"
@@ -1054,11 +1359,15 @@
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n    \"content\": \"This agent sucks\",\n    \"agentId\": 1,\n    \"clientId\": 4\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/reviews/1",
@@ -1069,12 +1378,13 @@
 								"reviews",
 								"1"
 							]
-						}
+						},
+						"description": "[Put Client Schema](https://drive.google.com/open?id=1Qlb3iY83B-4Bd69WEsM4iaMgjukh42DP)"
 					},
 					"response": [
 						{
-							"id": "1c53ce93-1f86-468b-8e06-79b6ac91175d",
-							"name": "/reviews/:reviewId",
+							"id": "917bbe11-bded-4179-8e0b-299302f3e939",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -1092,13 +1402,11 @@
 									"raw": "{\n    \"content\": \"This agent sucks\",\n    \"agentId\": 1,\n    \"clientId\": 4\n}"
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/reviews/1",
-									"protocol": "http",
+									"raw": "{{domain}}/reviews/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"reviews",
 										"1"
 									]
@@ -1119,7 +1427,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c0b21c11-3f8c-4d2c-9a26-3674880a2a38",
+								"id": "34978b5a-d160-4c88-b293-da6daebe7aeb",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.DeleteTests);"
@@ -1133,6 +1441,10 @@
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -1152,8 +1464,8 @@
 					},
 					"response": [
 						{
-							"id": "10bf36df-3ea7-4e73-a29a-bee7fd9eab6a",
-							"name": "/reviews/:reviewId",
+							"id": "893f6fb7-eb9b-45db-86ba-e0c2d9bc1d4f",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [
@@ -1167,13 +1479,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/reviews/1",
-									"protocol": "http",
+									"raw": "{{domain}}/reviews/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"reviews",
 										"1"
 									]
@@ -1218,17 +1528,47 @@
 			"item": [
 				{
 					"name": "/comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5426cddf-ec95-4946-8798-8a4ed7226d0e",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PostTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0a1e81f3-c1ea-4bb1-bfb6-acb8f66ac24f",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.commentSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"ticketId\": 1,\n  \"content\": \"Who do I contant?\"\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/comments",
@@ -1238,12 +1578,13 @@
 							"path": [
 								"comments"
 							]
-						}
+						},
+						"description": "[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
 					},
 					"response": [
 						{
-							"id": "d5d5087f-f9b7-4cd0-9a21-800837432b55",
-							"name": "/comments",
+							"id": "4c5d0da2-96fb-41ed-86f4-176e666375f4",
+							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1282,12 +1623,42 @@
 				},
 				{
 					"name": "/comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "033d0cd2-5297-4532-8261-a9b8d018558b",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9110889f-69be-4484-a088-3ddeccdd582c",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.commentListSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -1302,12 +1673,13 @@
 							"path": [
 								"comments"
 							]
-						}
+						},
+						"description": "[Returned Comment List Schema]()"
 					},
 					"response": [
 						{
-							"id": "8edc26d4-1270-472d-afe6-58e373f77da6",
-							"name": "/comments",
+							"id": "e47be30e-3611-44c1-8ed0-43ad7386c08e",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1321,13 +1693,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/v1/comments",
-									"protocol": "http",
+									"raw": "{{domain}}/comments",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"v1",
 										"comments"
 									]
 								}
@@ -1347,10 +1717,24 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "91986bc9-8469-4846-b228-15c2a133404c",
+								"id": "50aef836-3f35-4a56-8bb0-4d2387fcdbf3",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.GetTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ed2f4146-24f4-4729-852f-b60e3110705f",
+								"type": "text/javascript",
+								"exec": [
+									"schema={}",
+									"",
+									"pm.sendRequest(globals.commentSchema, function (err, response) {",
+									"    schema=response.json();",
+									"});"
 								]
 							}
 						}
@@ -1361,6 +1745,10 @@
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -1376,12 +1764,13 @@
 								"comments",
 								"1"
 							]
-						}
+						},
+						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
 					},
 					"response": [
 						{
-							"id": "631909dd-d752-44b4-bafe-4689183f503e",
-							"name": "/comments/:commentId",
+							"id": "9916ac72-1057-4f83-8bc1-8af64a9bafbc",
+							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -1395,13 +1784,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/api/comments/1",
-									"protocol": "http",
+									"raw": "{{domain}}/comments/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"api",
 										"comments",
 										"1"
 									]
@@ -1422,7 +1809,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7fd6b6b0-3877-4789-b7ca-f35817e372b8",
+								"id": "07f8e4fa-33c8-42c9-b368-f665d81c0759",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.PutTests);"
@@ -1436,11 +1823,15 @@
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"content\": \"Who do I contant?\"\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/comments/1",
@@ -1451,12 +1842,13 @@
 								"comments",
 								"1"
 							]
-						}
+						},
+						"description": "[Put Comment Schema](https://drive.google.com/open?id=1m9w1kj9J0BymzHxqfmNebN193E5b-ybk)"
 					},
 					"response": [
 						{
-							"id": "0a4a43da-a872-4234-8a61-8033826027e3",
-							"name": "/comments/:commentId",
+							"id": "b300693f-883d-4d6c-93b7-c5ba3801c341",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -1475,13 +1867,11 @@
 									"raw": "{\n\t\"content\": \"Who do I contant?\"\n}"
 								},
 								"url": {
-									"raw": "http://{{domain}}/api/comments/1",
-									"protocol": "http",
+									"raw": "{{domain}}/comments/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"api",
 										"comments",
 										"1"
 									]
@@ -1502,7 +1892,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "59c9453a-3dc1-469d-88fc-e7fc47e4c2cc",
+								"id": "a8b1d8a8-1775-4459-958c-39c8299f846d",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.DeleteTests);"
@@ -1516,6 +1906,10 @@
 							{
 								"key": "X-Auth-Token",
 								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -1535,8 +1929,8 @@
 					},
 					"response": [
 						{
-							"id": "61a49e77-4dfe-4c72-94b1-c2ebfbf1aa44",
-							"name": "/comments/:commentId",
+							"id": "6d6ceca1-35c9-453f-a974-9dfbee9888ca",
+							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [
@@ -1550,13 +1944,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://{{domain}}/api/comments/1",
-									"protocol": "http",
+									"raw": "{{domain}}/comments/1",
 									"host": [
 										"{{domain}}"
 									],
 									"path": [
-										"api",
 										"comments",
 										"1"
 									]
@@ -1603,6 +1995,8 @@
 				"id": "9decc82b-dec9-47d4-910e-a4e41e1b089a",
 				"type": "text/javascript",
 				"exec": [
+					"var timeInSeconds = parseInt((new Date()).getTime() / 1000);",
+					"",
 					""
 				]
 			}
@@ -1621,67 +2015,11 @@
 	],
 	"variable": [
 		{
-			"id": "f37dc65b-4ab3-41a5-a68e-b113ed36eade",
+			"id": "b2ea3941-3d99-4079-a4f1-95d1a00d8281",
 			"key": "domain",
-			"value": "localhost:5000/api",
-			"type": "string",
-			"description": ""
-		},
-		{
-			"id": "8e5274a1-a18e-44b3-806c-5c2ceaf6819c",
-			"key": "ticketSchema",
-			"value": "{\n  \"required\": [\"id\", \"title\"],\n  \"properties\": {\n    \"id\": { \"type\": \"integer\" },\n    \"title\": { \"type\": \"string\" },\n    \"status\": { \"type\": \"string\" },\n    \"opened\": { \"type\": \"string\" },\n    \"closed\": { \"type\": \"null\" },\n    \"client\": {\n        \"required\": [\"id\", \"firstName\", \"lastName\", \"email\"],\n        \"properties\": {\n            \"id\": { \"type\": \"integer\" },\n            \"firstName\": { \"type\": \"string\" },\n            \"lastName\": { \"type\": \"string\" },\n            \"email\": { \"type\": \"string\" },\n            \"address\": {\n                \"required\": [\"line1\", \"city\", \"state\", \"zipcode\"],\n                \"properties\": {\n                    \"line1\": { \"type\": \"string\" },\n                    \"line2\": { \"type\": \"string\" },\n                    \"city\": { \"type\": \"string\" },\n                    \"state\": { \"type\": \"string\" },\n                    \"zipcode\": { \"type\": \"string\" }\n                }\n            }\n        }\n    },\n    \"agent\": {\n        \"required\": [\"id\", \"firstName\", \"lastName\"],\n        \"properties\": {\n            \"id\": { \"type\": \"integer\" },\n            \"firstName\": { \"type\": \"string\" },\n            \"lastName\": { \"type\": \"string\" }\n        }\n    },\n    \"product\": {\n        \"required\": [\"serialNumber\", \"name\", \"description\"],\n        \"properties\": {\n            \"serialNumber\": { \"type\": \"string\" },\n            \"name\": { \"type\": \"string\" },\n            \"description\": { \"type\": \"string\" }\n        }\n    },\n    \"comments\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"required\": [\"ticketId\", \"content\", \"author\", \"commentedBy\", \"dateCreated\"],\n            \"properties\": {\n                \"ticketId\": { \"type\": \"integer\" },\n                \"content\": { \"type\": \"string\" },\n                \"author\": { \"type\": \"integer\" },\n                \"commentedBy\": { \"type\": \"string\" },\n                \"dateCreated\": { \"type\": \"string\" }\n            }\n        }\n    }\n  }\n};",
+			"value": "http://localhost:5000/api",
 			"type": "string",
 			"disabled": true,
-			"description": ""
-		},
-		{
-			"id": "71ce19c5-8051-475c-b737-f05df799a14c",
-			"key": "clientSchema",
-			"value": "{\n  \"$id\": \"{{domain}}/clients\", \n  \"type\": \"object\", \n  \"definitions\": {}, \n  \"$schema\": \"http://json-schema.org/draft-07/schema#\", \n  \"properties\": {\n    \"id\": {\n      \"$id\": \"/properties/id\", \n      \"type\": \"integer\", \n      \"title\": \"The Id Schema \", \n      \"default\": 0, \n      \"examples\": [\n        1\n      ]\n    }, \n    \"firstName\": {\n      \"$id\": \"/properties/firstName\", \n      \"type\": \"string\", \n      \"title\": \"The Firstname Schema \", \n      \"default\": \"\", \n      \"examples\": [\n        \"John\"\n      ]\n    }, \n    \"lastName\": {\n      \"$id\": \"/properties/lastName\", \n      \"type\": \"string\", \n      \"title\": \"The Lastname Schema \", \n      \"default\": \"\", \n      \"examples\": [\n        \"Doe\"\n      ]\n    }, \n    \"email\": {\n      \"$id\": \"/properties/email\", \n      \"type\": \"string\", \n      \"title\": \"The Email Schema \", \n      \"default\": \"\", \n      \"examples\": [\n        \"johndoe@gmail.com\"\n      ]\n    }\n  }\n}\n",
-			"type": "string",
-			"description": ""
-		},
-		{
-			"id": "ad4a4a85-a861-40b7-b766-e5c79bb4b376",
-			"key": "clientListSchema",
-			"value": "{\n  \"$id\": \"{{domain}}/clients\", \n  \"type\": \"array\", \n  \"definitions\": {}, \n  \"$schema\": \"http://json-schema.org/draft-07/schema#\", \n  \"items\": {\n    \"$id\": \"{{domain}}/clients/items\", \n    \"type\": \"object\", \n    \"properties\": {\n      \"id\": {\n        \"$id\": \"{{domain}}/clients/items/properties/id\", \n        \"type\": \"integer\", \n        \"title\": \"The Id Schema \", \n        \"default\": 0, \n        \"examples\": [\n          1\n        ]\n      }, \n      \"firstName\": {\n        \"$id\": \"{{domain}}/clients/items/properties/firstName\", \n        \"type\": \"string\", \n        \"title\": \"The Firstname Schema \", \n        \"default\": \"\", \n        \"examples\": [\n          \"John\"\n        ]\n      }, \n      \"lastName\": {\n        \"$id\": \"{{domain}}/clients/items/properties/lastName\", \n        \"type\": \"string\", \n        \"title\": \"The Lastname Schema \", \n        \"default\": \"\", \n        \"examples\": [\n          \"Doe\"\n        ]\n      }, \n      \"email\": {\n        \"$id\": \"{{domain}}/clients/items/properties/email\", \n        \"type\": \"string\", \n        \"title\": \"The Email Schema \", \n        \"default\": \"\", \n        \"examples\": [\n          \"johndoe@gmail.com\"\n        ]\n      }\n    }\n  }\n}",
-			"type": "string",
-			"description": ""
-		},
-		{
-			"id": "b04e258a-cf03-4dfe-a5d8-003d06023f7a",
-			"key": "commentSchema",
-			"value": "{\n  \"$id\": \"{{domain}}/comments\", \n  \"type\": \"object\", \n  \"definitions\": {}, \n  \"$schema\": \"http://json-schema.org/draft-07/schema#\", \n  \"properties\": {\n    \"id\": {\n      \"$id\": \"/properties/id\", \n      \"type\": \"integer\", \n      \"title\": \"The Id Schema \", \n      \"default\": 0, \n      \"examples\": [\n        1\n      ]\n    }, \n    \"ticketId\": {\n      \"$id\": \"/properties/ticketId\", \n      \"type\": \"integer\", \n      \"title\": \"The Ticketid Schema \", \n      \"default\": 0, \n      \"examples\": [\n        1\n      ]\n    }, \n    \"content\": {\n      \"$id\": \"/properties/content\", \n      \"type\": \"string\", \n      \"title\": \"The Content Schema \", \n      \"default\": \"\", \n      \"examples\": [\n        \"Who do I contant?\"\n      ]\n    }, \n    \"author\": {\n      \"$id\": \"/properties/author\", \n      \"type\": \"integer\", \n      \"title\": \"The Author Schema \", \n      \"default\": 0, \n      \"examples\": [\n        12\n      ]\n    }, \n    \"commentedBy\": {\n      \"$id\": \"/properties/commentedBy\", \n      \"type\": \"string\", \n      \"title\": \"The Commentedby Schema \", \n      \"default\": \"\", \n      \"examples\": [\n        \"agent\"\n      ]\n    }, \n    \"dateCreated\": {\n      \"$id\": \"/properties/dateCreated\", \n      \"type\": \"string\", \n      \"title\": \"The Datecreated Schema \", \n      \"default\": \"\", \n      \"examples\": [\n        \"2018-04-11T21:18:18.433Z\"\n      ]\n    }\n  }\n}",
-			"type": "string",
-			"description": ""
-		},
-		{
-			"id": "78bd1de0-4609-469b-baa2-dcf788faf901",
-			"key": "commentListSchema",
-			"value": "{\n  \"$id\": \"{{domain}}/comments\", \n  \"type\": \"array\", \n  \"definitions\": {}, \n  \"$schema\": \"http://json-schema.org/draft-07/schema#\", \n  \"items\": {\n    \"$id\": \"{{domain}}/comments/items\", \n    \"type\": \"object\", \n    \"properties\": {\n      \"id\": {\n        \"$id\": \"{{domain}}/comments/items/properties/id\", \n        \"type\": \"integer\", \n        \"title\": \"The Id Schema \", \n        \"default\": 0, \n        \"examples\": [\n          1\n        ]\n      }, \n      \"ticketId\": {\n        \"$id\": \"{{domain}}/comments/items/properties/ticketId\", \n        \"type\": \"integer\", \n        \"title\": \"The Ticketid Schema \", \n        \"default\": 0, \n        \"examples\": [\n          1\n        ]\n      }, \n      \"content\": {\n        \"$id\": \"{{domain}}/comments/items/properties/content\", \n        \"type\": \"string\", \n        \"title\": \"The Content Schema \", \n        \"default\": \"\", \n        \"examples\": [\n          \"Who do I contant?\"\n        ]\n      }, \n      \"author\": {\n        \"$id\": \"{{domain}}/comments/items/properties/author\", \n        \"type\": \"integer\", \n        \"title\": \"The Author Schema \", \n        \"default\": 0, \n        \"examples\": [\n          12\n        ]\n      }, \n      \"commentedBy\": {\n        \"$id\": \"{{domain}}/comments/items/properties/commentedBy\", \n        \"type\": \"string\", \n        \"title\": \"The Commentedby Schema \", \n        \"default\": \"\", \n        \"examples\": [\n          \"agent\"\n        ]\n      }, \n      \"dateCreated\": {\n        \"$id\": \"{{domain}}/comments/items/properties/dateCreated\", \n        \"type\": \"string\", \n        \"title\": \"The Datecreated Schema \", \n        \"default\": \"\", \n        \"examples\": [\n          \"2018-04-11T21:18:18.433Z\"\n        ]\n      }\n    }\n  }\n}",
-			"type": "string",
-			"description": ""
-		},
-		{
-			"id": "d6d1c2db-c00b-46c7-bc19-f1a71fd38594",
-			"key": "ticketSchema",
-			"value": "{\n  \"$id\": \"{{domain}}/tickets\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"$id\": \"/properties/id\",\n      \"type\": \"integer\",\n      \"examples\": [\n        1\n      ]\n    },\n    \"title\": {\n      \"$id\": \"/properties/title\",\n      \"type\": \"string\",\n      \"examples\": [\n        \"my product doesn't work\"\n      ]\n    },\n    \"description\": {\n      \"$id\": \"/properties/description\",\n      \"type\": \"string\",\n      \"examples\": [\n        \"Help\"\n      ]\n    },\n    \"status\": {\n      \"$id\": \"/properties/status\",\n      \"type\": \"string\",\n      \"examples\": [\n        \"new\"\n      ]\n    },\n    \"opened\": {\n      \"$id\": \"/properties/opened\",\n      \"type\": \"string\",\n      \"examples\": [\n        \"2018-04-11T21:18:18.433Z\"\n      ]\n    },\n    \"closed\": {\n      \"$id\": \"/properties/closed\",\n      \"type\": \"null\",\n      \"examples\": [\n        null\n      ]\n    },\n    \"client\": {\n      \"$id\": \"/properties/client\",\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"$id\": \"/properties/client/properties/id\",\n          \"type\": \"integer\",\n          \"examples\": [\n            1\n          ]\n        },\n        \"firstName\": {\n          \"$id\": \"/properties/client/properties/firstName\",\n          \"type\": \"string\",\n          \"examples\": [\n            \"John\"\n          ]\n        },\n        \"lastName\": {\n          \"$id\": \"/properties/client/properties/lastName\",\n          \"type\": \"string\",\n          \"examples\": [\n            \"Doe\"\n          ]\n        },\n        \"email\": {\n          \"$id\": \"/properties/client/properties/email\",\n          \"type\": \"string\",\n          \"examples\": [\n            \"johndoe@gmail.com\"\n          ]\n        },\n        \"address\": {\n          \"$id\": \"/properties/client/properties/address\",\n          \"type\": \"object\",\n          \"properties\": {\n            \"line1\": {\n              \"$id\": \"/properties/client/properties/address/properties/line1\",\n              \"type\": \"string\",\n              \"examples\": [\n                \"101 ritchy st\"\n              ]\n            },\n            \"line2\": {\n              \"$id\": \"/properties/client/properties/address/properties/line2\",\n              \"type\": \"string\",\n              \"examples\": [\n                \"apt 1\"\n              ]\n            },\n            \"city\": {\n              \"$id\": \"/properties/client/properties/address/properties/city\",\n              \"type\": \"string\",\n              \"examples\": [\n                \"rochester\"\n              ]\n            },\n            \"state\": {\n              \"$id\": \"/properties/client/properties/address/properties/state\",\n              \"type\": \"string\",\n              \"examples\": [\n                \"ny\"\n              ]\n            },\n            \"zipcode\": {\n              \"$id\": \"/properties/client/properties/address/properties/zipcode\",\n              \"type\": \"string\",\n              \"examples\": [\n                \"12345\"\n              ]\n            }\n          },\n          \"required\": [\n            \"line1\",\n            \"line2\",\n            \"city\",\n            \"state\",\n            \"zipcode\"\n          ]\n        }\n      },\n      \"required\": [\n        \"id\",\n        \"firstName\",\n        \"lastName\",\n        \"email\",\n        \"address\"\n      ]\n    },\n    \"agent\": {\n      \"$id\": \"/properties/agent\",\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"$id\": \"/properties/agent/properties/id\",\n          \"type\": \"integer\",\n          \"examples\": [\n            1\n          ]\n        },\n        \"firstName\": {\n          \"$id\": \"/properties/agent/properties/firstName\",\n          \"type\": \"string\",\n          \"examples\": [\n            \"johnny\"\n          ]\n        },\n        \"lastName\": {\n          \"$id\": \"/properties/agent/properties/lastName\",\n          \"type\": \"string\",\n          \"examples\": [\n            \"Five\"\n          ]\n        }\n      },\n      \"required\": [\n        \"id\",\n        \"firstName\",\n        \"lastName\"\n      ]\n    },\n    \"product\": {\n      \"$id\": \"/properties/product\",\n      \"type\": \"object\",\n      \"properties\": {\n        \"serialNumber\": {\n          \"$id\": \"/properties/product/properties/serialNumber\",\n          \"type\": \"integer\",\n          \"examples\": [\n            2\n          ]\n        },\n        \"name\": {\n          \"$id\": \"/properties/product/properties/name\",\n          \"type\": \"string\",\n          \"examples\": [\n            \"Phablet\"\n          ]\n        },\n        \"description\": {\n          \"$id\": \"/properties/product/properties/description\",\n          \"type\": \"string\",\n          \"examples\": [\n            \"very nice\"\n          ]\n        }\n      },\n      \"required\": [\n        \"serialNumber\",\n        \"name\",\n        \"description\"\n      ]\n    },\n    \"comments\": {\n      \"$id\": \"/properties/comments\",\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"id\",\n    \"title\",\n    \"description\",\n    \"status\",\n    \"opened\",\n    \"closed\",\n    \"client\",\n    \"agent\",\n    \"product\"\n  ]\n}",
-			"type": "string",
-			"description": ""
-		},
-		{
-			"id": "efcf55bd-fbd7-4c36-b6b7-c697496eb6cf",
-			"key": "ticketListSchema",
-			"value": "",
-			"type": "string",
-			"description": ""
-		},
-		{
-			"id": "0d31481a-b9a7-460b-8dec-c8d7831b802b",
-			"key": "reviewSchema",
-			"value": "",
-			"type": "string",
 			"description": ""
 		}
 	]
