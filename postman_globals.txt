@@ -1,0 +1,12 @@
+GetTests:// Test whether the response is valid↵tests["Status code is 200"] = responseCode.code === 200;↵↵// Test whether the response matches the schema↵var result = JSON.parse(responseBody);↵tests["Schema is valid"] = tv4.validate(result, schema);↵
+PostTests:// Test whether the response is valid↵tests["Status code is 201"] = responseCode.code === 201;↵↵// Test whether the response matches the schema↵var result = JSON.parse(responseBody);↵tests["Schema is valid"] = tv4.validate(result, schema);
+PutTests:// Test whether the response is valid↵tests["Status code is 204"] = responseCode.code === 204;
+DeleteTests:// Test whether the response is valid ↵tests["Status code is 204"] = responseCode.code === 204;↵
+ticketSchema:https://drive.google.com/open?id=13F2P09Hlq95G7yshj--um91L5rXQHdXL
+ticketListSchema:https://drive.google.com/open?id=13F2P09Hlq95G7yshj--um91L5rXQHdXL
+clientSchema:https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3
+clientListSchema:https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V
+reviewSchema:https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC
+reviewListSchema:https://drive.google.com/open?id=1r-NYUoPDhyr7TmSkKIoOxnyXVAJ8HnFs
+commentSchema:https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj
+commentListSchema:https://drive.google.com/open?id=1ro5AhK3RosS7tvkIeWfSk5DZUNqI9O7g
