@@ -1,0 +1,81 @@
+{
+  "id": "44d06925-109e-40ce-850b-023c161eda12",
+  "values": [
+    {
+      "key": "GetTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody);\ntests[\"Schema is valid\"] = tv4.validate(result, schema);\n",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "PostTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 201\"] = responseCode.code === 201;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody);\ntests[\"Schema is valid\"] = tv4.validate(result, schema);",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "PutTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 204\"] = responseCode.code === 204;",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "DeleteTests",
+      "value": "// Test whether the response is valid \ntests[\"Status code is 204\"] = responseCode.code === 204;\n",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "ticketSchema",
+      "value": "https://drive.google.com/open?id=13F2P09Hlq95G7yshj--um91L5rXQHdXL",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "ticketListSchema",
+      "value": "https://drive.google.com/open?id=13F2P09Hlq95G7yshj--um91L5rXQHdXL",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "clientSchema",
+      "value": "https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "clientListSchema",
+      "value": "https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "reviewSchema",
+      "value": "https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "reviewListSchema",
+      "value": "https://drive.google.com/open?id=1r-NYUoPDhyr7TmSkKIoOxnyXVAJ8HnFs",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "commentSchema",
+      "value": "https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "commentListSchema",
+      "value": "https://drive.google.com/open?id=1ro5AhK3RosS7tvkIeWfSk5DZUNqI9O7g",
+      "enabled": true,
+      "type": "text"
+    }
+  ],
+  "name": "My Workspace Globals",
+  "_postman_variable_scope": "globals",
+  "_postman_exported_at": "2018-04-18T20:08:53.684Z",
+  "_postman_exported_using": "Postman/6.0.10"
+}
