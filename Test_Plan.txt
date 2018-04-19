@@ -1,33 +1,32 @@
 CLIENTS
 Create client - check for 200, save ID
 Put client - check for 200
+Get client (using ID) - check that something is there & 200
+Delete client (using saved ID) - check for 204
+Get client (using ID) - check that nothing is there & 404
 Create client - check for 200, save ID
-Get clients - check that something is there & 200
-Delete client (using saved ID 2) - check for 204
 
 TICKETS
-Create ticket (using saved client ID 1) - check for 200 & save ticket ID & agent ID
-Get clients (using saved ticket ID 1) - check 200 & that something is there
-Get ticket (using saved ticket id) - check 200 & that something is there
+Get product from inventory - check for 200 & save first product ID
+Create ticket (using saved client ID) - check for 200 & save ticket ID & agent ID
 Put ticket (using saved ID) - check 200
+Get ticket (using saved ticket id) - check 200 & that something is there
 Create ticket (using saved client ID) - check 200, save ticket ID
-Get tickets (query by saved client ID & agent ID) - check 200 & that something is there
+Get ticket (query by saved client ID & agent ID) - check 200 & that something is there
+Delete ticket (using ticket ID) - check for 204
+Get ticket (using saved ticket ID) - check 404 & that nothing is there
 Create ticket (using saved client ID) - check 200, save ticket ID
-Delete ticket (using ticket ID 2) - check for 204
-Get ticket (using saved ticket ID 2) - check 200 & that nothing is there
 
 COMMENTS
 Create comment (using saved ticket ID and saved client ID) - check 200 & save comment ID
-Get comments - check 200 & that something is there
 Get comment (using comment ID) - check 200 & that something is there
 Get comment (using saved ticket ID) - check 200 & that something is there
 Put comment (using saved comment ID) - check 200
 Delete comment (using saved comment ID) - check 204
-Get comment (using comment ID) - check 200 & that nothing is there
+Get comment (using comment ID) - check 404 & that nothing is there
 
 REVIEWS
 Create review (using saved agent ID and client ID) - check 200, save review ID
-Get reviews - check 200 & that something is there
 Get reviews (using review ID) - check 200 & that something is there
 Get reviews (query by agent ID) - check 200 & that something is there
 Put review (using review ID) - check 200 

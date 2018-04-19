@@ -1,0 +1,2325 @@
+{
+	"info": {
+		"_postman_id": "f3bc7458-94f5-4071-9c2e-5e5a753eab7f",
+		"name": "Customer Service API Tests",
+		"description": "Test suite for all Customer Service API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clients",
+			"description": "Documentation and tests for the Customer Service API.",
+			"item": [
+				{
+					"name": "Create Client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7b4834bb-b729-4bf8-a4df-8ea288067e08",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.clientListSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f5772bf2-f8a3-435d-aada-6619be33461a",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PostTests);",
+									"pm.globals.set(\"client_id\", JSON.parse(responseBody).id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe2@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/clients",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "[Post Client Schema](https://drive.google.com/open?id=1O3ynQbHdWkIH7_ozWY0hIiIemv6-vLbN)\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
+					},
+					"response": [
+						{
+							"id": "3a1094f8-815f-40e2-8357-58e0f9fa6e83",
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/clients",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "541f3e7e-0bb1-4bda-936b-d95bee04f89a",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PutTests);"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "63a6e5e5-0f76-4112-9f48-0d14b97149d6",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.clientSchema;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"email\": \"johnsmith@gmail.com\",\n  \"password\": \"secure-password-2\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/clients/{{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						},
+						"description": "[Put Client Schema](https://drive.google.com/open?id=10WSl9gJV0FyajxTLMcRHFjmk86G-xxRy)"
+					},
+					"response": [
+						{
+							"id": "4db042b1-4afd-47cb-85bc-a18f65af34d4",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"newapssword\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/clients/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Client By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c6afde3b-5a0b-4b39-a185-a39165f5c14f",
+								"type": "text/javascript",
+								"exec": [
+									"schema = globals.clientListSchema;",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4602ca52-7002-4159-9154-d415dd016052",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/clients/{{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						},
+						"description": "[Returned Client List Schema](https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V)"
+					},
+					"response": [
+						{
+							"id": "5ad3d1a1-e6b7-422d-b02e-cd5e8fb2b2f7",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/clients",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"email\": \"johndoe@gmail.com\"\n  },\n  {\n    \"id\": 2,\n      \"firstName\": \"Camilo\",\n      \"lastName\": \"G\",\n      \"email\": \"camilog@gmail.com\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.DeleteTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/clients/{{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "45acd974-6127-4b92-ae9b-0720a00e0ceb",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/clients/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Confirm Client Deleted",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c6afde3b-5a0b-4b39-a185-a39165f5c14f",
+								"type": "text/javascript",
+								"exec": [
+									"schema = globals.clientListSchema;",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d515094-89b6-44e7-9ba8-96e8ec4e7c29",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetNotFound);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/clients/{{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						},
+						"description": "[Returned Client List Schema](https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V)"
+					},
+					"response": [
+						{
+							"id": "9b8263e9-b38b-4f37-b13c-e1dcad6a2d7b",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/clients",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"email\": \"johndoe@gmail.com\"\n  },\n  {\n    \"id\": 2,\n      \"firstName\": \"Camilo\",\n      \"lastName\": \"G\",\n      \"email\": \"camilog@gmail.com\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Re-Create Client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7b4834bb-b729-4bf8-a4df-8ea288067e08",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.clientListSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fe1eb5ba-5cca-40f2-8473-54ab1e5d2c77",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PostTests);",
+									"pm.globals.set(\"client_id\", JSON.parse(responseBody).id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe2@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/clients",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "[Post Client Schema](https://drive.google.com/open?id=1O3ynQbHdWkIH7_ozWY0hIiIemv6-vLbN)\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
+					},
+					"response": [
+						{
+							"id": "e6eadc14-414b-4ac2-b9b6-d554606016a1",
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/clients",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"description": null,
+			"item": [
+				{
+					"name": "Get Product (From Inventory)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e16a462-81e6-495f-8079-ae90d9287099",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"try {",
+									"    pm.globals.set(\"product_id\", JSON.parse(responseBody)[0].serialNumber);",
+									"} catch (err) {",
+									"    tests[\"Product found\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://inventory343.azurewebsites.net/api/Products",
+							"protocol": "https",
+							"host": [
+								"inventory343",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Products"
+							]
+						},
+						"description": "Creates a product in the Inventory database to use for testing our API."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ticket",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2ff8c595-537a-4f95-b2ad-1210d6522008",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.ticketSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ec280e5-8f4f-4518-9baf-21c88f4ffe26",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PostTests);",
+									"var data =  JSON.parse(responseBody);",
+									"pm.globals.set(\"ticket_id\", data.id);",
+									"try {",
+									"    pm.globals.set(\"agent_id\", data.agent.id);",
+									"} catch (err) {",
+									"    tests[\"Agent Id found\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"productSerialNumber\": \"{{product_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/tickets?clientId={{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"description": "(Required)  Client this ticket is made by"
+								}
+							]
+						},
+						"description": "[Post Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
+					},
+					"response": [
+						{
+							"id": "4fbf05ec-13bc-48d2-b11d-9e336ab91988",
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"my product doesn't work\",\n\t\"description\": \"Help\",\n\t\"productId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/tickets?clientId=1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"status\": \"new\",\n  \"opened\": \"2018-04-11T21:18:18.433Z\",\n  \"closed\": null,\n  \"client\": {\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"address\": {\n      \"line1\": \"101 ritchy st\",\n      \"line2\": \"apt 1\",\n      \"city\": \"rochester\",\n      \"state\": \"ny\",\n      \"zipcode\": \"12345\"\n    }\n  },\n  \"agent\": {\n    \"id\": 1,\n    \"firstName\": \"johnny\",\n    \"lastName\": \"Five\"\n  },\n  \"product\": {\n    \"serialNumber\": 2,\n    \"name\": \"Phablet\",\n    \"description\": \"very nice\"\n  },\n  \"comments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Ticket",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PutTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"my product STILL doesn't work\",\n    \"description\": \"Help!!!\",\n    \"status\": \"inProgress\",\n    \"productId\": \"{{product_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "[Put Ticket Schema](https://drive.google.com/open?id=169rbp3UdibhNivV1SIdebnomRCqIAKk9)"
+					},
+					"response": [
+						{
+							"id": "4f77c310-d007-4e71-b423-22e8d0bcc8ab",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"inProgress\",\n    \"productId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/tickets/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Ticket By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "24f77d77-c6c9-4029-81b1-095a29d72298",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.ticketListSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "78d85677-63f3-4770-b4a0-4a0c36179792",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);",
+									"tests[\"Ticket exists\"] = JSON.parse(responseBody).length != 0;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "[Returned Ticket List Schema](https://drive.google.com/open?id=1MaMXQAg8raU50XSXN4VMXENUwXTwko8d)"
+					},
+					"response": [
+						{
+							"id": "cdf54f0f-8321-4ac0-a50a-88ef3a2c808b",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/tickets?agentId=2&clientId=1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "agentId",
+											"value": "2"
+										},
+										{
+											"key": "clientId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n      \"id\": 1,\n      \"title\": \"my product doesn't work\",\n      \"description\": \"Help\",\n      \"status\": \"new\",\n      \"opened\": \"2018-04-11T21:18:18.433Z\",\n      \"closed\": null,\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"product\": {\n          \"serialNumber\": 2,\n          \"name\": \"Phablet\",\n          \"description\": \"very nice\"\n      },\n      \"comments\": []\n  },\n  {\n      \"id\": 2,\n      \"title\": \"Screen broken\",\n      \"description\": \"What do i do\",\n      \"status\": \"new\",\n      \"opened\": \"2018-04-11T21:18:18.433Z\",\n      \"closed\": null,\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"product\": {\n          \"serialNumber\": 2,\n          \"name\": \"Phablet\",\n          \"description\": \"very nice\"\n      },\n      \"comments\": []\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Filter Tickets By Agent & Client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "04c91c17-71b4-437b-aed4-4c4f9694b8f2",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.ticketSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e4f305c-d6bd-4904-9bc0-fbded326361a",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);",
+									"tests[\"Ticket exists\"] = JSON.parse(responseBody).length != 0;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets?agentId={{agent_id}}&clientId={{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "{{agent_id}}"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}"
+								}
+							]
+						},
+						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
+					},
+					"response": [
+						{
+							"id": "69897a48-4f98-4f14-b1d0-c72b222bdbf2",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/tickets/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"new\",\n    \"opened\": \"2018-04-11T21:18:18.433Z\",\n    \"closed\": null,\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"product\": {\n        \"serialNumber\": 2,\n        \"name\": \"Phablet\",\n        \"description\": \"very nice\"\n    },\n    \"comments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Ticket",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56804874-1f11-4983-9029-b93b65266d17",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.DeleteTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0b217d98-6eb8-4346-b3de-cfdfd6af463e",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/tickets/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Check Ticket Deleted",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "24f77d77-c6c9-4029-81b1-095a29d72298",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.ticketListSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8be8eeac-ea1a-4439-8cee-8a8bd4644fa9",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetNotFound);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "[Returned Ticket List Schema](https://drive.google.com/open?id=1MaMXQAg8raU50XSXN4VMXENUwXTwko8d)"
+					},
+					"response": [
+						{
+							"id": "f0ec1da7-af16-4d32-8546-2ca70d3e0595",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/tickets?agentId=2&clientId=1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "agentId",
+											"value": "2"
+										},
+										{
+											"key": "clientId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n      \"id\": 1,\n      \"title\": \"my product doesn't work\",\n      \"description\": \"Help\",\n      \"status\": \"new\",\n      \"opened\": \"2018-04-11T21:18:18.433Z\",\n      \"closed\": null,\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"product\": {\n          \"serialNumber\": 2,\n          \"name\": \"Phablet\",\n          \"description\": \"very nice\"\n      },\n      \"comments\": []\n  },\n  {\n      \"id\": 2,\n      \"title\": \"Screen broken\",\n      \"description\": \"What do i do\",\n      \"status\": \"new\",\n      \"opened\": \"2018-04-11T21:18:18.433Z\",\n      \"closed\": null,\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"product\": {\n          \"serialNumber\": 2,\n          \"name\": \"Phablet\",\n          \"description\": \"very nice\"\n      },\n      \"comments\": []\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Re-Create Ticket",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2ff8c595-537a-4f95-b2ad-1210d6522008",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.ticketSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ec280e5-8f4f-4518-9baf-21c88f4ffe26",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PostTests);",
+									"var data =  JSON.parse(responseBody);",
+									"pm.globals.set(\"ticket_id\", data.id);",
+									"try {",
+									"    pm.globals.set(\"agent_id\", data.agent.id);",
+									"} catch (err) {",
+									"    tests[\"Agent Id found\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"productSerialNumber\": \"{{product_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/tickets?clientId={{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"description": "(Required)  Client this ticket is made by"
+								}
+							]
+						},
+						"description": "[Post Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
+					},
+					"response": [
+						{
+							"id": "76c6f34c-4fbc-414f-a957-5b286c569582",
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"my product doesn't work\",\n\t\"description\": \"Help\",\n\t\"productId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/tickets?clientId=1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"status\": \"new\",\n  \"opened\": \"2018-04-11T21:18:18.433Z\",\n  \"closed\": null,\n  \"client\": {\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"address\": {\n      \"line1\": \"101 ritchy st\",\n      \"line2\": \"apt 1\",\n      \"city\": \"rochester\",\n      \"state\": \"ny\",\n      \"zipcode\": \"12345\"\n    }\n  },\n  \"agent\": {\n    \"id\": 1,\n    \"firstName\": \"johnny\",\n    \"lastName\": \"Five\"\n  },\n  \"product\": {\n    \"serialNumber\": 2,\n    \"name\": \"Phablet\",\n    \"description\": \"very nice\"\n  },\n  \"comments\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"description": null,
+			"item": [
+				{
+					"name": "Create Comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8e56b292-beba-4c4f-bd2e-2be1baf81536",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.commentSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a29d88c0-933f-44a3-90e3-4d98691e9ff7",
+								"type": "text/javascript",
+								"exec": [
+									"try {    ",
+									"    eval(globals.PostTests);",
+									"    pm.globals.set(\"comment_id\", JSON.parse(responseBody).id);",
+									"} catch (err) {",
+									"    tests[\"Endpoint exists\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n  \"authorId\": \"{{client_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/comments",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments"
+							]
+						},
+						"description": "[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+					},
+					"response": [
+						{
+							"id": "59bbc779-add4-499c-9b76-12288aba38d2",
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ticketId\": 1,\n\t\"content\": \"Who do I contant?\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/comments",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ticketId\": 1,\n    \"content\": \"Who do I contant?\",\n    \"author\": 12,\n    \"commentedBy\": \"agent\",\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "14452ba9-072a-437a-a8fc-2b13b1a99968",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PutTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"I still don't know who to contact\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/comments/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"1"
+							]
+						},
+						"description": "[Put Comment Schema](https://drive.google.com/open?id=1m9w1kj9J0BymzHxqfmNebN193E5b-ybk)"
+					},
+					"response": [
+						{
+							"id": "6240bff3-e9ba-42bb-ae30-7f475cc7229a",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"content\": \"Who do I contant?\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/comments/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Comment By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e56e7137-de8d-4629-8ed7-d7477efa9c59",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.commentListSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6211060-7e6e-4186-883a-a7fefab94eea",
+								"type": "text/javascript",
+								"exec": [
+									"try {",
+									"    eval(globals.GetTests);",
+									"} catch (err) {",
+									"    tests[\"Endpoint exists\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/comments/{{comment_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"{{comment_id}}"
+							]
+						},
+						"description": "[Returned Comment List Schema]()"
+					},
+					"response": [
+						{
+							"id": "65b33844-c520-46c3-ab26-23048a032ddf",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },\n    {\n        \"id\": 2,\n        \"ticketId\": 1,\n        \"content\": \"Me\",\n        \"author\": 21,\n        \"commentedBy\": \"client\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Comment By Ticket",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "12c4235a-fde5-48b1-81a5-cc6a32ad8a94",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.commentSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "5996abe4-db40-42e4-bfb6-e0d13f66c09f",
+								"type": "text/javascript",
+								"exec": [
+									"try {    ",
+									"    eval(globals.GetTests);",
+									"} catch (err) {",
+									"    tests[\"Endpoint exists\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/comments/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+					},
+					"response": [
+						{
+							"id": "9717cb0f-f6f1-477b-9b2e-537c8f54f26a",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },"
+						}
+					]
+				},
+				{
+					"name": "Delete Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.DeleteTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/comments/{{comment_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"{{comment_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ad6af615-a664-40bc-bf7d-ac36eef81b81",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Check Comment Deleted",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e56e7137-de8d-4629-8ed7-d7477efa9c59",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.commentListSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d35b49f3-5735-4f44-8eef-621612fe27e7",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetNotFound);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/comments/{{comment_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"{{comment_id}}"
+							]
+						},
+						"description": "[Returned Comment List Schema]()"
+					},
+					"response": [
+						{
+							"id": "cd164284-e19f-4edf-9862-c0ed867482c1",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },\n    {\n        \"id\": 2,\n        \"ticketId\": 1,\n        \"content\": \"Me\",\n        \"author\": 21,\n        \"commentedBy\": \"client\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"description": null,
+			"item": [
+				{
+					"name": "Create Review",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f041f61c-e26c-4d4a-81ed-092f7a8e6526",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.reviewSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0a59fa17-82db-47a2-a40b-e21e6502f957",
+								"type": "text/javascript",
+								"exec": [
+									"try {",
+									"    eval(globals.PostTests);",
+									"    pm.globals.set(\"review_id\", JSON.parse(responseBody).id);",
+									"} catch (err) {",
+									"    tests[\"Test suite has an Agent ID\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"agentId\": \"{{agent_id}}\",\n  \"content\": \"This agent sucks!\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/reviews",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews"
+							]
+						},
+						"description": "[Post Review Schema](https://drive.google.com/open?id=1EZaSrEZCOfwJpcwrG9G_DT_cIGSDmjdr)\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
+					},
+					"response": [
+						{
+							"id": "ffe88381-fb43-4818-aa14-0e3abecdfcd1",
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"content\": \"This agent sucks\",\n\t\"agentId\": 1,\n\t\"clientId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/reviews",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"content\": \"This agent sucks\",\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Review",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.PutTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Nevermind, this agent is awesome!\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/{{review_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "[Put Client Schema](https://drive.google.com/open?id=1Qlb3iY83B-4Bd69WEsM4iaMgjukh42DP)"
+					},
+					"response": [
+						{
+							"id": "2717a35e-3ec3-40f2-8338-57649f3abf90",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"This agent sucks\",\n    \"agentId\": 1,\n    \"clientId\": 4\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Filter Reviews By Agent",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e7ddd977-04af-4037-93ea-5dc6de8e851a",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.reviewListSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3040721b-19cc-40b7-9281-729944d756f6",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/?agentId={{agent_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								""
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "{{agent_id}}"
+								}
+							]
+						},
+						"description": "[Returned Review List Schema](https://drive.google.com/open?id=1r-NYUoPDhyr7TmSkKIoOxnyXVAJ8HnFs)"
+					},
+					"response": [
+						{
+							"id": "d3af66d9-d97c-4e95-8388-6f181e23c421",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/?clientId=1&agentId=2",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										""
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "1",
+											"description": "Optional filter by clientId"
+										},
+										{
+											"key": "agentId",
+											"value": "2",
+											"description": "Optional filter by agentId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n      \"id\": 1,\n      \"content\": \"This agent sucks\",\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n  },\n  {\n      \"id\": 2,\n      \"content\": \"This agent is gucci\",\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 68,\n          \"firstName\": \"MyMan\",\n          \"lastName\": \"Tom\"\n      },\n      \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Review By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "348c5a00-12b7-4d58-8830-81f3508f8fe6",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.reviewSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4aa65cc2-143f-42da-8f89-02101883f7a5",
+								"type": "text/javascript",
+								"exec": [
+									"try {",
+									"    eval(globals.GetTests);",
+									"} catch (err) {",
+									"    tests[\"Endpoint exists\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/{{review_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
+					},
+					"response": [
+						{
+							"id": "a491c719-c536-4e6b-8d10-0fbb3150ad17",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"content\": \"This agent sucks\",\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Review",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.DeleteTests);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/{{review_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "088cbc20-7202-400f-b19e-87ec295807ac",
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Check Review Deleted",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "348c5a00-12b7-4d58-8830-81f3508f8fe6",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.reviewSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6d4f0fb-0df3-49d2-861b-1e7b1ba6f8e7",
+								"type": "text/javascript",
+								"exec": [
+									"eval(globals.GetNotFound);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/{{review_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
+					},
+					"response": [
+						{
+							"id": "0b4ab3fd-2e4c-41cf-a18d-7e6553a249d2",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"content\": \"This agent sucks\",\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
