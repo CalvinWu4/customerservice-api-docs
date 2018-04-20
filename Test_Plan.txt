@@ -11,7 +11,6 @@ Get product from inventory - check for 200 & save first product ID
 Create ticket (using saved client ID) - check for 200 & save ticket ID & agent ID
 Put ticket (using saved ID) - check 200
 Get ticket (using saved ticket id) - check 200 & that something is there
-Create ticket (using saved client ID) - check 200, save ticket ID
 Get ticket (query by saved client ID & agent ID) - check 200 & that something is there
 Delete ticket (using ticket ID) - check for 204
 Get ticket (using saved ticket ID) - check 404 & that nothing is there
