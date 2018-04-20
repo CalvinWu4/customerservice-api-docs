@@ -64,7 +64,7 @@
 					},
 					"response": [
 						{
-							"id": "146eb1b2-94f7-4973-ad93-fe054c87c0f2",
+							"id": "6c19e103-0715-4008-a12a-6326245d3aa4",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -152,7 +152,7 @@
 					},
 					"response": [
 						{
-							"id": "167bc798-8a59-4757-90b3-30cc299c0b26",
+							"id": "590da93e-9784-45a0-95e8-4b9510b6842a",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -245,7 +245,7 @@
 					},
 					"response": [
 						{
-							"id": "079fe536-c9eb-4457-879a-d54127fe7783",
+							"id": "17d28c7e-05bf-4572-b6ea-2ff81cc25bdf",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -320,7 +320,7 @@
 					},
 					"response": [
 						{
-							"id": "2e51899d-abf0-41c9-b56f-1fa45ec30277",
+							"id": "eb3d6ec1-ac36-467b-a765-b6fead004b12",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -409,7 +409,7 @@
 					},
 					"response": [
 						{
-							"id": "80c90da9-197b-4d9b-b567-e45e6e568c3b",
+							"id": "9b09073d-4c16-48b1-ac75-a064784df3b6",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -496,7 +496,7 @@
 					},
 					"response": [
 						{
-							"id": "7a65459d-2dea-490e-925a-339295398c99",
+							"id": "4bf36b20-0faf-4c6a-93b0-12d3ce5eaf4a",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -592,14 +592,14 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4ec280e5-8f4f-4518-9baf-21c88f4ffe26",
+								"id": "74ff58dc-5070-4ca3-8bc4-094363f02024",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.PostTests);",
 									"var data =  JSON.parse(responseBody);",
 									"pm.globals.set(\"ticket_id\", data.id);",
 									"try {",
-									"    pm.globals.set(\"agent_id\", data.agent.id);",
+									"    pm.globals.set(\"agent_id\", data.agentId);",
 									"} catch (err) {",
 									"    tests[\"Agent Id found\"] = false;",
 									"}"
@@ -643,7 +643,7 @@
 					},
 					"response": [
 						{
-							"id": "fb5bcb7c-36ee-4d31-b18a-93715cf9cf2e",
+							"id": "4dad47b8-c003-45ba-a62f-323bd2bf6dd3",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -729,7 +729,7 @@
 					},
 					"response": [
 						{
-							"id": "d945289e-5789-42d2-a291-7c69e44317fc",
+							"id": "95112b33-861c-4c1e-bf7d-90a29e40a44e",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -819,7 +819,7 @@
 					},
 					"response": [
 						{
-							"id": "f17edf22-618d-4a51-a5cb-7c7d7911bc72",
+							"id": "2de0704e-bea6-4384-b86c-c97086bce6e1",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -926,7 +926,7 @@
 					},
 					"response": [
 						{
-							"id": "a90682a4-0281-4133-94c1-356622d87ee6",
+							"id": "3887cbdb-05ee-4ca4-a96e-e4bd40f4f42c",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1003,7 +1003,7 @@
 					},
 					"response": [
 						{
-							"id": "15ebb123-18ea-4222-a08e-b2b7d4e27851",
+							"id": "7c088226-c734-4797-a913-3219550c4d52",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1091,7 +1091,7 @@
 					},
 					"response": [
 						{
-							"id": "82fd8ca6-6d94-4b94-b86c-df927c326ebc",
+							"id": "5566a7d5-d54d-4904-bd0d-c16e4cf80d00",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1150,14 +1150,14 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4ec280e5-8f4f-4518-9baf-21c88f4ffe26",
+								"id": "4fceec02-30cf-4b88-8c5b-a19070af9ff3",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.PostTests);",
 									"var data =  JSON.parse(responseBody);",
 									"pm.globals.set(\"ticket_id\", data.id);",
 									"try {",
-									"    pm.globals.set(\"agent_id\", data.agent.id);",
+									"    pm.globals.set(\"agent_id\", data.agentId);",
 									"} catch (err) {",
 									"    tests[\"Agent Id found\"] = false;",
 									"}"
@@ -1201,7 +1201,7 @@
 					},
 					"response": [
 						{
-							"id": "e6a836e7-e6ee-4445-9a40-93172fe129ff",
+							"id": "39790dee-471a-4bc2-bd62-2e5404c79240",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1308,7 +1308,7 @@
 					},
 					"response": [
 						{
-							"id": "4f8b8603-42dd-4bc2-a616-cce1c0e7a817",
+							"id": "de8d7cd7-334c-46ed-a5b9-9cf6fe0a7688",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1390,7 +1390,7 @@
 					},
 					"response": [
 						{
-							"id": "2d83a4d0-2833-41d6-b5a4-76a44f216134",
+							"id": "dd1cd38c-9ecd-4c05-836b-db579cbe6413",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -1487,7 +1487,7 @@
 					},
 					"response": [
 						{
-							"id": "3b86cd22-df7d-43c2-bc05-bed399472171",
+							"id": "b76f529d-a0ce-4941-921e-3fa4dd90a081",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1583,7 +1583,7 @@
 					},
 					"response": [
 						{
-							"id": "7cf12770-d6a8-4f65-8c4f-caac171e83dd",
+							"id": "3c095862-6c77-4be6-8e0c-f5d69383494e",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1659,7 +1659,7 @@
 					},
 					"response": [
 						{
-							"id": "528d1b43-8b13-483c-b480-fae6c865be38",
+							"id": "8d80a8af-b1a0-41ad-9f3b-5cff76b89da0",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1747,7 +1747,7 @@
 					},
 					"response": [
 						{
-							"id": "574463b9-dbc8-4f59-ae30-5a076e6f3111",
+							"id": "c7eaad34-80bc-428b-b359-8ff587a7d7fa",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1832,19 +1832,25 @@
 							"raw": "{\n  \"agentId\": \"{{agent_id}}\",\n  \"content\": \"This agent sucks!\"\n}"
 						},
 						"url": {
-							"raw": "{{domain}}/reviews",
+							"raw": "{{domain}}/reviews?clientId={{client_id}}",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
 								"reviews"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "{{client_id}}"
+								}
 							]
 						},
 						"description": "[Post Review Schema](https://drive.google.com/open?id=1EZaSrEZCOfwJpcwrG9G_DT_cIGSDmjdr)\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
 					},
 					"response": [
 						{
-							"id": "e604a920-3375-482c-beb0-5196460af8a3",
+							"id": "39504154-29af-4231-89a8-84bb85ec15a9",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1924,7 +1930,7 @@
 					},
 					"response": [
 						{
-							"id": "7c5e70d1-7c0e-4ea6-95ca-42f1da654d04",
+							"id": "5ae79abb-ca19-4f8b-80a3-754657bba218",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -2022,7 +2028,7 @@
 					},
 					"response": [
 						{
-							"id": "cd1dd7c6-1c9d-465a-8f56-3f5ce3cffc67",
+							"id": "2200b8b6-e072-4ca2-abd3-ae81fb2fd3cb",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2126,7 +2132,7 @@
 					},
 					"response": [
 						{
-							"id": "0f8a2694-0064-4660-8c26-90b5ad2ced37",
+							"id": "7b0488ae-f758-46f3-aee9-788731675f79",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2202,7 +2208,7 @@
 					},
 					"response": [
 						{
-							"id": "9cdd6e6c-05bd-4375-a979-0890809c3899",
+							"id": "b77fe4e5-d5ec-4a26-990d-89f641641a20",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -2290,7 +2296,7 @@
 					},
 					"response": [
 						{
-							"id": "cb44619d-d33f-4074-890c-548f0090445f",
+							"id": "0d7c3ed4-7133-45eb-863b-bf6281aebf32",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
