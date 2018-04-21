@@ -1,40 +1,20 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "7a16512e-04b4-49c9-93a3-bdcc4e9a100d",
 		"name": "Customer Service API",
+		"_postman_id": "7a16512e-04b4-49c9-93a3-bdcc4e9a100d",
 		"description": "Listing and documentation of the Customer Service API endpoints.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Clients",
-			"description": "Documentation and tests for the Customer Service API.",
+			"description": "",
 			"item": [
 				{
 					"name": "/clients",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "191fae13-8c7f-403d-a8d8-167945a80603",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "f86bb6f5-7895-46f8-949c-31b58a634f77",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/clients",
 						"method": "POST",
 						"header": [
 							{
@@ -48,24 +28,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe2@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe2@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n    \"Line1\": \"123 Sunshine St\",\n    \"Line2\": null,\n    \"City\": \"Happyville\",\n    \"State\": \"Bliss\",\n    \"Zipcode\": \"12345\",\n    \"Country\": \"Happysburg\"\n  }\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/clients",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"clients"
-							]
-						},
-						"description": "[Post Client Schema](https://drive.google.com/open?id=1O3ynQbHdWkIH7_ozWY0hIiIemv6-vLbN)\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
+						"description": "Creates a client - an account for a KennUWear customer to use on the CS Silo.\n\nFor internal silo use only.\n\n[Post Client Schema](https://drive.google.com/open?id=1O3ynQbHdWkIH7_ozWY0hIiIemv6-vLbN)\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
 					},
 					"response": [
 						{
-							"id": "747e3aa9-218e-444b-a1a8-bfe86810dea8",
+							"id": "1feba3bc-c3dd-4408-a246-71a43497a78a",
 							"name": "201 Created",
 							"originalRequest": {
+								"url": "{{domain}}/clients",
 								"method": "POST",
 								"header": [
 									{
@@ -77,15 +49,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"johndoe@gmail.com\",\n\t\"password\": \"secure-password\"\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/clients",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"clients"
-									]
 								}
 							},
 							"status": "Created",
@@ -93,66 +56,40 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\"\n}"
 						}
 					]
 				},
 				{
 					"name": "/clients",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "15d8c39e-92a8-44f8-8930-31b1e0097b3b",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "b4eca9f7-a6cd-462d-b40d-c38d89e16c36",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/clients",
 						"method": "GET",
 						"header": [
 							{
 								"key": "X-Auth-Token",
-								"value": "token"
+								"value": "token",
+								"description": ""
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/clients",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"clients"
-							]
-						},
-						"description": "[Returned Client List Schema](https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V)"
+						"description": "Returns a list of all clients in the CS Client database.\n\nFor internal silo use only.\n\n[Returned Client List Schema](https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V)"
 					},
 					"response": [
 						{
-							"id": "17797a13-263b-40be-a3c1-ac03519571c3",
+							"id": "113e73a2-7fca-4174-9d37-3c8e6056c060",
 							"name": "200 OK",
 							"originalRequest": {
+								"url": "{{domain}}/clients",
 								"method": "GET",
 								"header": [
 									{
@@ -163,15 +100,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/clients",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"clients"
-									]
 								}
 							},
 							"status": "OK",
@@ -179,35 +107,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "[\n  {\n    \"id\": 1,\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"email\": \"johndoe@gmail.com\"\n  },\n  {\n    \"id\": 2,\n      \"firstName\": \"Camilo\",\n      \"lastName\": \"G\",\n      \"email\": \"camilog@gmail.com\"\n  }\n]"
 						}
 					]
 				},
 				{
-					"name": "/clients/:ticketId",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "32730a8f-edbb-4f27-8fa1-389725bc9c61",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "4724502a-31e4-460c-815a-ceb325f968a3",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
+					"name": "/clients/:clientId",
 					"request": {
+						"url": "{{domain}}/clients/1",
 						"method": "GET",
 						"header": [
 							{
@@ -223,23 +131,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/clients/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"clients",
-								"1"
-							]
-						},
-						"description": "[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
+						"description": "Returns the client which has the provided ID.\n\nFor internal silo use only.\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
 					},
 					"response": [
 						{
-							"id": "5434f3fd-00c9-4fce-9fa2-b5efd8a79c34",
+							"id": "b86759bc-bd6f-4516-8c8e-148e446f6ca8",
 							"name": "200 OK",
 							"originalRequest": {
+								"url": "{{domain}}/clients/1",
 								"method": "GET",
 								"header": [
 									{
@@ -250,16 +149,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/clients/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"clients",
-										"1"
-									]
 								}
 							},
 							"status": "OK",
@@ -267,35 +156,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n  \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\"\n}"
 						}
 					]
 				},
 				{
-					"name": "/clients/:ticketId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "28fdf17d-727c-4a8c-86c6-220233cef16e",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "401bd734-95f7-4726-945c-75a45a28d71f",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
+					"name": "/clients/:clientId",
 					"request": {
+						"url": "{{domain}}/clients/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -311,23 +180,14 @@
 							"mode": "raw",
 							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe@gmail.com\",\n  \"password\": \"secure-password\"\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/clients/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"clients",
-								"1"
-							]
-						},
-						"description": "[Put Client Schema](https://drive.google.com/open?id=10WSl9gJV0FyajxTLMcRHFjmk86G-xxRy)"
+						"description": "Updates the client which has the provided ID.\n\nFor internal silo use only.\n\n[Put Client Schema](https://drive.google.com/open?id=10WSl9gJV0FyajxTLMcRHFjmk86G-xxRy)"
 					},
 					"response": [
 						{
-							"id": "c063b657-8cb7-4e54-a0b4-b6e8dac54d31",
+							"id": "99fac1c6-f708-4ca1-a111-546128135f18",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/clients/1",
 								"method": "PUT",
 								"header": [
 									{
@@ -342,16 +202,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"newapssword\"\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/clients/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"clients",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -359,25 +209,15 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
 				},
 				{
-					"name": "/clients/:ticketId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a4bc8c47-ed16-4b4a-b712-d20d2ed934ad",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
+					"name": "/clients/:clientId",
 					"request": {
+						"url": "{{domain}}/clients/1",
 						"method": "DELETE",
 						"header": [
 							{
@@ -393,22 +233,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/clients/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"clients",
-								"1"
-							]
-						}
+						"description": "Deletes the client which has the provided ID.\n\nFor internal silo use only."
 					},
 					"response": [
 						{
-							"id": "8394aa4d-6aa3-40f8-b595-ae5c32da198f",
+							"id": "50c739c9-b35f-4206-88e8-2631ee5e3c27",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/clients/1",
 								"method": "DELETE",
 								"header": [
 									{
@@ -419,16 +251,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/clients/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"clients",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -436,6 +258,7 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
@@ -450,19 +273,8 @@
 					"name": "/tickets",
 					"event": [
 						{
-							"listen": "prerequest",
-							"script": {
-								"id": "f5d9ec1d-1474-463d-8e6e-2b1c759082df",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
 							"listen": "test",
 							"script": {
-								"id": "37a976a8-05a9-474f-b156-115fc688fd0e",
 								"type": "text/javascript",
 								"exec": [
 									"",
@@ -472,6 +284,24 @@
 						}
 					],
 					"request": {
+						"url": {
+							"raw": "{{domain}}/tickets?clientId=1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "1",
+									"equals": true,
+									"description": "(Required)  Client this ticket is made by"
+								}
+							],
+							"variable": []
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -487,29 +317,29 @@
 							"mode": "raw",
 							"raw": "{\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"productSerialNumber\": \"S000001\"\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/tickets?clientId=1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"tickets"
-							],
-							"query": [
-								{
-									"key": "clientId",
-									"value": "1",
-									"description": "(Required)  Client this ticket is made by"
-								}
-							]
-						},
-						"description": "[Post Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
+						"description": "Creates a ticket.\n\nFor internal silo use only.\n\n[Post Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
 					},
 					"response": [
 						{
-							"id": "bef88b13-f857-4f3b-82ef-b961a28e84a7",
+							"id": "26b2b0a8-5fea-436c-92b2-9af70f58f08d",
 							"name": "201 Created",
 							"originalRequest": {
+								"url": {
+									"raw": "{{domain}}/tickets?clientId=1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "1"
+										}
+									],
+									"variable": []
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -524,21 +354,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n\t\"title\": \"my product doesn't work\",\n\t\"description\": \"Help\",\n\t\"productId\": 2\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/tickets?clientId=1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"tickets"
-									],
-									"query": [
-										{
-											"key": "clientId",
-											"value": "1"
-										}
-									]
 								}
 							},
 							"status": "Created",
@@ -546,35 +361,38 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n  \"id\": 1,\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"status\": \"new\",\n  \"opened\": \"2018-04-11T21:18:18.433Z\",\n  \"closed\": null,\n  \"client\": {\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"address\": {\n      \"line1\": \"101 ritchy st\",\n      \"line2\": \"apt 1\",\n      \"city\": \"rochester\",\n      \"state\": \"ny\",\n      \"zipcode\": \"12345\"\n    }\n  },\n  \"agent\": {\n    \"id\": 1,\n    \"firstName\": \"johnny\",\n    \"lastName\": \"Five\"\n  },\n  \"product\": {\n    \"serialNumber\": 2,\n    \"name\": \"Phablet\",\n    \"description\": \"very nice\"\n  },\n  \"comments\": []\n}"
 						}
 					]
 				},
 				{
 					"name": "/tickets",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "04871cb2-aba3-41ef-ab0f-2b125e712e58",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "b8ced8be-f409-4294-beb0-b26cb87bdb1b",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": {
+							"raw": "{{domain}}/tickets?agentId=2&clientId=1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "2",
+									"equals": true,
+									"description": "(Optional) Filter by agentId"
+								},
+								{
+									"key": "clientId",
+									"value": "1",
+									"equals": true,
+									"description": "(Optional) Filter by clientId"
+								}
+							],
+							"variable": []
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -590,45 +408,13 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/tickets?agentId=2&clientId=1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"tickets"
-							],
-							"query": [
-								{
-									"key": "agentId",
-									"value": "2",
-									"description": "(Optional) Filter by agentId"
-								},
-								{
-									"key": "clientId",
-									"value": "1",
-									"description": "(Optional) Filter by clientId"
-								}
-							]
-						},
-						"description": "[Returned Ticket List Schema](https://drive.google.com/open?id=1MaMXQAg8raU50XSXN4VMXENUwXTwko8d)"
+						"description": "Returns the list of all tickets in the CS Ticket table. \nOptionally allows tickets to be filtered by the Serial Number of the product they were created for and/or by the id of the Client who created them.\n\nUsed internally by CS silo to get the tickets associated with a client.\n\nUsed externally by Manufacturing silo to get the ticket associated with a returned device.\n\n[Returned Ticket List Schema](https://drive.google.com/open?id=1MaMXQAg8raU50XSXN4VMXENUwXTwko8d)"
 					},
 					"response": [
 						{
-							"id": "65818c51-8d07-4a43-b6d4-cdbd81ceb1b7",
+							"id": "38be75f5-54ce-42f5-9d17-ee992f44bcb4",
 							"name": "200 OK",
 							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"value": "token"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{domain}}/tickets?agentId=2&clientId=1",
 									"host": [
@@ -646,7 +432,19 @@
 											"key": "clientId",
 											"value": "1"
 										}
-									]
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								}
 							},
 							"status": "OK",
@@ -654,35 +452,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "[\n  {\n      \"id\": 1,\n      \"title\": \"my product doesn't work\",\n      \"description\": \"Help\",\n      \"status\": \"new\",\n      \"opened\": \"2018-04-11T21:18:18.433Z\",\n      \"closed\": null,\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"product\": {\n          \"serialNumber\": 2,\n          \"name\": \"Phablet\",\n          \"description\": \"very nice\"\n      },\n      \"comments\": []\n  },\n  {\n      \"id\": 2,\n      \"title\": \"Screen broken\",\n      \"description\": \"What do i do\",\n      \"status\": \"new\",\n      \"opened\": \"2018-04-11T21:18:18.433Z\",\n      \"closed\": null,\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"product\": {\n          \"serialNumber\": 2,\n          \"name\": \"Phablet\",\n          \"description\": \"very nice\"\n      },\n      \"comments\": []\n  }\n]"
 						}
 					]
 				},
 				{
 					"name": "/tickets/:ticketId",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "5645e9ee-92c6-4940-8a4f-60741ae74f5d",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "22d42574-29c9-4613-bba6-89026f640b78",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/tickets/1",
 						"method": "GET",
 						"header": [
 							{
@@ -698,23 +476,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/tickets/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"tickets",
-								"1"
-							]
-						},
-						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
+						"description": "Returns the ticket which has the provided ID.\n\nFor internal silo use only.\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
 					},
 					"response": [
 						{
-							"id": "a87839ab-3477-4b52-a6eb-1cacbdc1bb8b",
+							"id": "5c2973dd-54b2-4e0d-be93-7bfb7cbbebb7",
 							"name": "200 OK",
 							"originalRequest": {
+								"url": "{{domain}}/tickets/1",
 								"method": "GET",
 								"header": [
 									{
@@ -725,16 +494,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/tickets/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"tickets",
-										"1"
-									]
 								}
 							},
 							"status": "OK",
@@ -742,25 +501,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n    \"id\": 1,\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"new\",\n    \"opened\": \"2018-04-11T21:18:18.433Z\",\n    \"closed\": null,\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"product\": {\n        \"serialNumber\": 2,\n        \"name\": \"Phablet\",\n        \"description\": \"very nice\"\n    },\n    \"comments\": []\n}"
 						}
 					]
 				},
 				{
 					"name": "/tickets/:ticketId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "fa2ad530-5e26-450e-90f6-9be667d18bcd",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/tickets/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -776,23 +525,14 @@
 							"mode": "raw",
 							"raw": "{\n  \"title\": \"my product still doesn't work\",\n  \"description\": \"Help!\",\n  \"productSerialNumber\": \"S00001\"\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/tickets/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"tickets",
-								"1"
-							]
-						},
-						"description": "[Put Ticket Schema](https://drive.google.com/open?id=169rbp3UdibhNivV1SIdebnomRCqIAKk9)"
+						"description": "Updates the ticket which has the provided id. \n\nFor internal silo use only.\n\n[Put Ticket Schema](https://drive.google.com/open?id=169rbp3UdibhNivV1SIdebnomRCqIAKk9)"
 					},
 					"response": [
 						{
-							"id": "94d41938-72aa-4b51-aab7-46813f327d33",
+							"id": "bcc61dc7-4446-409e-b1d1-1fad946518e8",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/tickets/1",
 								"method": "PUT",
 								"header": [
 									{
@@ -804,16 +544,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"title\": \"my product doesn't work\",\n    \"description\": \"Help\",\n    \"status\": \"inProgress\",\n    \"productId\": 2\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/tickets/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"tickets",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -821,25 +551,38 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
 				},
 				{
 					"name": "/tickets/:ticketId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d8b02020-53db-4e22-95ec-669e80781d97",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": {
+							"raw": "{{domain}}/tickets?agentId=2&clientId=1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "2",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "clientId",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -855,31 +598,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/tickets?agentId=2&clientId=1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"tickets"
-							],
-							"query": [
-								{
-									"key": "agentId",
-									"value": "2"
-								},
-								{
-									"key": "clientId",
-									"value": "1"
-								}
-							]
-						}
+						"description": "Deletes the ticket which has the provided id.\n\nFor internal silo use only."
 					},
 					"response": [
 						{
-							"id": "ae7d9225-10c3-4e06-949c-a8f6dcaad15c",
+							"id": "6c1445a3-be9d-4d6f-84fa-a73f2232192f",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/tickets/1",
 								"method": "DELETE",
 								"header": [
 									{
@@ -890,16 +616,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/tickets/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"tickets",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -907,59 +623,10 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "Root API",
-			"description": null,
-			"item": [
-				{
-					"name": "Root API Request",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f7fabcee-61d8-411c-97de-f377809fa8c5",
-								"type": "text/javascript",
-								"exec": [
-									"const jsonData = JSON.parse(responseBody);",
-									"",
-									"const ticketsURL = {domain} + \"/tickets\";",
-									"const reviewsURL = {domain} + \"/reviews\";",
-									"const commentsURL = {domain} + \"/comments\";",
-									"const agentsURL = {domain} + \"/agents\";",
-									"",
-									"let {tickets_URL, clients_URL, reviews_URL, comments_URL, agents_URL} = jsonData;",
-									"",
-									"// Tests go here",
-									"tests[\"Gets the correct tickets url\"] = tickets_URL === ticketsURL;",
-									"tests[\"Gets the correct clients url\"] = clients_URL === clientsURL;",
-									"tests[\"Gets the correct reviews url\"] = reviews_URL === reviewsURL;",
-									"tests[\"Gets the correct comments url\"] = comments_URL === commentsURL;",
-									"tests[\"Gets the correct agents url\"] = agents_URL === agentsURL;"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{domain}}",
-							"host": [
-								"{{domain}}"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -969,29 +636,8 @@
 			"item": [
 				{
 					"name": "/reviews",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "b2b2dcd2-7a8c-4db5-ab14-3bef1f1fe1ab",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "47dbda3c-64ec-4fcc-8eef-a9965955e7ba",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/reviews",
 						"method": "POST",
 						"header": [
 							{
@@ -1007,22 +653,14 @@
 							"mode": "raw",
 							"raw": "{\n  \"agentId\": 1,\n  \"content\": \"This agent sucks!\"\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/reviews",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"reviews"
-							]
-						},
-						"description": "[Post Review Schema](https://drive.google.com/open?id=1EZaSrEZCOfwJpcwrG9G_DT_cIGSDmjdr)\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
+						"description": "Creates an agent review.\n\nFor internal silo use only.\n\n[Post Review Schema](https://drive.google.com/open?id=1EZaSrEZCOfwJpcwrG9G_DT_cIGSDmjdr)\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
 					},
 					"response": [
 						{
-							"id": "e7485fbd-a87a-4749-a198-b8f8b35b703f",
+							"id": "cec484b7-4858-425c-b1d3-caf122fb83cc",
 							"name": "201 Created",
 							"originalRequest": {
+								"url": "{{domain}}/reviews",
 								"method": "POST",
 								"header": [
 									{
@@ -1037,15 +675,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n\t\"content\": \"This agent sucks\",\n\t\"agentId\": 1,\n\t\"clientId\": 2\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/reviews",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"reviews"
-									]
 								}
 							},
 							"status": "Created",
@@ -1053,35 +682,39 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n    \"id\": 1,\n    \"content\": \"This agent sucks\",\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
 						}
 					]
 				},
 				{
 					"name": "/reviews",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "3516355b-77d6-47c7-9e25-7f17ec5fe9d0",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "a0a75bd8-83a6-4ee0-a13b-01a9724f8b18",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": {
+							"raw": "{{domain}}/reviews/?clientId=1&agentId=2",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								""
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "1",
+									"equals": true,
+									"description": "(Optional) Filter reviews by client"
+								},
+								{
+									"key": "agentId",
+									"value": "2",
+									"equals": true,
+									"description": "(Optional) Filter reviews by agent"
+								}
+							],
+							"variable": []
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1097,46 +730,13 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/reviews/?clientId=1&agentId=2",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"reviews",
-								""
-							],
-							"query": [
-								{
-									"key": "clientId",
-									"value": "1",
-									"description": "(Optional) Filter reviews by client"
-								},
-								{
-									"key": "agentId",
-									"value": "2",
-									"description": "(Optional) Filter reviews by agent"
-								}
-							]
-						},
-						"description": "[Returned Review List Schema](https://drive.google.com/open?id=1r-NYUoPDhyr7TmSkKIoOxnyXVAJ8HnFs)"
+						"description": "Returns the list of all reviews in the CS Reviews table. Optionally allows reviews to be filtered by the id of the agent they have been created for and/or the id of the client who created them.\n\nUsed externally by HR silo to retrieve all reviews for an agent.\n\n[Returned Review List Schema](https://drive.google.com/open?id=1r-NYUoPDhyr7TmSkKIoOxnyXVAJ8HnFs)"
 					},
 					"response": [
 						{
-							"id": "e1276848-6dff-4532-98d7-bfabcba6320d",
+							"id": "e18b87ef-6338-45a1-8990-10dc2f8a88ef",
 							"name": "200 OK",
 							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Auth-Token",
-										"value": "token"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{domain}}/reviews/?clientId=1&agentId=2",
 									"host": [
@@ -1157,7 +757,19 @@
 											"value": "2",
 											"description": "Optional filter by agentId"
 										}
-									]
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								}
 							},
 							"status": "OK",
@@ -1165,35 +777,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "[\n    {\n      \"id\": 1,\n      \"content\": \"This agent sucks\",\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 1,\n          \"firstName\": \"johnny\",\n          \"lastName\": \"Five\"\n      },\n      \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n  },\n  {\n      \"id\": 2,\n      \"content\": \"This agent is gucci\",\n      \"client\": {\n          \"id\": 1,\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"email\": \"johndoe@gmail.com\",\n          \"address\": {\n              \"line1\": \"101 ritchy st\",\n              \"line2\": \"apt 1\",\n              \"city\": \"rochester\",\n              \"state\": \"ny\",\n              \"zipcode\": \"12345\"\n          }\n      },\n      \"agent\": {\n          \"id\": 68,\n          \"firstName\": \"MyMan\",\n          \"lastName\": \"Tom\"\n      },\n      \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n  }\n]"
 						}
 					]
 				},
 				{
 					"name": "/reviews/:reviewId",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "124887b2-dd8e-4e3d-9d71-703821b66a0b",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "dfb8d768-4811-4419-bb18-33bad0d63a43",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/reviews/1",
 						"method": "GET",
 						"header": [
 							{
@@ -1209,23 +801,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/reviews/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"reviews",
-								"1"
-							]
-						},
-						"description": "[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
+						"description": "Returns the review with the provided id.\n\nFor internal silo use only.\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
 					},
 					"response": [
 						{
-							"id": "68d72bed-8f8d-4872-a570-8a25bf2ceb28",
+							"id": "cef4afc0-b819-4d63-b653-97c5cf73a9c9",
 							"name": "200 OK",
 							"originalRequest": {
+								"url": "{{domain}}/reviews/1",
 								"method": "GET",
 								"header": [
 									{
@@ -1236,16 +819,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/reviews/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"reviews",
-										"1"
-									]
 								}
 							},
 							"status": "OK",
@@ -1253,25 +826,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n    \"id\": 1,\n    \"content\": \"This agent sucks\",\n    \"client\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"address\": {\n            \"line1\": \"101 ritchy st\",\n            \"line2\": \"apt 1\",\n            \"city\": \"rochester\",\n            \"state\": \"ny\",\n            \"zipcode\": \"12345\"\n        }\n    },\n    \"agent\": {\n        \"id\": 1,\n        \"firstName\": \"johnny\",\n        \"lastName\": \"Five\"\n    },\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
 						}
 					]
 				},
 				{
 					"name": "/reviews/:reviewId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b9cafba7-1770-4a90-b80c-af5c31c46af9",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/reviews/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -1287,23 +850,14 @@
 							"mode": "raw",
 							"raw": "{\n  \"agentId\": 1,\n  \"content\": \"This agent is ok\"\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/reviews/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"reviews",
-								"1"
-							]
-						},
-						"description": "[Put Client Schema](https://drive.google.com/open?id=1Qlb3iY83B-4Bd69WEsM4iaMgjukh42DP)"
+						"description": "Updates the review with the provided id.\n\nFor internal silo use only.\n\n[Put Review Schema](https://drive.google.com/open?id=1Qlb3iY83B-4Bd69WEsM4iaMgjukh42DP)"
 					},
 					"response": [
 						{
-							"id": "62de618f-ff46-4934-ab3a-45bc6837ba5e",
+							"id": "6009ae14-8c6a-434e-a03a-3e82078d45ec",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/reviews/1",
 								"method": "PUT",
 								"header": [
 									{
@@ -1318,16 +872,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"content\": \"This agent sucks\",\n    \"agentId\": 1,\n    \"clientId\": 4\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/reviews/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"reviews",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -1335,25 +879,15 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
 				},
 				{
 					"name": "/reviews/:reviewId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "93062121-d43c-45be-ac45-876bbd9fa610",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/reviews/1",
 						"method": "DELETE",
 						"header": [
 							{
@@ -1369,22 +903,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/reviews/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"reviews",
-								"1"
-							]
-						}
+						"description": "Deletes the review with the provided id.\n\nFor internal silo use only."
 					},
 					"response": [
 						{
-							"id": "5df83fe7-fb73-4e7a-851d-fb5b9ab2347d",
+							"id": "cb4aa931-2fb2-4a49-ae10-51c530189242",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/reviews/1",
 								"method": "DELETE",
 								"header": [
 									{
@@ -1395,16 +921,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/reviews/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"reviews",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -1412,6 +928,7 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
@@ -1420,33 +937,12 @@
 		},
 		{
 			"name": "Comments",
-			"description": null,
+			"description": "Listing and documentation for Customer Service API endpoints",
 			"item": [
 				{
 					"name": "/comments",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "ad51e794-5b39-4aaf-9dfa-b1af552f9ecc",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "a91d14fb-641c-4ae1-9f11-49478fb7e24d",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/comments",
 						"method": "POST",
 						"header": [
 							{
@@ -1462,22 +958,14 @@
 							"mode": "raw",
 							"raw": "{\n  \"ticketId\": 1,\n  \"content\": \"Who do I contact?\"\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/comments",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"comments"
-							]
-						},
-						"description": "[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+						"description": "Creates a comment on a ticket.\n\nFor internal silo use only.\n\n[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
 					},
 					"response": [
 						{
-							"id": "18985bc5-8721-4a19-b3ad-ceeccd7deb4a",
+							"id": "9d62a7b3-bb21-4afa-b012-82a104c9a1fa",
 							"name": "201 Created",
 							"originalRequest": {
+								"url": "{{domain}}/comments",
 								"method": "POST",
 								"header": [
 									{
@@ -1493,15 +981,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n\t\"ticketId\": 1,\n\t\"content\": \"Who do I contant?\"\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/comments",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"comments"
-									]
 								}
 							},
 							"status": "Created",
@@ -1509,35 +988,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n    \"id\": 1,\n    \"ticketId\": 1,\n    \"content\": \"Who do I contant?\",\n    \"author\": 12,\n    \"commentedBy\": \"agent\",\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
 						}
 					]
 				},
 				{
 					"name": "/comments",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "b764e0df-0c98-4526-bb68-61792581a8da",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "204e9502-4d10-4866-bc42-45cff46dc7d1",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/comments",
 						"method": "GET",
 						"header": [
 							{
@@ -1553,22 +1012,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/comments",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"comments"
-							]
-						},
-						"description": "[Returned Comment List Schema]()"
+						"description": "Returns the list of all comments.\n\nFor internal silo use only.\n\n[Returned Comment List Schema]()"
 					},
 					"response": [
 						{
-							"id": "2a8525f0-fee2-4dab-8a24-a52cbbb0ad1a",
+							"id": "f7f5a3b1-c261-461b-b742-d0347ff304a3",
 							"name": "200 OK",
 							"originalRequest": {
+								"url": "{{domain}}/comments",
 								"method": "POST",
 								"header": [
 									{
@@ -1579,15 +1030,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/comments",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"comments"
-									]
 								}
 							},
 							"status": "OK",
@@ -1595,35 +1037,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "[\n    {\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },\n    {\n        \"id\": 2,\n        \"ticketId\": 1,\n        \"content\": \"Me\",\n        \"author\": 21,\n        \"commentedBy\": \"client\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    }\n]"
 						}
 					]
 				},
 				{
 					"name": "/comments/:commentId",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "3453567c-a3f9-4e70-805d-17b7fc38c184",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "1ac9fe1a-2f21-4381-a877-869c42cd0dba",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/comments/1",
 						"method": "GET",
 						"header": [
 							{
@@ -1639,23 +1061,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/comments/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"comments",
-								"1"
-							]
-						},
-						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+						"description": "Returns the comment with the provided id.\n\nFor internal silo use only.\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
 					},
 					"response": [
 						{
-							"id": "af614f0a-4ffb-41a3-9ede-9f050cbaa8f2",
+							"id": "4a05359c-edf9-456f-bb11-b21947f7366e",
 							"name": "200 OK",
 							"originalRequest": {
+								"url": "{{domain}}/comments/1",
 								"method": "GET",
 								"header": [
 									{
@@ -1666,16 +1079,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/comments/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"comments",
-										"1"
-									]
 								}
 							},
 							"status": "OK",
@@ -1683,27 +1086,17 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },"
 						}
 					]
 				},
 				{
-					"name": "/comments?ticketId",
+					"name": "/comments/?ticketId",
 					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "12c4235a-fde5-48b1-81a5-cc6a32ad8a94",
-								"type": "text/javascript",
-								"exec": [
-									"schema=globals.commentSchema;"
-								]
-							}
-						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "5996abe4-db40-42e4-bfb6-e0d13f66c09f",
 								"type": "text/javascript",
 								"exec": [
 									"try {    ",
@@ -1713,24 +1106,18 @@
 									"}"
 								]
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.commentSchema;"
+								]
+							}
 						}
 					],
 					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Auth-Token",
-								"value": "token"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain}}/comments?{{ticket_id}}",
 							"host": [
@@ -1742,17 +1129,36 @@
 							"query": [
 								{
 									"key": "{{ticket_id}}",
-									"value": null
+									"value": "",
+									"equals": false,
+									"description": ""
 								}
-							]
+							],
+							"variable": []
 						},
-						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Returns the list of all comments made on the ticket with the provided id.\n\nFor internal silo use only.\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
 					},
 					"response": [
 						{
-							"id": "a39beaba-c09a-464c-a45f-0b585c1e7ae5",
+							"id": "424582b5-c575-40cd-927a-f93190743fe7",
 							"name": "200 OK",
 							"originalRequest": {
+								"url": "{{domain}}/comments/1",
 								"method": "GET",
 								"header": [
 									{
@@ -1763,16 +1169,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/comments/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"comments",
-										"1"
-									]
 								}
 							},
 							"status": "OK",
@@ -1780,25 +1176,15 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": "{\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },"
 						}
 					]
 				},
 				{
 					"name": "/comments/:commentId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a1ff6837-9f68-414e-9b9e-0b33356aab46",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/comments/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -1814,23 +1200,14 @@
 							"mode": "raw",
 							"raw": "{\n  \"content\": \"Why should I contact them?\"\n}"
 						},
-						"url": {
-							"raw": "{{domain}}/comments/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"comments",
-								"1"
-							]
-						},
-						"description": "[Put Comment Schema](https://drive.google.com/open?id=1m9w1kj9J0BymzHxqfmNebN193E5b-ybk)"
+						"description": "Updates the comment with the provided id.\n\nFor internal silo use only.\n\n[Put Comment Schema](https://drive.google.com/open?id=1m9w1kj9J0BymzHxqfmNebN193E5b-ybk)"
 					},
 					"response": [
 						{
-							"id": "29bce8a7-6bcb-4003-a47a-ab1e60dc9263",
+							"id": "aad03e86-df05-4bc6-a138-88344aad8a2a",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/comments/1",
 								"method": "PUT",
 								"header": [
 									{
@@ -1846,16 +1223,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n\t\"content\": \"Who do I contant?\"\n}"
-								},
-								"url": {
-									"raw": "{{domain}}/comments/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"comments",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -1863,25 +1230,15 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
 				},
 				{
 					"name": "/comments/:commentId",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f453d8c7-2eb7-42aa-8f3d-99a1d0ad2b89",
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
 					"request": {
+						"url": "{{domain}}/comments/1",
 						"method": "DELETE",
 						"header": [
 							{
@@ -1897,22 +1254,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{domain}}/comments/1",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"comments",
-								"1"
-							]
-						}
+						"description": "Deletes the comment with the provided id.\n\nFor internal silo use only."
 					},
 					"response": [
 						{
-							"id": "87b4312d-dfac-4539-9702-3a9500bf7eb6",
+							"id": "9a6ebd46-7549-470e-ab89-a8439d215c2b",
 							"name": "204 No Content",
 							"originalRequest": {
+								"url": "{{domain}}/comments/1",
 								"method": "DELETE",
 								"header": [
 									{
@@ -1923,16 +1272,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								},
-								"url": {
-									"raw": "{{domain}}/comments/1",
-									"host": [
-										"{{domain}}"
-									],
-									"path": [
-										"comments",
-										"1"
-									]
 								}
 							},
 							"status": "No Content",
@@ -1940,6 +1279,7 @@
 							"_postman_previewlanguage": "Text",
 							"header": [],
 							"cookie": [],
+							"responseTime": null,
 							"body": ""
 						}
 					]
