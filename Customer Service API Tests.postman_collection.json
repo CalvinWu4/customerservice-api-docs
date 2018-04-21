@@ -64,7 +64,7 @@
 					},
 					"response": [
 						{
-							"id": "6c19e103-0715-4008-a12a-6326245d3aa4",
+							"id": "62ffd3bb-0ca9-493d-8834-6862fc9cb944",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -152,7 +152,7 @@
 					},
 					"response": [
 						{
-							"id": "590da93e-9784-45a0-95e8-4b9510b6842a",
+							"id": "b470d2b7-524f-4ca1-a9a2-05022bf699eb",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -245,7 +245,7 @@
 					},
 					"response": [
 						{
-							"id": "17d28c7e-05bf-4572-b6ea-2ff81cc25bdf",
+							"id": "d8172573-4444-4d06-a433-3dd09f8e9239",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -320,7 +320,7 @@
 					},
 					"response": [
 						{
-							"id": "eb3d6ec1-ac36-467b-a765-b6fead004b12",
+							"id": "b21df425-8a7d-44e0-b647-af941add2534",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -409,7 +409,7 @@
 					},
 					"response": [
 						{
-							"id": "9b09073d-4c16-48b1-ac75-a064784df3b6",
+							"id": "4a3ec917-5624-41d1-aaea-29771f251ef6",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -496,7 +496,7 @@
 					},
 					"response": [
 						{
-							"id": "4bf36b20-0faf-4c6a-93b0-12d3ce5eaf4a",
+							"id": "ad0db19c-3e4b-41fe-82e8-fb53d6344ab0",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -643,7 +643,7 @@
 					},
 					"response": [
 						{
-							"id": "4dad47b8-c003-45ba-a62f-323bd2bf6dd3",
+							"id": "848ac577-93b2-407e-a987-f45627d52396",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -729,7 +729,7 @@
 					},
 					"response": [
 						{
-							"id": "95112b33-861c-4c1e-bf7d-90a29e40a44e",
+							"id": "e8194907-3a2d-4336-a0b3-13bee5e94642",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -819,7 +819,7 @@
 					},
 					"response": [
 						{
-							"id": "2de0704e-bea6-4384-b86c-c97086bce6e1",
+							"id": "0eb28f0f-df1a-4054-811d-103793ed9915",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -926,7 +926,7 @@
 					},
 					"response": [
 						{
-							"id": "3887cbdb-05ee-4ca4-a96e-e4bd40f4f42c",
+							"id": "41d570d7-8976-46f4-9152-d302950c175c",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1003,7 +1003,7 @@
 					},
 					"response": [
 						{
-							"id": "7c088226-c734-4797-a913-3219550c4d52",
+							"id": "2dfbace1-8615-4393-a818-65808f2bdb61",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1091,7 +1091,7 @@
 					},
 					"response": [
 						{
-							"id": "5566a7d5-d54d-4904-bd0d-c16e4cf80d00",
+							"id": "4333f9ed-123a-43c1-9f8e-6c66f68f143a",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1201,7 +1201,7 @@
 					},
 					"response": [
 						{
-							"id": "39790dee-471a-4bc2-bd62-2e5404c79240",
+							"id": "302664d7-842a-46bb-8874-f7c164d5d19c",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1251,7 +1251,7 @@
 			"description": null,
 			"item": [
 				{
-					"name": "Create Comment",
+					"name": "Create Comment By Client",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1293,22 +1293,33 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n  \"authorId\": \"{{client_id}}\"\n}"
+							"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n}"
 						},
 						"url": {
-							"raw": "{{domain}}/comments",
+							"raw": "{{domain}}/comments/?ticketId={{ticket_id}}&agentId={{agent_id}}",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"comments"
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "ticketId",
+									"value": "{{ticket_id}}"
+								},
+								{
+									"key": "agentId",
+									"value": "{{agent_id}}"
+								}
 							]
 						},
 						"description": "[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
 					},
 					"response": [
 						{
-							"id": "de8d7cd7-334c-46ed-a5b9-9cf6fe0a7688",
+							"id": "19bb57e3-1d91-48a6-9057-9c30cf3ffd56",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1390,7 +1401,7 @@
 					},
 					"response": [
 						{
-							"id": "dd1cd38c-9ecd-4c05-836b-db579cbe6413",
+							"id": "f00c375e-795a-4160-b617-a86381499656",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -1487,7 +1498,7 @@
 					},
 					"response": [
 						{
-							"id": "b76f529d-a0ce-4941-921e-3fa4dd90a081",
+							"id": "d46c2f6c-9792-4ebb-9150-b1be89c0f322",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1583,7 +1594,7 @@
 					},
 					"response": [
 						{
-							"id": "3c095862-6c77-4be6-8e0c-f5d69383494e",
+							"id": "fba0dfb1-0171-41db-82cd-a3c370191104",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1659,7 +1670,7 @@
 					},
 					"response": [
 						{
-							"id": "8d80a8af-b1a0-41ad-9f3b-5cff76b89da0",
+							"id": "29bef2ac-e6d9-430e-8ed7-f023e6810462",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1747,7 +1758,7 @@
 					},
 					"response": [
 						{
-							"id": "c7eaad34-80bc-428b-b359-8ff587a7d7fa",
+							"id": "93db2f49-2ad2-4f11-aa51-87b426a5fe42",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1850,7 +1861,7 @@
 					},
 					"response": [
 						{
-							"id": "39504154-29af-4231-89a8-84bb85ec15a9",
+							"id": "0aa2f58b-1d6d-4859-9382-2ab19228d5ea",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1930,7 +1941,7 @@
 					},
 					"response": [
 						{
-							"id": "5ae79abb-ca19-4f8b-80a3-754657bba218",
+							"id": "b26f2e15-bb14-453e-843b-eedf672e06f5",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -2028,7 +2039,7 @@
 					},
 					"response": [
 						{
-							"id": "2200b8b6-e072-4ca2-abd3-ae81fb2fd3cb",
+							"id": "8d708a96-1384-40f8-8cb6-63a0b3297a32",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2132,7 +2143,7 @@
 					},
 					"response": [
 						{
-							"id": "7b0488ae-f758-46f3-aee9-788731675f79",
+							"id": "28f82a8e-fe2b-4bb1-a557-1d83b6310433",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2208,7 +2219,7 @@
 					},
 					"response": [
 						{
-							"id": "b77fe4e5-d5ec-4a26-990d-89f641641a20",
+							"id": "3abd7b14-363e-4c55-a5e2-49cae8838d9a",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -2296,7 +2307,7 @@
 					},
 					"response": [
 						{
-							"id": "0d7c3ed4-7133-45eb-863b-bf6281aebf32",
+							"id": "bb54feca-9bea-4602-8013-f5ae9754b7a7",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
