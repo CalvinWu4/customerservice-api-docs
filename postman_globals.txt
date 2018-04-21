@@ -1,16 +1,111 @@
-﻿GetTests:// Test whether the response is valid↵tests["Status code is 200"] = responseCode.code === 200;↵↵// Test whether the response matches the schema↵var result = JSON.parse(responseBody);↵tests["Schema is valid"] = tv4.validate(result, schema);
-PostTests:// Test whether the response is valid↵tests["Status code is 200"] = responseCode.code === 200;↵↵// Test whether the response matches the schema↵var result = JSON.parse(responseBody);↵tests["Schema is valid"] = tv4.validate(result, schema);
-PutTests:// Test whether the response is valid↵tests["Status code is 204"] = responseCode.code === 204;
-DeleteTests:// Test whether the response is valid ↵tests["Status code is 204"] = responseCode.code === 204;
-ticketSchema:{↵  "type": "object", ↵  "properties": {↵    "title": {↵      "type": "string"↵    }, ↵    "description": {↵      "type": "string"↵    }, ↵    "productId": {↵      "type": "integer"↵    }↵  }, ↵  "required": [↵    "title", ↵    "description", ↵    "productId"↵  ]↵}
-ticketListSchema:{↵  "type": "object", ↵  "properties": {↵    "title": {↵      "type": "string"↵    }, ↵    "description": {↵      "type": "string"↵    }, ↵    "productId": {↵      "type": "integer"↵    }↵  }, ↵  "required": [↵    "title", ↵    "description", ↵    "productId"↵  ]↵}
-clientSchema:{↵  "type": "array", ↵  "items": {↵    "type": "object", ↵    "properties": {↵      "id": {↵        "type": "integer"↵      }, ↵      "firstName": {↵        "type": "string"↵      }, ↵      "lastName": {↵        "type": "string"↵      }, ↵      "email": {↵        "type": "string"↵      }↵    }, ↵    "required": [↵      "id", ↵      "firstName", ↵      "lastName", ↵      "email"↵    ]↵  }↵}
-clientListSchema:{↵  "type": "array", ↵  "items": {↵    "type": "object", ↵    "properties": {↵      "id": {↵        "type": "integer"↵      }, ↵      "firstName": {↵        "type": "string"↵      }, ↵      "lastName": {↵        "type": "string"↵      }, ↵      "email": {↵        "type": "string"↵      }↵    }, ↵    "required": [↵      "id", ↵      "firstName", ↵      "lastName", ↵      "email"↵    ]↵  }↵}
-reviewSchema:{↵  "type": "object", ↵  "properties": {↵    "id": {↵      "type": "integer"↵    }, ↵    "content": {↵      "type": "string"↵    }, ↵    "client": {↵      "type": "object", ↵      "properties": {↵        "id": {↵          "type": "integer"↵        }, ↵        "firstName": {↵          "type": "string"↵        }, ↵        "lastName": {↵          "type": "string"↵        }, ↵        "email": {↵          "type": "string"↵        }, ↵        "address": {↵          "type": "object", ↵          "properties": {↵            "line1": {↵              "type": "string"↵            }, ↵            "line2": {↵              "type": "string"↵            }, ↵            "city": {↵              "type": "string"↵            }, ↵            "state": {↵              "type": "string"↵            }, ↵            "zipcode": {↵              "type": "string"↵            }↵          }, ↵          "required": [↵            "line1", ↵            "line2", ↵            "city", ↵            "state", ↵            "zipcode"↵          ]↵        }↵      }, ↵      "required": [↵        "id", ↵        "firstName", ↵        "lastName", ↵        "email", ↵        "address"↵      ]↵    }, ↵    "agent": {↵      "type": "object", ↵      "properties": {↵        "id": {↵          "type": "integer"↵        }, ↵        "firstName": {↵          "type": "string"↵        }, ↵        "lastName": {↵          "type": "string"↵        }↵      }, ↵      "required": [↵        "id", ↵        "firstName", ↵        "lastName"↵      ]↵    }, ↵    "dateCreated": {↵      "type": "string"↵    }↵  }, ↵  "required": [↵    "id", ↵    "content", ↵    "client", ↵    "agent", ↵    "dateCreated"↵  ]↵}
-reviewListSchema:{↵  "type": "array", ↵  "items": {↵    "type": "object", ↵    "properties": {↵      "id": {↵        "type": "integer"↵      }, ↵      "content": {↵        "type": "string"↵      }, ↵      "client": {↵        "type": "object", ↵        "properties": {↵          "id": {↵            "type": "integer"↵          }, ↵          "firstName": {↵            "type": "string"↵          }, ↵          "lastName": {↵            "type": "string"↵          }, ↵          "email": {↵            "type": "string"↵          }, ↵          "address": {↵            "type": "object", ↵            "properties": {↵              "line1": {↵                "type": "string"↵              }, ↵              "line2": {↵                "type": "string"↵              }, ↵              "city": {↵                "type": "string"↵              }, ↵              "state": {↵                "type": "string"↵              }, ↵              "zipcode": {↵                "type": "string"↵              }↵            }, ↵            "required": [↵              "line1", ↵              "line2", ↵              "city", ↵              "state", ↵              "zipcode"↵            ]↵          }↵        }, ↵        "required": [↵          "id", ↵          "firstName", ↵          "lastName", ↵          "email", ↵          "address"↵        ]↵      }, ↵      "agent": {↵        "type": "object", ↵        "properties": {↵          "id": {↵            "type": "integer"↵          }, ↵          "firstName": {↵            "type": "string"↵          }, ↵          "lastName": {↵            "type": "string"↵          }↵        }, ↵        "required": [↵          "id", ↵          "firstName", ↵          "lastName"↵        ]↵      }, ↵      "dateCreated": {↵        "type": "string"↵      }↵    }, ↵    "required": [↵      "id", ↵      "content", ↵      "client", ↵      "agent", ↵      "dateCreated"↵    ]↵  }↵}
-commentSchema:{↵  "type": "object", ↵  "definitions": {}, ↵  "properties": {↵    "id": {↵      "type": "integer"↵    }, ↵    "ticketId": {↵      "type": "integer"↵    }, ↵    "content": {↵      "type": "string"↵    }, ↵    "author": {↵      "type": "integer"↵    }, ↵    "commentedBy": {↵      "type": "string"↵    }, ↵    "dateCreated": {↵      "type": "string"↵    }↵  }, ↵  "required": [↵    "id", ↵    "ticketId", ↵    "content", ↵    "author", ↵    "commentedBy", ↵    "dateCreated"↵  ]↵}
-commentListSchema:{↵  "type": "array", ↵  "items": {↵    "type": "object", ↵    "properties": {↵      "id": {↵        "type": "integer"↵      }, ↵      "ticketId": {↵        "type": "integer"↵      }, ↵      "content": {↵        "type": "string"↵      }, ↵      "author": {↵        "type": "integer"↵      }, ↵      "commentedBy": {↵        "type": "string"↵      }, ↵      "dateCreated": {↵        "type": "string"↵      }↵    }, ↵    "required": [↵      "id", ↵      "ticketId", ↵      "content", ↵      "author", ↵      "commentedBy", ↵      "dateCreated"↵    ]↵  }↵}
-client_id:20
-product_id:S00001
-ticket_id:14
-GetNotFound:// Test whether the response is valid↵tests["Status code is 404"] = responseCode.code === 404;
+{
+  "id": "50bc3033-74f5-4f0d-8ca6-01ac65438771",
+  "values": [
+    {
+      "key": "GetTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody);\ntests[\"Schema is valid\"] = tv4.validate(result, schema);",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "PostTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 201\"] = responseCode.code === 201;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody);\ntests[\"Schema is valid\"] = tv4.validate(result, schema);",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "PutTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 204\"] = responseCode.code === 204;",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "DeleteTests",
+      "value": "// Test whether the response is valid \ntests[\"Status code is 204\"] = responseCode.code === 204;",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "ticketSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"productId\": {\n      \"type\": \"integer\"\n    }\n  }, \n  \"required\": [\n    \"title\", \n    \"description\", \n    \"productId\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "ticketListSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"productId\": {\n      \"type\": \"integer\"\n    }\n  }, \n  \"required\": [\n    \"title\", \n    \"description\", \n    \"productId\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "clientSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": {\n    \"type\": \"object\", \n    \"properties\": {\n      \"id\": {\n        \"type\": \"integer\"\n      }, \n      \"firstName\": {\n        \"type\": \"string\"\n      }, \n      \"lastName\": {\n        \"type\": \"string\"\n      }, \n      \"email\": {\n        \"type\": \"string\"\n      }\n    }, \n    \"required\": [\n      \"id\", \n      \"firstName\", \n      \"lastName\", \n      \"email\"\n    ]\n  }\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "clientListSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": {\n    \"type\": \"object\", \n    \"properties\": {\n      \"id\": {\n        \"type\": \"integer\"\n      }, \n      \"firstName\": {\n        \"type\": \"string\"\n      }, \n      \"lastName\": {\n        \"type\": \"string\"\n      }, \n      \"email\": {\n        \"type\": \"string\"\n      }\n    }, \n    \"required\": [\n      \"id\", \n      \"firstName\", \n      \"lastName\", \n      \"email\"\n    ]\n  }\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "reviewSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"client\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        }, \n        \"firstName\": {\n          \"type\": \"string\"\n        }, \n        \"lastName\": {\n          \"type\": \"string\"\n        }, \n        \"email\": {\n          \"type\": \"string\"\n        }, \n        \"address\": {\n          \"type\": \"object\", \n          \"properties\": {\n            \"line1\": {\n              \"type\": \"string\"\n            }, \n            \"line2\": {\n              \"type\": \"string\"\n            }, \n            \"city\": {\n              \"type\": \"string\"\n            }, \n            \"state\": {\n              \"type\": \"string\"\n            }, \n            \"zipcode\": {\n              \"type\": \"string\"\n            }\n          }, \n          \"required\": [\n            \"line1\", \n            \"line2\", \n            \"city\", \n            \"state\", \n            \"zipcode\"\n          ]\n        }\n      }, \n      \"required\": [\n        \"id\", \n        \"firstName\", \n        \"lastName\", \n        \"email\", \n        \"address\"\n      ]\n    }, \n    \"agent\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        }, \n        \"firstName\": {\n          \"type\": \"string\"\n        }, \n        \"lastName\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"id\", \n        \"firstName\", \n        \"lastName\"\n      ]\n    }, \n    \"dateCreated\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"content\", \n    \"client\", \n    \"agent\", \n    \"dateCreated\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "reviewListSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": {\n    \"type\": \"object\", \n    \"properties\": {\n      \"id\": {\n        \"type\": \"integer\"\n      }, \n      \"content\": {\n        \"type\": \"string\"\n      }, \n      \"client\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"firstName\": {\n            \"type\": \"string\"\n          }, \n          \"lastName\": {\n            \"type\": \"string\"\n          }, \n          \"email\": {\n            \"type\": \"string\"\n          }, \n          \"address\": {\n            \"type\": \"object\", \n            \"properties\": {\n              \"line1\": {\n                \"type\": \"string\"\n              }, \n              \"line2\": {\n                \"type\": \"string\"\n              }, \n              \"city\": {\n                \"type\": \"string\"\n              }, \n              \"state\": {\n                \"type\": \"string\"\n              }, \n              \"zipcode\": {\n                \"type\": \"string\"\n              }\n            }, \n            \"required\": [\n              \"line1\", \n              \"line2\", \n              \"city\", \n              \"state\", \n              \"zipcode\"\n            ]\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"firstName\", \n          \"lastName\", \n          \"email\", \n          \"address\"\n        ]\n      }, \n      \"agent\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"firstName\": {\n            \"type\": \"string\"\n          }, \n          \"lastName\": {\n            \"type\": \"string\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"firstName\", \n          \"lastName\"\n        ]\n      }, \n      \"dateCreated\": {\n        \"type\": \"string\"\n      }\n    }, \n    \"required\": [\n      \"id\", \n      \"content\", \n      \"client\", \n      \"agent\", \n      \"dateCreated\"\n    ]\n  }\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "commentSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"definitions\": {}, \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"ticketId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"author\": {\n      \"type\": \"integer\"\n    }, \n    \"commentedBy\": {\n      \"type\": \"string\"\n    }, \n    \"dateCreated\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"ticketId\", \n    \"content\", \n    \"author\", \n    \"commentedBy\", \n    \"dateCreated\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "commentListSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": {\n    \"type\": \"object\", \n    \"properties\": {\n      \"id\": {\n        \"type\": \"integer\"\n      }, \n      \"ticketId\": {\n        \"type\": \"integer\"\n      }, \n      \"content\": {\n        \"type\": \"string\"\n      }, \n      \"author\": {\n        \"type\": \"integer\"\n      }, \n      \"commentedBy\": {\n        \"type\": \"string\"\n      }, \n      \"dateCreated\": {\n        \"type\": \"string\"\n      }\n    }, \n    \"required\": [\n      \"id\", \n      \"ticketId\", \n      \"content\", \n      \"author\", \n      \"commentedBy\", \n      \"dateCreated\"\n    ]\n  }\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "client_id",
+      "value": 7,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "product_id",
+      "value": "S00001",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "ticket_id",
+      "value": 7,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "GetNotFound",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 404\"] = responseCode.code === 404;",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "agent_id",
+      "value": 4,
+      "enabled": true,
+      "type": "text"
+    }
+  ],
+  "name": "My Workspace Globals",
+  "_postman_variable_scope": "globals",
+  "_postman_exported_at": "2018-04-21T15:15:39.556Z",
+  "_postman_exported_using": "Postman/6.0.10"
+}
