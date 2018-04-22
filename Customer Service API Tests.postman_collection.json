@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f3bc7458-94f5-4071-9c2e-5e5a753eab7f",
+		"_postman_id": "152fb866-5b23-4b65-a50c-886bee903927",
 		"name": "Customer Service API Tests",
 		"description": "Test suite for all Customer Service API endpoints.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -16,10 +16,11 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7b4834bb-b729-4bf8-a4df-8ea288067e08",
+								"id": "415ad074-b236-4336-a8f6-2cde1d608fbd",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.clientListSchema;"
+									"schema=globals.clientListSchema;",
+									"pm.globals.set(\"client_email\", new Date().getTime() + \"@test-account.com\");"
 								]
 							}
 						},
@@ -49,7 +50,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe2@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"{{client_email}}\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/clients",
@@ -64,7 +65,7 @@
 					},
 					"response": [
 						{
-							"id": "62ffd3bb-0ca9-493d-8834-6862fc9cb944",
+							"id": "23a25f79-f543-424b-9376-6f685eb94a15",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -152,7 +153,7 @@
 					},
 					"response": [
 						{
-							"id": "b470d2b7-524f-4ca1-a9a2-05022bf699eb",
+							"id": "6f44ca83-9ff0-4933-bdc1-f20361aba718",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -245,7 +246,7 @@
 					},
 					"response": [
 						{
-							"id": "d8172573-4444-4d06-a433-3dd09f8e9239",
+							"id": "5195dc90-6c7e-4d79-937a-5d927ce58851",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -320,7 +321,7 @@
 					},
 					"response": [
 						{
-							"id": "b21df425-8a7d-44e0-b647-af941add2534",
+							"id": "e52195df-bc43-417e-b740-7687bd837035",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -409,7 +410,7 @@
 					},
 					"response": [
 						{
-							"id": "4a3ec917-5624-41d1-aaea-29771f251ef6",
+							"id": "0ff720e4-f457-4586-851f-4e26be37b015",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -448,10 +449,11 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7b4834bb-b729-4bf8-a4df-8ea288067e08",
+								"id": "da06b02d-0da2-4864-9c90-bf9a284425e8",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.clientListSchema;"
+									"schema=globals.clientListSchema;",
+									"pm.globals.set(\"client_email\", new Date().getTime() + \"@test-account.com\");"
 								]
 							}
 						},
@@ -481,7 +483,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe2@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"{{client_email}}\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/clients",
@@ -496,7 +498,7 @@
 					},
 					"response": [
 						{
-							"id": "ad0db19c-3e4b-41fe-82e8-fb53d6344ab0",
+							"id": "e77d72b6-6fff-4f77-8317-d9f811afe818",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -558,7 +560,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://inventory343.azurewebsites.net/api/Products",
 							"protocol": "https",
@@ -643,7 +648,7 @@
 					},
 					"response": [
 						{
-							"id": "848ac577-93b2-407e-a987-f45627d52396",
+							"id": "c7dd5d59-87d0-4fc5-9f6f-780108123690",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -729,7 +734,7 @@
 					},
 					"response": [
 						{
-							"id": "e8194907-3a2d-4336-a0b3-13bee5e94642",
+							"id": "f250ab67-7992-4253-862b-bc02881ee526",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -819,7 +824,7 @@
 					},
 					"response": [
 						{
-							"id": "0eb28f0f-df1a-4054-811d-103793ed9915",
+							"id": "cd2befcc-70b8-4bbe-b4c3-86b042777474",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -926,7 +931,7 @@
 					},
 					"response": [
 						{
-							"id": "41d570d7-8976-46f4-9152-d302950c175c",
+							"id": "13d8d620-8a54-4ff3-8310-bb4352259b0b",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1003,7 +1008,7 @@
 					},
 					"response": [
 						{
-							"id": "2dfbace1-8615-4393-a818-65808f2bdb61",
+							"id": "5e4a5077-86b4-421a-a989-d63ffd42a5f2",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1091,7 +1096,7 @@
 					},
 					"response": [
 						{
-							"id": "4333f9ed-123a-43c1-9f8e-6c66f68f143a",
+							"id": "ac76e593-9a65-4ab8-a992-68d8dbb9c070",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1201,7 +1206,7 @@
 					},
 					"response": [
 						{
-							"id": "302664d7-842a-46bb-8874-f7c164d5d19c",
+							"id": "9d17df0a-adeb-4a44-886f-c5f0e2b771e3",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1319,7 +1324,7 @@
 					},
 					"response": [
 						{
-							"id": "19bb57e3-1d91-48a6-9057-9c30cf3ffd56",
+							"id": "0d1e5eb5-4bbb-4389-8b41-8049921512e1",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1388,20 +1393,20 @@
 							"raw": "{\n  \"content\": \"I still don't know who to contact\"\n}"
 						},
 						"url": {
-							"raw": "{{domain}}/comments/1",
+							"raw": "{{domain}}/comments/{{comment_id}}",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
 								"comments",
-								"1"
+								"{{comment_id}}"
 							]
 						},
 						"description": "[Put Comment Schema](https://drive.google.com/open?id=1m9w1kj9J0BymzHxqfmNebN193E5b-ybk)"
 					},
 					"response": [
 						{
-							"id": "f00c375e-795a-4160-b617-a86381499656",
+							"id": "b61014b0-9d99-4bff-9d17-d651edeb15af",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -1498,7 +1503,7 @@
 					},
 					"response": [
 						{
-							"id": "d46c2f6c-9792-4ebb-9150-b1be89c0f322",
+							"id": "fab7e15d-9f62-4e74-a80e-496af81cbd8b",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1547,11 +1552,12 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5996abe4-db40-42e4-bfb6-e0d13f66c09f",
+								"id": "a122a9c5-a1c6-41ec-875d-49d14c30bba2",
 								"type": "text/javascript",
 								"exec": [
 									"try {    ",
 									"    eval(globals.GetTests);",
+									"    tests[\"Ticket has comment\"] = JSON.parse(responseBody).comments.length == 1;",
 									"} catch (err) {",
 									"    tests[\"Endpoint exists\"] = false;",
 									"}"
@@ -1576,25 +1582,20 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{domain}}/comments?{{ticket_id}}",
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
-								"comments"
-							],
-							"query": [
-								{
-									"key": "{{ticket_id}}",
-									"value": null
-								}
+								"tickets",
+								"{{ticket_id}}"
 							]
 						},
 						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
 					},
 					"response": [
 						{
-							"id": "fba0dfb1-0171-41db-82cd-a3c370191104",
+							"id": "c13f7ae0-e941-4e5c-8910-1326ca53f4d1",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1670,7 +1671,7 @@
 					},
 					"response": [
 						{
-							"id": "29bef2ac-e6d9-430e-8ed7-f023e6810462",
+							"id": "bb798307-24cb-4f7e-b6b1-8f09007a6762",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1758,7 +1759,7 @@
 					},
 					"response": [
 						{
-							"id": "93db2f49-2ad2-4f11-aa51-87b426a5fe42",
+							"id": "0f26cc42-a05e-4ecc-b9f5-5e5d7e4d795a",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1788,6 +1789,206 @@
 							"header": [],
 							"cookie": [],
 							"body": "[\n    {\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },\n    {\n        \"id\": 2,\n        \"ticketId\": 1,\n        \"content\": \"Me\",\n        \"author\": 21,\n        \"commentedBy\": \"client\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create Comment By Agent",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8e56b292-beba-4c4f-bd2e-2be1baf81536",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.commentSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a29d88c0-933f-44a3-90e3-4d98691e9ff7",
+								"type": "text/javascript",
+								"exec": [
+									"try {    ",
+									"    eval(globals.PostTests);",
+									"    pm.globals.set(\"comment_id\", JSON.parse(responseBody).id);",
+									"} catch (err) {",
+									"    tests[\"Endpoint exists\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/comments/?ticketId={{ticket_id}}&clientId={{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "ticketId",
+									"value": "{{ticket_id}}"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}"
+								}
+							]
+						},
+						"description": "[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+					},
+					"response": [
+						{
+							"id": "3d2c222e-ca7a-4a4b-a20b-a782531faf81",
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ticketId\": 1,\n\t\"content\": \"Who do I contant?\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/comments",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ticketId\": 1,\n    \"content\": \"Who do I contant?\",\n    \"author\": 12,\n    \"commentedBy\": \"agent\",\n    \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Comment By Ticket",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "12c4235a-fde5-48b1-81a5-cc6a32ad8a94",
+								"type": "text/javascript",
+								"exec": [
+									"schema=globals.commentSchema;"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9153b8ef-55c6-4be8-8073-a298696adad7",
+								"type": "text/javascript",
+								"exec": [
+									"try {    ",
+									"    eval(globals.GetTests);",
+									"    tests[\"Ticket has comment\"] = JSON.parse(responseBody).comments.length == 1;",
+									"} catch (err) {",
+									"    tests[\"Endpoint exists\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+					},
+					"response": [
+						{
+							"id": "98887c23-d98d-4c6f-b861-f7bc594969c0",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments/1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n        \"id\": 1,\n        \"ticketId\": 1,\n        \"content\": \"Who do I contant?\",\n        \"author\": 12,\n        \"commentedBy\": \"agent\",\n        \"dateCreated\": \"2018-04-11T21:18:18.433Z\"\n    },"
 						}
 					]
 				}
@@ -1861,7 +2062,7 @@
 					},
 					"response": [
 						{
-							"id": "0aa2f58b-1d6d-4859-9382-2ab19228d5ea",
+							"id": "5a135099-ebb9-461f-962c-70d5be8ffa98",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1941,7 +2142,7 @@
 					},
 					"response": [
 						{
-							"id": "b26f2e15-bb14-453e-843b-eedf672e06f5",
+							"id": "67cc24a0-b72f-4d78-a8ab-3177add02e69",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -2039,7 +2240,7 @@
 					},
 					"response": [
 						{
-							"id": "8d708a96-1384-40f8-8cb6-63a0b3297a32",
+							"id": "af6afdc8-c359-4190-8b98-cb8453051259",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2143,7 +2344,7 @@
 					},
 					"response": [
 						{
-							"id": "28f82a8e-fe2b-4bb1-a557-1d83b6310433",
+							"id": "e03a1e2c-a103-48f7-a9b1-930e5558f362",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2219,7 +2420,7 @@
 					},
 					"response": [
 						{
-							"id": "3abd7b14-363e-4c55-a5e2-49cae8838d9a",
+							"id": "bbe2945d-9433-4274-8d95-a14c996a431b",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -2307,7 +2508,7 @@
 					},
 					"response": [
 						{
-							"id": "bb54feca-9bea-4602-8013-f5ae9754b7a7",
+							"id": "303cfa39-1d9b-4f74-b30e-402f8c329d23",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",

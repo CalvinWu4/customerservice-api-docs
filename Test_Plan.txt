@@ -23,6 +23,8 @@ Get comment (using saved ticket ID) - check 200 & that something is there
 Put comment (using saved comment ID) - check 200
 Delete comment (using saved comment ID) - check 204
 Get comment (using comment ID) - check 404 & that nothing is there
+Create comment (using saved ticket ID and saved agent ID) - check 200 & save comment ID
+Get comment (using saved ticket ID) - check 200 & that something is there
 
 REVIEWS
 Create review (using saved agent ID and client ID) - check 200, save review ID
