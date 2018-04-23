@@ -1,0 +1,2384 @@
+{
+	"info": {
+		"_postman_id": "1e29033a-7c1f-4c54-b402-b693c3ebfcbd",
+		"name": "Customer Service API Documentation",
+		"description": "Listing and documentation of the Customer Service API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clients",
+			"description": null,
+			"item": [
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/clients",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "Creates a client - an account for a KennUWare customer to use on the CS Silo.\n\nFor internal silo use only.\n\n[Post Client Schema](https://drive.google.com/open?id=1O3ynQbHdWkIH7_ozWY0hIiIemv6-vLbN)\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
+					},
+					"response": [
+						{
+							"id": "8f161b1d-75fd-4634-b160-ebc8b74acd1e",
+							"name": "Create Client - 201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johndoe@gmail.com\",\n  \"password\": \"secure-password\",\n  \"address\": {\n  \t\"Line1\": \"123 Sunshine St\",\n  \t\"Line2\": null,\n  \t\"City\": \"Happyville\",\n  \t\"State\": \"Bliss\",\n  \t\"Zipcode\": \"12345\",\n  \t\"Country\": \"Happysburg\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/clients",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:11:07 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Location",
+									"value": "https://api-customerservice.azurewebsites.net/api/Clients/76",
+									"name": "Location",
+									"description": "Used in redirection, or when a new resource has been created."
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":76,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[],\"reviews\":[]}"
+						}
+					]
+				},
+				{
+					"name": "Get All Clients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/clients",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "Returns a list of all clients in the CS Client database.\n\nFor internal silo use only.\n\n[Returned Client List Schema](https://drive.google.com/open?id=1zn66MRnC836c463jhi3mEVEg7xKzT50V)"
+					},
+					"response": [
+						{
+							"id": "287dea4a-5081-45d1-9509-87ba4a8c2368",
+							"name": "Get All Clients - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/clients",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:15:03 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"id\":2,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe2@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[{\"id\":1,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"inProgress\",\"productSerialNumber\":\"S00001\",\"agentId\":1},{\"id\":15,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":1}],\"reviews\":[{\"id\":5,\"agentId\":7,\"content\":\"Nevermind, this agent is awesome!\",\"dateCreated\":\"2018-04-22T23:59:59.362Z\"},{\"id\":6,\"agentId\":7,\"content\":\"This agent sucks!\",\"dateCreated\":\"2018-04-23T00:09:25.867Z\"}]},{\"id\":4,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"1524435139849@test-account.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[{\"id\":3,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":2}],\"reviews\":[]},{\"id\":6,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"1524435182773@test-account.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[{\"id\":5,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":3}],\"reviews\":[]},{\"id\":7,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"1524435272732@test-account.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[],\"reviews\":[]},{\"id\":9,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"1524435423090@test-account.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[{\"id\":7,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":4}],\"reviews\":[]},{\"id\":12,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"1524435573396@test-account.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[{\"id\":9,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":6}],\"reviews\":[]},{\"id\":61,\"firstName\":\"Camilo\",\"lastName\":\"Gonzalez\",\"email\":\"cgs.camilogonzalez@gmail.com\",\"address\":{\"line1\":\"609 parkpoint drive\",\"line2\":\"apt 2\",\"city\":\"rochester\",\"state\":\"NY\",\"zipcode\":\"02151\",\"country\":\"US\"},\"tickets\":[],\"reviews\":[]},{\"id\":75,\"firstName\":\"Calvin\",\"lastName\":\"Wu\",\"email\":\"calvinwu@gmail.com\",\"address\":{\"line1\":\"160 suffolk ave\",\"line2\":\"\",\"city\":\"revere\",\"state\":\"MA\",\"zipcode\":\"02151\",\"country\":\"USA\"},\"tickets\":[{\"id\":10,\"title\":\"watch wont turn on\",\"description\":\"what to do\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":7},{\"id\":11,\"title\":\"Hello World React\",\"description\":\"sadfasdfadfssdf\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":8},{\"id\":12,\"title\":\"Hello World React\",\"description\":\"sadfasdfadfssdf\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":9},{\"id\":13,\"title\":\"What is up my dude\",\"description\":\"hello world\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":10},{\"id\":14,\"title\":\"Wahahasdfhsdfhasdfh\",\"description\":\"hello world\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":11},{\"id\":16,\"title\":\"Mustafa\",\"description\":\"hello world\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":2}],\"reviews\":[]}]"
+						}
+					]
+				},
+				{
+					"name": "Get Client by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/clients/{{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						},
+						"description": "Returns the client which has the provided ID.\n\nFor internal silo use only.\n\n[Returned Client Schema](https://drive.google.com/open?id=1Ej-NvwS1_Q8zSKOita51xZGNd5BDDv-3)"
+					},
+					"response": [
+						{
+							"id": "7c7b344a-9b85-4295-a97d-3caa76ede8f8",
+							"name": "Get Client by ID - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/clients/{{client_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients",
+										"{{client_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:14:14 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":2,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe2@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"},\"tickets\":[{\"id\":1,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"inProgress\",\"productSerialNumber\":\"S00001\",\"agentId\":1},{\"id\":15,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"agentId\":1}],\"reviews\":[{\"id\":5,\"agentId\":7,\"content\":\"Nevermind, this agent is awesome!\",\"dateCreated\":\"2018-04-22T23:59:59.362Z\"},{\"id\":6,\"agentId\":7,\"content\":\"This agent sucks!\",\"dateCreated\":\"2018-04-23T00:09:25.867Z\"}]}"
+						}
+					]
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"new-password\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/clients/{{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						},
+						"description": "Updates the client which has the provided ID.\n\nFor internal silo use only.\n\n[Put Client Schema](https://drive.google.com/open?id=10WSl9gJV0FyajxTLMcRHFjmk86G-xxRy)"
+					},
+					"response": [
+						{
+							"id": "8b147471-ab13-414f-9734-59b7bb4700ae",
+							"name": "Update Client - 204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"new-password\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/clients/{{client_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients",
+										"{{client_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:13:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/clients/{{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"clients",
+								"{{client_id}}"
+							]
+						},
+						"description": "Deletes the client which has the provided ID.\n\nFor internal silo use only."
+					},
+					"response": [
+						{
+							"id": "d59a07a0-6fdb-4f69-9894-75f3eb9e9a0a",
+							"name": "Delete Client - 204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/clients/{{client_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"clients",
+										"{{client_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:18:04 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"description": null,
+			"item": [
+				{
+					"name": "Get Product (From Inventory)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e16a462-81e6-495f-8079-ae90d9287099",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"try {",
+									"    pm.globals.set(\"product_id\", JSON.parse(responseBody)[0].serialNumber);",
+									"} catch (err) {",
+									"    tests[\"Product found\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://inventory343.azurewebsites.net/api/Products",
+							"protocol": "https",
+							"host": [
+								"inventory343",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Products"
+							]
+						},
+						"description": "Gets all products in the Inventory database and saves the first one's serial number to use for testing our API."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ticket",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"productSerialNumber\": \"{{product_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/tickets?clientId={{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "{{client_id}}"
+								}
+							]
+						},
+						"description": "Creates a ticket.\n\nFor internal silo use only.\n\n[Post Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
+					},
+					"response": [
+						{
+							"id": "d7b5ea7d-686b-4262-968d-489b4f507ff1",
+							"name": "Create Client - 201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"my product doesn't work\",\n  \"description\": \"Help\",\n  \"productSerialNumber\": \"{{product_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/tickets?clientId={{client_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "{{client_id}}"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:37:50 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Location",
+									"value": "https://api-customerservice.azurewebsites.net/api/Tickets/15",
+									"name": "Location",
+									"description": "Used in redirection, or when a new resource has been created."
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":15,\"title\":\"my product doesn't work\",\"description\":\"Help\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"client\":{\"id\":2,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe2@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"}},\"agentId\":1,\"comments\":[]}"
+						}
+					]
+				},
+				{
+					"name": "Get Ticket by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "Returns the ticket which has the provided ID.\n\nFor internal silo use only.\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1qqbhMpobK8K5qkAyshEm6YDSMMpO505q)"
+					},
+					"response": [
+						{
+							"id": "13e1b5f8-869f-49be-98df-2c749794496c",
+							"name": "Get Ticket by ID - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/tickets/{{ticket_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets",
+										"{{ticket_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:08:16 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":12,\"title\":\"Hello World React\",\"description\":\"sadfasdfadfssdf\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"client\":{\"id\":75,\"firstName\":\"Calvin\",\"lastName\":\"Wu\",\"email\":\"calvinwu@gmail.com\",\"address\":{\"line1\":\"160 suffolk ave\",\"line2\":\"\",\"city\":\"revere\",\"state\":\"MA\",\"zipcode\":\"02151\",\"country\":\"USA\"}},\"agentId\":9,\"comments\":[{\"id\":11,\"ticketId\":12,\"content\":\"Who do I contact?\",\"clientId\":-1,\"agentId\":7},{\"id\":12,\"ticketId\":12,\"content\":\"Who do I contact?\",\"clientId\":-1,\"agentId\":7},{\"id\":14,\"ticketId\":12,\"content\":\"Who do I contact?\",\"clientId\":2,\"agentId\":-1}]}"
+						}
+					]
+				},
+				{
+					"name": "Filter by Agent, Client, and Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets?agentId={{agent_id}}&clientId={{client_id}}&productSerialNumber={{product_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets"
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "{{agent_id}}",
+									"description": "(Optional: Integer) Filter by agent ID"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"description": "(Optional: Integer) Filter by client ID"
+								},
+								{
+									"key": "productSerialNumber",
+									"value": "{{product_id}}",
+									"description": "(Optional: String) Filter by product ID"
+								}
+							]
+						},
+						"description": "Returns the list of all tickets in the CS Ticket table. \nOptionally allows tickets to be filtered by the Serial Number of the product they were created for and/or by the id of the Client who created them.\n\nUsed internally by CS silo to get the tickets associated with a client.\n\nUsed externally by Manufacturing silo to get the ticket associated with a returned device.\n\n[Returned Ticket List Schema](https://drive.google.com/open?id=1MaMXQAg8raU50XSXN4VMXENUwXTwko8d)"
+					},
+					"response": [
+						{
+							"id": "7ad38c82-567a-44d2-a8d7-009324919180",
+							"name": "Get All Tickets - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/tickets?agentId={{agent_id}}&clientId={{client_id}}&productSerialNumber={{product_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "agentId",
+											"value": "{{agent_id}}",
+											"description": "(Optional) Filter by agent ID"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id}}",
+											"description": "(Optional) Filter by client ID"
+										},
+										{
+											"key": "productSerialNumber",
+											"value": "{{product_id}}",
+											"description": "(Optional) Filter by product ID"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:50:51 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"id\":10,\"title\":\"watch wont turn on\",\"description\":\"what to do\",\"status\":\"new\",\"productSerialNumber\":\"S00001\",\"client\":{\"id\":75,\"firstName\":\"Calvin\",\"lastName\":\"Wu\",\"email\":\"calvinwu@gmail.com\",\"address\":{\"line1\":\"160 suffolk ave\",\"line2\":\"\",\"city\":\"revere\",\"state\":\"MA\",\"zipcode\":\"02151\",\"country\":\"USA\"}},\"agentId\":7,\"comments\":[]}]"
+						}
+					]
+				},
+				{
+					"name": "Update Ticket",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"inProgress\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "Updates the ticket which has the provided id. \n\nFor internal silo use only.\n\n[Put Ticket Schema](https://drive.google.com/open?id=169rbp3UdibhNivV1SIdebnomRCqIAKk9)"
+					},
+					"response": [
+						{
+							"id": "dac0069c-3a3b-4968-9b1d-f3e6fec195eb",
+							"name": "Update Ticket - 204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"inProgress\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/tickets/{{ticket_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets",
+										"{{ticket_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:18:52 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete Ticket",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "Deletes the ticket which has the provided id.\n\nFor internal silo use only."
+					},
+					"response": [
+						{
+							"id": "8e761c7f-338f-48d7-bff8-98d881dc1192",
+							"name": "Delete Ticket - 204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/tickets/{{ticket_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"tickets",
+										"{{ticket_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"description": null,
+			"item": [
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"agentId\": \"{{agent_id}}\",\n  \"content\": \"This agent sucks!\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/reviews?clientId={{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"description": "(Required: Integer) ID of the client this review is created by"
+								}
+							]
+						},
+						"description": "Creates an agent review.\n\nFor internal silo use only.\n\n[Post Review Schema](https://drive.google.com/open?id=1EZaSrEZCOfwJpcwrG9G_DT_cIGSDmjdr)\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
+					},
+					"response": [
+						{
+							"id": "e7e97e95-58a9-432c-834a-df4ada2cb134",
+							"name": "Create Review - 201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"agentId\": \"{{agent_id}}\",\n  \"content\": \"This agent sucks!\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/reviews?clientId={{client_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "clientId",
+											"value": "{{client_id}}"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:09:25 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Location",
+									"value": "https://api-customerservice.azurewebsites.net/api/Reviews/6",
+									"name": "Location",
+									"description": "Used in redirection, or when a new resource has been created."
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":6,\"agentId\":7,\"content\":\"This agent sucks!\",\"dateCreated\":\"2018-04-23T00:09:25.867Z\",\"client\":{\"id\":2,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe2@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"}}}"
+						}
+					]
+				},
+				{
+					"name": "Filter Reviews by Agent",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/?agentId={{agent_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								""
+							],
+							"query": [
+								{
+									"key": "agentId",
+									"value": "{{agent_id}}",
+									"description": "(Optional: Integer) Filter reviews by agent"
+								}
+							]
+						},
+						"description": "Returns the list of all reviews in the CS Reviews table. Optionally allows reviews to be filtered by the id of the agent they have been created.\n\nUsed externally by HR silo to retrieve all reviews for an agent.\n\n[Returned Review List Schema](https://drive.google.com/open?id=1r-NYUoPDhyr7TmSkKIoOxnyXVAJ8HnFs)"
+					},
+					"response": [
+						{
+							"id": "4d9e7ec7-4648-4755-be00-832c8515bb3b",
+							"name": "Get All Reviews - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/?agentId={{agent_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										""
+									],
+									"query": [
+										{
+											"key": "agentId",
+											"value": "{{agent_id}}",
+											"description": "(Optional) Filter reviews by agent"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:11:52 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"id\":5,\"agentId\":7,\"content\":\"This agent sucks!\",\"dateCreated\":\"2018-04-22T23:59:59.362Z\",\"client\":{\"id\":2,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe2@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"}}},{\"id\":6,\"agentId\":7,\"content\":\"This agent sucks!\",\"dateCreated\":\"2018-04-23T00:09:25.867Z\",\"client\":{\"id\":2,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe2@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"}}}]"
+						}
+					]
+				},
+				{
+					"name": "Get Review by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/{{review_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "Returns the review with the provided id.\n\nFor internal silo use only.\n\n[Returned Review Schema](https://drive.google.com/open?id=18j0_ffO3fEcu4FW6ZOxtjZaeZfxGKcXC)"
+					},
+					"response": [
+						{
+							"id": "304c16b5-de76-4861-8dee-2fd73c571064",
+							"name": "Get Review by ID - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/{{review_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										"{{review_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:12:15 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":5,\"agentId\":7,\"content\":\"This agent sucks!\",\"dateCreated\":\"2018-04-22T23:59:59.362Z\",\"client\":{\"id\":2,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"johndoe2@gmail.com\",\"address\":{\"line1\":\"123 Sunshine St\",\"line2\":null,\"city\":\"Happyville\",\"state\":\"Bliss\",\"zipcode\":\"12345\",\"country\":\"Happysburg\"}}}"
+						}
+					]
+				},
+				{
+					"name": "Update Review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Nevermind, this agent is awesome!\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/{{review_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "Updates the review with the provided id.\n\nFor internal silo use only.\n\n[Put Review Schema](https://drive.google.com/open?id=1Qlb3iY83B-4Bd69WEsM4iaMgjukh42DP)"
+					},
+					"response": [
+						{
+							"id": "f78f58eb-5b99-42e4-82db-a56c8df9d94c",
+							"name": "Update Review - 204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"Nevermind, this agent is awesome!\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/{{review_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										"{{review_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:13:17 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/reviews/{{review_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "Deletes the review with the provided id.\n\nFor internal silo use only."
+					},
+					"response": [
+						{
+							"id": "e6f3ce31-9571-44fc-9f14-b9be74c1a168",
+							"name": "Delete Review - 204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/reviews/{{review_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"reviews",
+										"{{review_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"description": "Listing and documentation for Customer Service API endpoints",
+			"item": [
+				{
+					"name": "Create Comment as Agent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/comments/?ticketId={{ticket_id}}&clientId={{client_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "ticketId",
+									"value": "{{ticket_id}}",
+									"description": "(Required: Integer) ID of the ticket this comment will be on"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"description": "(Required: Integer) ID of the agent this comment will be posted by"
+								}
+							]
+						},
+						"description": "Creates a comment on a ticket as an agent by providing it with the agent ID.\n\nFor internal silo use only.\n\n[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+					},
+					"response": [
+						{
+							"id": "2b890671-8406-4fbc-bdcd-0a6110589304",
+							"name": "Create Comment by Agent - 201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/comments/?ticketId={{ticket_id}}&clientId={{client_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										""
+									],
+									"query": [
+										{
+											"key": "ticketId",
+											"value": "{{ticket_id}}"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id}}"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:53:35 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Location",
+									"value": "https://api-customerservice.azurewebsites.net/api/Comments/14",
+									"name": "Location",
+									"description": "Used in redirection, or when a new resource has been created."
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":14,\"ticketId\":12,\"content\":\"Who do I contact?\",\"clientId\":2,\"agentId\":-1}"
+						}
+					]
+				},
+				{
+					"name": "Create Comment as Customer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "48e0ab9f-e19a-483d-a9fb-df72704a6df3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a29d88c0-933f-44a3-90e3-4d98691e9ff7",
+								"type": "text/javascript",
+								"exec": [
+									"try {    ",
+									"    eval(globals.PostTests);",
+									"    pm.globals.set(\"comment_id\", JSON.parse(responseBody).id);",
+									"} catch (err) {",
+									"    tests[\"Endpoint exists\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/comments/?ticketId={{ticket_id}}&agentId={{agent_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "ticketId",
+									"value": "{{ticket_id}}",
+									"description": "(Required: Integer) ID of the ticket this comment will be on"
+								},
+								{
+									"key": "agentId",
+									"value": "{{agent_id}}",
+									"description": "(Required: Integer) ID of the customer this comment will be posted by"
+								}
+							]
+						},
+						"description": "Creates a comment on a ticket as an agent by providing it with the agent ID.\n\nFor internal silo use only.\n\n[Post Comment Schema](https://drive.google.com/open?id=1oCJ799P1rxJMBWc7v6U8AGUYzudP3yE0)\n\n[Returned Comment Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+					},
+					"response": [
+						{
+							"id": "6ad8ba99-f78b-4cdb-a1a6-e8122d6dfa58",
+							"name": "Create Comment By Customer - 201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ticketId\": \"{{ticket_id}}\",\n  \"content\": \"Who do I contact?\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/comments/?ticketId={{ticket_id}}&agentId={{agent_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										""
+									],
+									"query": [
+										{
+											"key": "ticketId",
+											"value": "{{ticket_id}}"
+										},
+										{
+											"key": "agentId",
+											"value": "{{agent_id}}"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:53:16 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Location",
+									"value": "https://api-customerservice.azurewebsites.net/api/Comments/13",
+									"name": "Location",
+									"description": "Used in redirection, or when a new resource has been created."
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":13,\"ticketId\":12,\"content\":\"Who do I contact?\",\"clientId\":-1,\"agentId\":7}"
+						}
+					]
+				},
+				{
+					"name": "Get Comment By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f7aff086-cdd8-492a-b98a-436c57d51b7c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "90992729-e83b-4189-85ae-3509a7b7177d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/comments/{{comment_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"{{comment_id}}"
+							]
+						},
+						"description": "[Returned Comment List Schema]()"
+					},
+					"response": [
+						{
+							"id": "e88c241a-425f-4856-baad-1a3417367768",
+							"name": "Get Comment By ID - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments/{{comment_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"{{comment_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Apr 2018 00:27:36 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":12,\"ticketId\":12,\"content\":\"Who do I contact?\",\"clientId\":-1,\"agentId\":7}"
+						}
+					]
+				},
+				{
+					"name": "Get Comments by Ticket",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/tickets/{{ticket_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}"
+							]
+						},
+						"description": "Returns the comment with the provided id.\n\nFor internal silo use only.\n\n[Returned Ticket Schema](https://drive.google.com/open?id=1IHUYpKBZcPjB7jeQ4VcBFpyt-zhYEBNj)"
+					},
+					"response": [
+						{
+							"id": "aad65213-95f1-4363-a8ab-ceffa4478f78",
+							"name": "Get Comments by Ticket - 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments/{{comment_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"{{comment_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:54:50 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":13,\"ticketId\":12,\"content\":\"Who do I contact?\",\"clientId\":-1,\"agentId\":7}"
+						}
+					]
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"I still don't know who to contact\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/comments/{{comment_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"{{comment_id}}"
+							]
+						},
+						"description": "Updates the comment with the provided id.\n\nFor internal silo use only.\n\n[Put Comment Schema](https://drive.google.com/open?id=1m9w1kj9J0BymzHxqfmNebN193E5b-ybk)"
+					},
+					"response": [
+						{
+							"id": "6ccb189d-15e4-4925-9ff4-d0a14e1f1b19",
+							"name": "Update Comment - 204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"I still don't know who to contact\"\n}"
+								},
+								"url": {
+									"raw": "{{domain}}/comments/{{comment_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"{{comment_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:55:10 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "token"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/comments/{{comment_id}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"comments",
+								"{{comment_id}}"
+							]
+						},
+						"description": "Deletes the comment with the provided id.\n\nFor internal silo use only."
+					},
+					"response": [
+						{
+							"id": "5015dd89-3714-4c1f-8a25-c105c3ee0a1a",
+							"name": "Delete Comment - 204 No Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "token",
+										"disabled": false
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/comments/{{comment_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"comments",
+										"{{comment_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 23:55:39 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}

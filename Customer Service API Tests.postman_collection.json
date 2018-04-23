@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "152fb866-5b23-4b65-a50c-886bee903927",
+		"_postman_id": "ad33b6bd-edde-4b5b-b185-82b9a88d671d",
 		"name": "Customer Service API Tests",
 		"description": "Test suite for all Customer Service API endpoints.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -16,21 +16,24 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "415ad074-b236-4336-a8f6-2cde1d608fbd",
+								"id": "bfab044c-45c1-4fa3-89b1-084709704177",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.clientListSchema;",
-									"pm.globals.set(\"client_email\", new Date().getTime() + \"@test-account.com\");"
+									"pm.globals.set(\"client_email\", new Date().getTime() + \"@test-account.com\");",
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "f5772bf2-f8a3-435d-aada-6619be33461a",
+								"id": "f0e7c199-4b62-4b85-89f4-239ad81a8f08",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.clientListSchema;",
+									"",
 									"eval(globals.PostTests);",
+									"",
 									"pm.globals.set(\"client_id\", JSON.parse(responseBody).id);"
 								]
 							}
@@ -65,7 +68,7 @@
 					},
 					"response": [
 						{
-							"id": "23a25f79-f543-424b-9376-6f685eb94a15",
+							"id": "f6f5f163-29bb-470c-b914-c80130ce599b",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -105,9 +108,11 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "541f3e7e-0bb1-4bda-936b-d95bee04f89a",
+								"id": "d8dc1546-1f2d-4374-ade4-1981717cebd9",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.clientSchema;",
+									"",
 									"eval(globals.PutTests);"
 								]
 							}
@@ -115,10 +120,10 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "63a6e5e5-0f76-4112-9f48-0d14b97149d6",
+								"id": "a5069476-cf30-42d4-a14c-16e13d1df5c4",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.clientSchema;"
+									""
 								]
 							}
 						}
@@ -153,7 +158,7 @@
 					},
 					"response": [
 						{
-							"id": "6f44ca83-9ff0-4933-bdc1-f20361aba718",
+							"id": "09248056-e619-4aa9-9707-835f1733db67",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -197,7 +202,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c6afde3b-5a0b-4b39-a185-a39165f5c14f",
+								"id": "e3644ebc-9dd8-4b78-a60d-bbbf0551acd3",
 								"type": "text/javascript",
 								"exec": [
 									"schema = globals.clientListSchema;",
@@ -208,9 +213,10 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4602ca52-7002-4159-9154-d415dd016052",
+								"id": "dcdb5b2e-0c7a-49e0-aaff-ea2a153d8dca",
 								"type": "text/javascript",
 								"exec": [
+									"",
 									"eval(globals.GetTests);"
 								]
 							}
@@ -246,7 +252,7 @@
 					},
 					"response": [
 						{
-							"id": "5195dc90-6c7e-4d79-937a-5d927ce58851",
+							"id": "a860e721-2fae-4086-a1a8-8d5ca50c08d0",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -321,7 +327,7 @@
 					},
 					"response": [
 						{
-							"id": "e52195df-bc43-417e-b740-7687bd837035",
+							"id": "b5e704b0-2570-44f5-833e-90fa0b04bd58",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -361,10 +367,9 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c6afde3b-5a0b-4b39-a185-a39165f5c14f",
+								"id": "816578a4-95b4-46cc-a07f-0eaddfbcf933",
 								"type": "text/javascript",
 								"exec": [
-									"schema = globals.clientListSchema;",
 									""
 								]
 							}
@@ -372,9 +377,11 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0d515094-89b6-44e7-9ba8-96e8ec4e7c29",
+								"id": "78efb6d4-16ee-4da8-b6ee-cf104320c439",
 								"type": "text/javascript",
 								"exec": [
+									"schema = globals.clientListSchema;",
+									"",
 									"eval(globals.GetNotFound);"
 								]
 							}
@@ -410,7 +417,7 @@
 					},
 					"response": [
 						{
-							"id": "0ff720e4-f457-4586-851f-4e26be37b015",
+							"id": "7467dd66-0266-4437-9b06-bcef9272bac9",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -449,21 +456,24 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "da06b02d-0da2-4864-9c90-bf9a284425e8",
+								"id": "b4e634f5-99da-4dc4-a0c2-c76b76c1bba0",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.clientListSchema;",
-									"pm.globals.set(\"client_email\", new Date().getTime() + \"@test-account.com\");"
+									"pm.globals.set(\"client_email\", new Date().getTime() + \"@test-account.com\");",
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "fe1eb5ba-5cca-40f2-8473-54ab1e5d2c77",
+								"id": "212470ab-c3c8-4c48-91b3-11bd2229658a",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.clientListSchema;",
+									"",
 									"eval(globals.PostTests);",
+									"",
 									"pm.globals.set(\"client_id\", JSON.parse(responseBody).id);"
 								]
 							}
@@ -498,7 +508,7 @@
 					},
 					"response": [
 						{
-							"id": "e77d72b6-6fff-4f77-8317-d9f811afe818",
+							"id": "1217eae6-312b-4f04-bc60-ae0e286d6317",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -532,6 +542,28 @@
 						}
 					]
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "06f06ac7-b114-4b4e-8ed7-8e98ee0e2b7d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "171a3fea-842f-469e-85c4-fa198717ae39",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -544,7 +576,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7e16a462-81e6-495f-8079-ae90d9287099",
+								"id": "2d8a9175-b734-48df-a634-ad9c5241670c",
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
@@ -577,7 +609,7 @@
 								"Products"
 							]
 						},
-						"description": "Creates a product in the Inventory database to use for testing our API."
+						"description": "Gets all products in the Inventory database and saves the first one's serial number to use for testing our API."
 					},
 					"response": []
 				},
@@ -587,19 +619,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2ff8c595-537a-4f95-b2ad-1210d6522008",
+								"id": "b7654baf-bd19-4e44-9adc-040e6c51c3da",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.ticketSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "74ff58dc-5070-4ca3-8bc4-094363f02024",
+								"id": "70e5fa2b-ff26-4289-8f89-d48af263c013",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.ticketSchema;",
+									"",
 									"eval(globals.PostTests);",
 									"var data =  JSON.parse(responseBody);",
 									"pm.globals.set(\"ticket_id\", data.id);",
@@ -607,7 +641,8 @@
 									"    pm.globals.set(\"agent_id\", data.agentId);",
 									"} catch (err) {",
 									"    tests[\"Agent Id found\"] = false;",
-									"}"
+									"}",
+									""
 								]
 							}
 						}
@@ -648,7 +683,7 @@
 					},
 					"response": [
 						{
-							"id": "c7dd5d59-87d0-4fc5-9f6f-780108123690",
+							"id": "a68a38c7-4432-4b10-be49-f0414cc12b54",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -697,9 +732,11 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "9c680972-6ec6-474a-ae40-eafd45f2deb4",
 								"type": "text/javascript",
 								"exec": [
-									"eval(globals.PutTests);"
+									"eval(globals.PutTests);",
+									""
 								]
 							}
 						}
@@ -734,7 +771,7 @@
 					},
 					"response": [
 						{
-							"id": "f250ab67-7992-4253-862b-bc02881ee526",
+							"id": "49d31e2e-8309-4c83-81ef-e0525dfe4283",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -775,21 +812,24 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "24f77d77-c6c9-4029-81b1-095a29d72298",
+								"id": "e64c78fd-3884-40af-91ef-931b15faadc7",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.ticketListSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "78d85677-63f3-4770-b4a0-4a0c36179792",
+								"id": "093f315f-2fb2-403c-9c0b-d1dc7f9b0348",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.ticketListSchema;",
+									"",
 									"eval(globals.GetTests);",
-									"tests[\"Ticket exists\"] = JSON.parse(responseBody).length != 0;"
+									"tests[\"Ticket exists\"] = JSON.parse(responseBody).length != 0;",
+									""
 								]
 							}
 						}
@@ -824,7 +864,7 @@
 					},
 					"response": [
 						{
-							"id": "cd2befcc-70b8-4bbe-b4c3-86b042777474",
+							"id": "c57d8ad4-c8ff-4af6-a4e9-5d4bb27ff87f",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -868,24 +908,26 @@
 					]
 				},
 				{
-					"name": "Filter Tickets By Agent & Client",
+					"name": "Filter Tickets By Agent, Client, and Product",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "04c91c17-71b4-437b-aed4-4c4f9694b8f2",
+								"id": "1e4b8e74-597d-4f3b-a8fc-8664797143b4",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.ticketSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "0e4f305c-d6bd-4904-9bc0-fbded326361a",
+								"id": "d1815f32-afa1-46e9-aaba-fbc7ffca3aaf",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.ticketSchema;",
+									"",
 									"eval(globals.GetTests);",
 									"tests[\"Ticket exists\"] = JSON.parse(responseBody).length != 0;"
 								]
@@ -931,7 +973,7 @@
 					},
 					"response": [
 						{
-							"id": "13d8d620-8a54-4ff3-8310-bb4352259b0b",
+							"id": "6040f8c3-899e-4b10-89c7-25fdc3bdfd85",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -971,7 +1013,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "56804874-1f11-4983-9029-b93b65266d17",
+								"id": "f8f34daf-c028-418b-aa80-45931662a245",
 								"type": "text/javascript",
 								"exec": [
 									"eval(globals.DeleteTests);"
@@ -1008,7 +1050,7 @@
 					},
 					"response": [
 						{
-							"id": "5e4a5077-86b4-421a-a989-d63ffd42a5f2",
+							"id": "c3a4418e-8aec-4802-80db-781276f0bc93",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1048,20 +1090,23 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "24f77d77-c6c9-4029-81b1-095a29d72298",
+								"id": "28ccc5bd-dff6-400a-9f33-f5cdad2fbf74",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.ticketListSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "8be8eeac-ea1a-4439-8cee-8a8bd4644fa9",
+								"id": "ca33d8df-6537-4303-a570-b072a7285f9c",
 								"type": "text/javascript",
 								"exec": [
-									"eval(globals.GetNotFound);"
+									"schema=globals.ticketListSchema;",
+									"",
+									"eval(globals.GetNotFound);",
+									""
 								]
 							}
 						}
@@ -1096,7 +1141,7 @@
 					},
 					"response": [
 						{
-							"id": "ac76e593-9a65-4ab8-a992-68d8dbb9c070",
+							"id": "4eea7276-4f3e-452d-8b49-10902921e4a5",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1145,19 +1190,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2ff8c595-537a-4f95-b2ad-1210d6522008",
+								"id": "a0d2b5f8-ab42-4ac0-9e32-bfaa2aa458f6",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.ticketSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "4fceec02-30cf-4b88-8c5b-a19070af9ff3",
+								"id": "a3c51130-71ed-47e4-9697-222758fa163e",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.ticketSchema;",
+									"",
 									"eval(globals.PostTests);",
 									"var data =  JSON.parse(responseBody);",
 									"pm.globals.set(\"ticket_id\", data.id);",
@@ -1165,7 +1212,8 @@
 									"    pm.globals.set(\"agent_id\", data.agentId);",
 									"} catch (err) {",
 									"    tests[\"Agent Id found\"] = false;",
-									"}"
+									"}",
+									""
 								]
 							}
 						}
@@ -1206,7 +1254,7 @@
 					},
 					"response": [
 						{
-							"id": "9d17df0a-adeb-4a44-886f-c5f0e2b771e3",
+							"id": "d555915f-e797-4477-acdd-79fc7363bdc7",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1256,24 +1304,26 @@
 			"description": null,
 			"item": [
 				{
-					"name": "Create Comment By Client",
+					"name": "Create Comment By Agent",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8e56b292-beba-4c4f-bd2e-2be1baf81536",
+								"id": "f2b4ef76-6232-4b2d-a1f7-c6cb76b1db11",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.commentSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "a29d88c0-933f-44a3-90e3-4d98691e9ff7",
+								"id": "d599ad66-054a-4567-a68a-ed10ddbc4884",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.commentSchema;",
+									"",
 									"try {    ",
 									"    eval(globals.PostTests);",
 									"    pm.globals.set(\"comment_id\", JSON.parse(responseBody).id);",
@@ -1324,7 +1374,7 @@
 					},
 					"response": [
 						{
-							"id": "0d1e5eb5-4bbb-4389-8b41-8049921512e1",
+							"id": "1b3de704-7722-46b5-8744-8b2d578a0b55",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1406,7 +1456,7 @@
 					},
 					"response": [
 						{
-							"id": "b61014b0-9d99-4bff-9d17-d651edeb15af",
+							"id": "111882bd-6f7a-4646-995b-bf32c097a305",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -1451,19 +1501,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e56e7137-de8d-4629-8ed7-d7477efa9c59",
+								"id": "f7aff086-cdd8-492a-b98a-436c57d51b7c",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.commentListSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "e6211060-7e6e-4186-883a-a7fefab94eea",
+								"id": "0baeaec5-bf2f-4982-8e0e-6d84cc5ca21f",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.commentListSchema;",
+									"",
 									"try {",
 									"    eval(globals.GetTests);",
 									"} catch (err) {",
@@ -1503,7 +1555,7 @@
 					},
 					"response": [
 						{
-							"id": "fab7e15d-9f62-4e74-a80e-496af81cbd8b",
+							"id": "4c36976f-585c-44c7-968a-4809e89d97bf",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1542,19 +1594,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "12c4235a-fde5-48b1-81a5-cc6a32ad8a94",
+								"id": "e1499d26-6b0b-4e1d-9182-cced8a181640",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.commentSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "a122a9c5-a1c6-41ec-875d-49d14c30bba2",
+								"id": "a629045f-8ecb-4bc8-8b6e-4a18d4fffa72",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.commentSchema;",
+									"",
 									"try {    ",
 									"    eval(globals.GetTests);",
 									"    tests[\"Ticket has comment\"] = JSON.parse(responseBody).comments.length == 1;",
@@ -1595,7 +1649,7 @@
 					},
 					"response": [
 						{
-							"id": "c13f7ae0-e941-4e5c-8910-1326ca53f4d1",
+							"id": "5bb3fa6d-52de-4916-95d8-f16204eb778d",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1671,7 +1725,7 @@
 					},
 					"response": [
 						{
-							"id": "bb798307-24cb-4f7e-b6b1-8f09007a6762",
+							"id": "c6826176-371f-49ea-bcaa-5dcc6caa54ae",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1711,19 +1765,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e56e7137-de8d-4629-8ed7-d7477efa9c59",
+								"id": "069b2600-37a3-49a8-a43a-0998e77d8e83",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.commentListSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "d35b49f3-5735-4f44-8eef-621612fe27e7",
+								"id": "7ebe3540-2c27-49dc-ba9e-c303db8f0431",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.commentListSchema;",
+									"",
 									"eval(globals.GetNotFound);"
 								]
 							}
@@ -1759,7 +1815,7 @@
 					},
 					"response": [
 						{
-							"id": "0f26cc42-a05e-4ecc-b9f5-5e5d7e4d795a",
+							"id": "c701126d-cfb2-4832-a85e-fb6e401977b7",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "POST",
@@ -1793,24 +1849,26 @@
 					]
 				},
 				{
-					"name": "Create Comment By Agent",
+					"name": "Create Comment By Client",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8e56b292-beba-4c4f-bd2e-2be1baf81536",
+								"id": "8473df14-916a-42ca-95b6-13221dd835de",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.commentSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "a29d88c0-933f-44a3-90e3-4d98691e9ff7",
+								"id": "891b5318-88b8-4dec-81f2-405d866c9dd3",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.commentSchema;",
+									"",
 									"try {    ",
 									"    eval(globals.PostTests);",
 									"    pm.globals.set(\"comment_id\", JSON.parse(responseBody).id);",
@@ -1861,7 +1919,7 @@
 					},
 					"response": [
 						{
-							"id": "3d2c222e-ca7a-4a4b-a20b-a782531faf81",
+							"id": "09b0c86d-f411-47af-861a-67ce1be13204",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -1905,19 +1963,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "12c4235a-fde5-48b1-81a5-cc6a32ad8a94",
+								"id": "b1d1e37c-878e-4fb8-b305-23ab7f17e982",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.commentSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "9153b8ef-55c6-4be8-8073-a298696adad7",
+								"id": "d45f8625-9fcd-463f-b83a-80f9466c2eeb",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.commentSchema;",
+									"",
 									"try {    ",
 									"    eval(globals.GetTests);",
 									"    tests[\"Ticket has comment\"] = JSON.parse(responseBody).comments.length == 1;",
@@ -1958,7 +2018,7 @@
 					},
 					"response": [
 						{
-							"id": "98887c23-d98d-4c6f-b861-f7bc594969c0",
+							"id": "4b04b883-bfb6-462f-b431-028514d1b3f4",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1992,6 +2052,28 @@
 						}
 					]
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a10a462b-cb2f-46b5-8477-cfb41f9c3136",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7c084fb-6bcf-4ebf-b210-57baa433e420",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -2004,19 +2086,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f041f61c-e26c-4d4a-81ed-092f7a8e6526",
+								"id": "417cba4c-6bef-4c46-97b5-45e10a1d0a6b",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.reviewSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "0a59fa17-82db-47a2-a40b-e21e6502f957",
+								"id": "4d513d72-43e2-4a02-bbd1-15300cf3218f",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.reviewSchema;",
+									"",
 									"try {",
 									"    eval(globals.PostTests);",
 									"    pm.globals.set(\"review_id\", JSON.parse(responseBody).id);",
@@ -2062,7 +2146,7 @@
 					},
 					"response": [
 						{
-							"id": "5a135099-ebb9-461f-962c-70d5be8ffa98",
+							"id": "26f229e9-bd7b-46c6-abd9-c2bd8a0389a7",
 							"name": "201 Created",
 							"originalRequest": {
 								"method": "POST",
@@ -2142,7 +2226,7 @@
 					},
 					"response": [
 						{
-							"id": "67cc24a0-b72f-4d78-a8ab-3177add02e69",
+							"id": "4f4a19de-811a-4a6d-a78d-733b5000ea65",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "PUT",
@@ -2186,19 +2270,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e7ddd977-04af-4037-93ea-5dc6de8e851a",
+								"id": "01811738-6d4d-4ad1-813c-837ae1402047",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.reviewListSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "3040721b-19cc-40b7-9281-729944d756f6",
+								"id": "98286b33-da2d-4165-8edf-f70ce0689fa4",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.reviewListSchema;",
+									"",
 									"eval(globals.GetTests);"
 								]
 							}
@@ -2240,7 +2326,7 @@
 					},
 					"response": [
 						{
-							"id": "af6afdc8-c359-4190-8b98-cb8453051259",
+							"id": "52883800-363f-42f1-8b95-d25bb06b5b5e",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2292,19 +2378,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "348c5a00-12b7-4d58-8830-81f3508f8fe6",
+								"id": "bf7bddda-09ed-4620-919c-93ce0f1c9d72",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.reviewSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "4aa65cc2-143f-42da-8f89-02101883f7a5",
+								"id": "31124795-bba7-4e77-8765-507271823c46",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.reviewSchema;",
+									"",
 									"try {",
 									"    eval(globals.GetTests);",
 									"} catch (err) {",
@@ -2344,7 +2432,7 @@
 					},
 					"response": [
 						{
-							"id": "e03a1e2c-a103-48f7-a9b1-930e5558f362",
+							"id": "c1649ac2-45e0-4079-b612-4bee43538095",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2420,7 +2508,7 @@
 					},
 					"response": [
 						{
-							"id": "bbe2945d-9433-4274-8d95-a14c996a431b",
+							"id": "9b183f6d-38d1-4833-a1f5-ed8e4eef62a6",
 							"name": "204 No Content",
 							"originalRequest": {
 								"method": "DELETE",
@@ -2460,19 +2548,21 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "348c5a00-12b7-4d58-8830-81f3508f8fe6",
+								"id": "38b40ea4-7330-478f-9124-6ea39c230600",
 								"type": "text/javascript",
 								"exec": [
-									"schema=globals.reviewSchema;"
+									""
 								]
 							}
 						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "a6d4f0fb-0df3-49d2-861b-1e7b1ba6f8e7",
+								"id": "ca252737-7fa6-4dfe-9545-8d0cf0ff962e",
 								"type": "text/javascript",
 								"exec": [
+									"schema=globals.reviewSchema;",
+									"",
 									"eval(globals.GetNotFound);"
 								]
 							}
@@ -2508,7 +2598,7 @@
 					},
 					"response": [
 						{
-							"id": "303cfa39-1d9b-4f74-b30e-402f8c329d23",
+							"id": "de982712-1fba-4283-bd6d-bb3250d16e57",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -2542,7 +2632,51 @@
 						}
 					]
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "21b841f9-9947-4b9d-afa4-739c994ec09f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d31fb05e-343c-418c-8fc9-d116d1d65f7b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "40719792-4f60-4edc-ad4a-000205187bd5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "60e34a18-04d3-4830-bd85-ae486de54ad7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
