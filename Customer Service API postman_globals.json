@@ -1,0 +1,189 @@
+{
+  "id": "44d06925-109e-40ce-850b-023c161eda12",
+  "values": [
+    {
+      "key": "VerifyPreRequestBody",
+      "value": "// Test whether the request matches the schema\nvar request = JSON.parse(request.data); \ntests[\"Pre-request body is valid\"] = tv4.validate(request, JSON.parse(inputSchema));",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "GetTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody); \ntests[\"Response body is valid\"] = tv4.validate(result, JSON.parse(schema));",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "PostTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 201\"] = responseCode.code === 201;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody);\ntests[\"Response body is valid\"] = tv4.validate(result, JSON.parse(schema));",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "PutTests",
+      "value": "// Test whether the response is valid\ntests[\"Status code is 204\"] = responseCode.code === 204;",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "DeleteTests",
+      "value": "// Test whether the response is valid \ntests[\"Status code is 204\"] = responseCode.code === 204;",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "GetNotFound",
+      "value": "// Test whether the response is a NotFound\ntests[\"Status code is 404\"] = responseCode.code === 404;",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "client_id",
+      "value": 171,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "product_id",
+      "value": "S00001",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "ticket_id",
+      "value": 23,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "agent_id",
+      "value": 14,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "comment_id",
+      "value": 52,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "client_email",
+      "value": "1524541422162@test-account.com",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "review_id",
+      "value": 5,
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "postClientSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"password\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"Line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"Line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"City\": {\n          \"type\": \"string\"\n        }, \n        \"State\": {\n          \"type\": \"string\"\n        }, \n        \"Zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"Country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"Line1\", \n        \"Line2\", \n        \"City\", \n        \"State\", \n        \"Zipcode\", \n        \"Country\"\n      ]\n    }\n  }, \n  \"required\": [\n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"password\", \n    \"address\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "putClientSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"password\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"Line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"Line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"City\": {\n          \"type\": \"string\"\n        }, \n        \"State\": {\n          \"type\": \"string\"\n        }, \n        \"Zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"Country\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedNewClientSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"city\": {\n          \"type\": \"string\"\n        }, \n        \"state\": {\n          \"type\": \"string\"\n        }, \n        \"zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"line1\", \n        \"line2\", \n        \"city\", \n        \"state\", \n        \"zipcode\", \n        \"country\"\n      ]\n    }, \n    \"tickets\": {\n      \"type\": \"array\",\n\t  \"minItems\": 0,\n\t  \"maxItems\": 0\n    }, \n    \"reviews\": {\n      \"type\": \"array\",\n\t  \"minItems\": 0,\n\t  \"maxItems\": 0\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"address\", \n    \"tickets\", \n    \"reviews\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedClientSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"city\": {\n          \"type\": \"string\"\n        }, \n        \"state\": {\n          \"type\": \"string\"\n        }, \n        \"zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"line1\", \n        \"line2\", \n        \"city\", \n        \"state\", \n        \"zipcode\", \n        \"country\"\n      ]\n    }, \n    \"tickets\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"title\": {\n            \"type\": \"string\"\n          }, \n          \"description\": {\n            \"type\": \"string\"\n          }, \n          \"status\": {\n            \"type\": \"string\"\n          }, \n          \"productSerialNumber\": {\n            \"type\": \"string\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"title\", \n          \"description\", \n          \"status\", \n          \"productSerialNumber\", \n          \"agentId\"\n        ]\n      }\n    }, \n    \"reviews\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }, \n          \"content\": {\n            \"type\": \"string\"\n          }, \n          \"dateCreated\": {\n            \"type\": \"string\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"agentId\", \n          \"content\", \n          \"dateCreated\"\n        ]\n      }\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"address\", \n    \"tickets\", \n    \"reviews\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedClientListSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": {\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"city\": {\n          \"type\": \"string\"\n        }, \n        \"state\": {\n          \"type\": \"string\"\n        }, \n        \"zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"line1\", \n        \"line2\", \n        \"city\", \n        \"state\", \n        \"zipcode\", \n        \"country\"\n      ]\n    }, \n    \"tickets\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"title\": {\n            \"type\": \"string\"\n          }, \n          \"description\": {\n            \"type\": \"string\"\n          }, \n          \"status\": {\n            \"type\": \"string\"\n          }, \n          \"productSerialNumber\": {\n            \"type\": \"string\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"title\", \n          \"description\", \n          \"status\", \n          \"productSerialNumber\", \n          \"agentId\"\n        ]\n      }\n    }, \n    \"reviews\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }, \n          \"content\": {\n            \"type\": \"string\"\n          }, \n          \"dateCreated\": {\n            \"type\": \"string\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"agentId\", \n          \"content\", \n          \"dateCreated\"\n        ]\n      }\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"address\", \n    \"tickets\", \n    \"reviews\"\n  ]\n}\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "postTicketSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"productSerialNumber\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"title\", \n    \"description\", \n    \"productSerialNumber\"\n  ]\n}\n",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "putTicketSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"productSerialNumber\": {\n      \"type\": \"integer\"\n    }\n  }\n}\n",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedTicketSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"status\": {\n      \"type\": \"string\"\n    }, \n\t\"productSerialNumber\": {\n\t  \"type\": \"string\"\n    },\n    \"client\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        }, \n        \"firstName\": {\n          \"type\": \"string\"\n        }, \n        \"lastName\": {\n          \"type\": \"string\"\n        }, \n        \"email\": {\n          \"type\": \"string\"\n        }, \n        \"address\": {\n          \"type\": \"object\", \n          \"properties\": {\n            \"line1\": {\n              \"type\": \"string\"\n            }, \n            \"line2\": {\n              \"type\": [\n\t\t\t  \"string\",\n\t\t\t  \"null\"\n\t\t\t  ]\n            }, \n            \"city\": {\n              \"type\": \"string\"\n            }, \n            \"state\": {\n              \"type\": \"string\"\n            }, \n            \"zipcode\": {\n              \"type\": \"string\"\n            },\n\t\t\t\"country\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}\n          }, \n          \"required\": [\n            \"line1\", \n            \"line2\", \n            \"city\", \n            \"state\", \n            \"zipcode\",\n\t\t\t\"country\"\n          ]\n        }\n      }, \n      \"required\": [\n        \"id\", \n        \"firstName\", \n        \"lastName\", \n        \"email\", \n        \"address\"\n      ]\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"comments\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"ticketId\": {\n            \"type\": \"integer\"\n          }, \n          \"content\": {\n            \"type\": \"string\"\n          }, \n          \"clientId\": {\n            \"type\": \"integer\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }\n\t\t},\n\t\t\"required\": [\n          \"id\", \n          \"ticketId\", \n          \"content\", \n          \"clientId\", \n          \"agentId\"\n        ]\n\t  }\n\t}\n  }, \n  \"required\": [\n    \"id\", \n    \"title\", \n    \"description\", \n    \"status\", \n    \"client\", \n    \"agentId\", \n    \"productSerialNumber\", \n    \"comments\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedTicketListSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": {\n\t  \"type\": \"object\", \n\t  \"properties\": {\n\t\t\"id\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"title\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"description\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"status\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"productSerialNumber\": {\n\t\t  \"type\": \"string\"\n\t\t},\n\t\t\"client\": {\n\t\t  \"type\": \"object\", \n\t\t  \"properties\": {\n\t\t\t\"id\": {\n\t\t\t  \"type\": \"integer\"\n\t\t\t}, \n\t\t\t\"firstName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"lastName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"email\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"address\": {\n\t\t\t  \"type\": \"object\", \n\t\t\t  \"properties\": {\n\t\t\t\t\"line1\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"line2\": {\n\t\t\t\t  \"type\": [\n\t\t\t\t  \"string\",\n\t\t\t\t  \"null\"\n\t\t\t\t  ]\n\t\t\t\t}, \n\t\t\t\t\"city\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"state\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"zipcode\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"country\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}\n\t\t\t  }, \n\t\t\t  \"required\": [\n\t\t\t\t\"line1\", \n\t\t\t\t\"line2\", \n\t\t\t\t\"city\", \n\t\t\t\t\"state\", \n\t\t\t\t\"zipcode\",\n\t\t\t\t\"country\"\n\t\t\t  ]\n\t\t\t}\n\t\t  }, \n\t\t  \"required\": [\n\t\t\t\"id\", \n\t\t\t\"firstName\", \n\t\t\t\"lastName\", \n\t\t\t\"email\", \n\t\t\t\"address\"\n\t\t  ]\n\t\t}, \n\t\t\"agentId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"comments\": {\n\t\t  \"type\": \"array\", \n\t\t  \"items\": {\n\t\t\t\"type\": \"object\", \n\t\t\t\"properties\": {\n\t\t\t  \"id\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }, \n\t\t\t  \"ticketId\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }, \n\t\t\t  \"content\": {\n\t\t\t\t\"type\": \"string\"\n\t\t\t  }, \n\t\t\t  \"clientId\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }, \n\t\t\t  \"agentId\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }\n\t\t\t},\n\t\t\t\"required\": [\n\t\t\t  \"id\", \n\t\t\t  \"ticketId\", \n\t\t\t  \"content\", \n\t\t\t  \"clientId\", \n\t\t\t  \"agentId\"\n\t\t\t]\n\t\t  }\n\t\t}\n\t  }, \n\t  \"required\": [\n\t\t\"id\", \n\t\t\"title\", \n\t\t\"description\", \n\t\t\"status\", \n\t\t\"client\", \n\t\t\"agentId\", \n\t\t\"productSerialNumber\", \n\t\t\"comments\"\n\t  ]\n\t}\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "postReviewSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"agentId\", \n    \"content\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "putReviewSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"clientId\": {\n      \"type\": \"integer\"\n    }\n  }\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedReviewSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"dateCreated\": {\n      \"type\": \"string\"\n    }, \n    \"client\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        }, \n        \"firstName\": {\n          \"type\": \"string\"\n        }, \n        \"lastName\": {\n          \"type\": \"string\"\n        }, \n        \"email\": {\n          \"type\": \"string\"\n        }, \n        \"address\": {\n          \"type\": \"object\", \n          \"properties\": {\n            \"line1\": {\n              \"type\": \"string\"\n            }, \n\t\t\t\"line2\": {\n\t\t\t  \"type\": [\n\t\t\t  \"string\",\n\t\t\t  \"null\"\n\t\t\t  ]\n\t\t\t}, \n            \"city\": {\n              \"type\": \"string\"\n            }, \n            \"state\": {\n              \"type\": \"string\"\n            }, \n            \"zipcode\": {\n              \"type\": \"string\"\n            }, \n            \"country\": {\n              \"type\": \"string\"\n            }\n          }, \n          \"required\": [\n            \"line1\", \n            \"line2\", \n            \"city\", \n            \"state\", \n            \"zipcode\", \n            \"country\"\n          ]\n        }\n      }, \n      \"required\": [\n        \"id\", \n        \"firstName\", \n        \"lastName\", \n        \"email\", \n        \"address\"\n      ]\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"agentId\", \n    \"content\", \n    \"dateCreated\", \n    \"client\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedReviewListSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": {\n\t  \"type\": \"object\", \n\t  \"definitions\": {}, \n\t  \"properties\": {\n\t\t\"id\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"agentId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"content\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"dateCreated\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"client\": {\n\t\t  \"type\": \"object\", \n\t\t  \"properties\": {\n\t\t\t\"id\": {\n\t\t\t  \"type\": \"integer\"\n\t\t\t}, \n\t\t\t\"firstName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"lastName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"email\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"address\": {\n\t\t\t  \"type\": \"object\", \n\t\t\t  \"properties\": {\n\t\t\t\t\"line1\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"line2\": {\n\t\t\t\t  \"type\": [\n\t\t\t\t  \"string\",\n\t\t\t\t  \"null\"\n\t\t\t\t  ]\n\t\t\t\t}, \n\t\t\t\t\"city\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"state\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"zipcode\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"country\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}\n\t\t\t  }, \n\t\t\t  \"required\": [\n\t\t\t\t\"line1\", \n\t\t\t\t\"line2\", \n\t\t\t\t\"city\", \n\t\t\t\t\"state\", \n\t\t\t\t\"zipcode\", \n\t\t\t\t\"country\"\n\t\t\t  ]\n\t\t\t}\n\t\t  }, \n\t\t  \"required\": [\n\t\t\t\"id\", \n\t\t\t\"firstName\", \n\t\t\t\"lastName\", \n\t\t\t\"email\", \n\t\t\t\"address\"\n\t\t  ]\n\t\t}\n\t  }, \n\t  \"required\": [\n\t\t\"id\", \n\t\t\"agentId\", \n\t\t\"content\", \n\t\t\"dateCreated\", \n\t\t\"client\"\n\t  ]\n\t}\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "postCommentSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"ticketId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"ticketId\", \n    \"content\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "putCommentSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"ticketId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }\n  }\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedCommentSchema",
+      "value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"ticketId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"clientId\": {\n      \"type\": \"integer\"\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"ticketId\", \n    \"content\", \n    \"clientId\", \n    \"agentId\"\n  ]\n}",
+      "enabled": true,
+      "type": "text"
+    },
+    {
+      "key": "returnedCommentListSchema",
+      "value": "{\n  \"type\": \"array\", \n  \"items\": \n\t  {\n\t  \"type\": \"object\", \n\t  \"properties\": {\n\t\t\"id\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"ticketId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"content\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"clientId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"agentId\": {\n\t\t  \"type\": \"integer\"\n\t\t}\n\t  }, \n\t  \"required\": [\n\t\t\"id\", \n\t\t\"ticketId\", \n\t\t\"content\", \n\t\t\"clientId\", \n\t\t\"agentId\"\n\t  ]\n\t}\n}",
+      "enabled": true,
+      "type": "text"
+    }
+  ],
+  "name": "My Workspace Globals",
+  "_postman_variable_scope": "globals",
+  "_postman_exported_at": "2018-04-24T04:36:55.165Z",
+  "_postman_exported_using": "Postman/6.0.10"
+}

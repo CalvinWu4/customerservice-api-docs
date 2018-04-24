@@ -1,0 +1,2196 @@
+{
+	"id": "0c6d568a-5806-4319-97ac-4f2ccfa2eb80",
+	"name": "Customer Service API Tests",
+	"allTests": [],
+	"timestamp": "2018-04-24T04:18:21.982Z",
+	"collection_id": "ad33b6bd-edde-4b5b-b185-82b9a88d671d",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "13b48954-680c-499f-a511-b9c75440b0e6",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "ad33b6bd-edde-4b5b-b185-82b9a88d671d",
+		"name": "Customer Service API Tests",
+		"description": "Test suite for all Customer Service API endpoints.",
+		"auth": null,
+		"events": [
+			{
+				"listen": "prerequest",
+				"script": {
+					"id": "40719792-4f60-4edc-ad4a-000205187bd5",
+					"type": "text/javascript",
+					"exec": [
+						""
+					]
+				}
+			},
+			{
+				"listen": "test",
+				"script": {
+					"id": "60e34a18-04d3-4830-bd85-ae486de54ad7",
+					"type": "text/javascript",
+					"exec": [
+						""
+					]
+				}
+			}
+		],
+		"variables": null,
+		"order": [],
+		"folders_order": [
+			"ff2cbf8f-13fc-4bf4-b657-44db36d90988",
+			"d2eb3841-f77e-473c-a775-cd35483eb4df",
+			"689ec801-50c2-4e9f-b7cf-d0f56a219e02",
+			"6c9f16f7-6af1-43a5-94cb-8dce3582f447"
+		],
+		"owner": "3728250",
+		"permissions": {},
+		"favorite": true,
+		"shared": false
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"key": "VerifyPreRequestBody",
+			"value": "// Test whether the request matches the schema\nvar request = JSON.parse(request.data); \ntests[\"Pre-request body is valid\"] = tv4.validate(request, JSON.parse(inputSchema));",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "GetTests",
+			"value": "// Test whether the response is valid\ntests[\"Status code is 200\"] = responseCode.code === 200;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody); \ntests[\"Response body is valid\"] = tv4.validate(result, JSON.parse(schema));",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "PostTests",
+			"value": "// Test whether the response is valid\ntests[\"Status code is 201\"] = responseCode.code === 201;\n\n// Test whether the response matches the schema\nvar result = JSON.parse(responseBody);\ntests[\"Response body is valid\"] = tv4.validate(result, JSON.parse(schema));",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "PutTests",
+			"value": "// Test whether the response is valid\ntests[\"Status code is 204\"] = responseCode.code === 204;",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "DeleteTests",
+			"value": "// Test whether the response is valid \ntests[\"Status code is 204\"] = responseCode.code === 204;",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "GetNotFound",
+			"value": "// Test whether the response is a NotFound\ntests[\"Status code is 404\"] = responseCode.code === 404;",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "client_id",
+			"value": 171,
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "product_id",
+			"value": "S00001",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "ticket_id",
+			"value": 23,
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "agent_id",
+			"value": 14,
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "comment_id",
+			"value": 52,
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "client_email",
+			"value": "1524541422162@test-account.com",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "review_id",
+			"value": 5,
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "postClientSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"password\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"Line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"Line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"City\": {\n          \"type\": \"string\"\n        }, \n        \"State\": {\n          \"type\": \"string\"\n        }, \n        \"Zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"Country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"Line1\", \n        \"Line2\", \n        \"City\", \n        \"State\", \n        \"Zipcode\", \n        \"Country\"\n      ]\n    }\n  }, \n  \"required\": [\n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"password\", \n    \"address\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "putClientSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"password\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"Line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"Line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"City\": {\n          \"type\": \"string\"\n        }, \n        \"State\": {\n          \"type\": \"string\"\n        }, \n        \"Zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"Country\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedNewClientSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"city\": {\n          \"type\": \"string\"\n        }, \n        \"state\": {\n          \"type\": \"string\"\n        }, \n        \"zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"line1\", \n        \"line2\", \n        \"city\", \n        \"state\", \n        \"zipcode\", \n        \"country\"\n      ]\n    }, \n    \"tickets\": {\n      \"type\": \"array\",\n\t  \"minItems\": 0,\n\t  \"maxItems\": 0\n    }, \n    \"reviews\": {\n      \"type\": \"array\",\n\t  \"minItems\": 0,\n\t  \"maxItems\": 0\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"address\", \n    \"tickets\", \n    \"reviews\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedClientSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"city\": {\n          \"type\": \"string\"\n        }, \n        \"state\": {\n          \"type\": \"string\"\n        }, \n        \"zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"line1\", \n        \"line2\", \n        \"city\", \n        \"state\", \n        \"zipcode\", \n        \"country\"\n      ]\n    }, \n    \"tickets\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"title\": {\n            \"type\": \"string\"\n          }, \n          \"description\": {\n            \"type\": \"string\"\n          }, \n          \"status\": {\n            \"type\": \"string\"\n          }, \n          \"productSerialNumber\": {\n            \"type\": \"string\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"title\", \n          \"description\", \n          \"status\", \n          \"productSerialNumber\", \n          \"agentId\"\n        ]\n      }\n    }, \n    \"reviews\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }, \n          \"content\": {\n            \"type\": \"string\"\n          }, \n          \"dateCreated\": {\n            \"type\": \"string\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"agentId\", \n          \"content\", \n          \"dateCreated\"\n        ]\n      }\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"address\", \n    \"tickets\", \n    \"reviews\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedClientListSchema",
+			"value": "{\n  \"type\": \"array\", \n  \"items\": {\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"firstName\": {\n      \"type\": \"string\"\n    }, \n    \"lastName\": {\n      \"type\": \"string\"\n    }, \n    \"email\": {\n      \"type\": \"string\"\n    }, \n    \"address\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"line1\": {\n          \"type\": \"string\"\n        }, \n\t\t\"line2\": {\n\t\t  \"type\": [\n\t\t  \"string\",\n\t\t  \"null\"\n\t\t  ]\n\t\t}, \n        \"city\": {\n          \"type\": \"string\"\n        }, \n        \"state\": {\n          \"type\": \"string\"\n        }, \n        \"zipcode\": {\n          \"type\": \"string\"\n        }, \n        \"country\": {\n          \"type\": \"string\"\n        }\n      }, \n      \"required\": [\n        \"line1\", \n        \"line2\", \n        \"city\", \n        \"state\", \n        \"zipcode\", \n        \"country\"\n      ]\n    }, \n    \"tickets\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"title\": {\n            \"type\": \"string\"\n          }, \n          \"description\": {\n            \"type\": \"string\"\n          }, \n          \"status\": {\n            \"type\": \"string\"\n          }, \n          \"productSerialNumber\": {\n            \"type\": \"string\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"title\", \n          \"description\", \n          \"status\", \n          \"productSerialNumber\", \n          \"agentId\"\n        ]\n      }\n    }, \n    \"reviews\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }, \n          \"content\": {\n            \"type\": \"string\"\n          }, \n          \"dateCreated\": {\n            \"type\": \"string\"\n          }\n        }, \n        \"required\": [\n          \"id\", \n          \"agentId\", \n          \"content\", \n          \"dateCreated\"\n        ]\n      }\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"firstName\", \n    \"lastName\", \n    \"email\", \n    \"address\", \n    \"tickets\", \n    \"reviews\"\n  ]\n}\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "postTicketSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"productSerialNumber\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"title\", \n    \"description\", \n    \"productSerialNumber\"\n  ]\n}\n",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "putTicketSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"productSerialNumber\": {\n      \"type\": \"integer\"\n    }\n  }\n}\n",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedTicketSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"title\": {\n      \"type\": \"string\"\n    }, \n    \"description\": {\n      \"type\": \"string\"\n    }, \n    \"status\": {\n      \"type\": \"string\"\n    }, \n\t\"productSerialNumber\": {\n\t  \"type\": \"string\"\n    },\n    \"client\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        }, \n        \"firstName\": {\n          \"type\": \"string\"\n        }, \n        \"lastName\": {\n          \"type\": \"string\"\n        }, \n        \"email\": {\n          \"type\": \"string\"\n        }, \n        \"address\": {\n          \"type\": \"object\", \n          \"properties\": {\n            \"line1\": {\n              \"type\": \"string\"\n            }, \n            \"line2\": {\n              \"type\": [\n\t\t\t  \"string\",\n\t\t\t  \"null\"\n\t\t\t  ]\n            }, \n            \"city\": {\n              \"type\": \"string\"\n            }, \n            \"state\": {\n              \"type\": \"string\"\n            }, \n            \"zipcode\": {\n              \"type\": \"string\"\n            },\n\t\t\t\"country\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}\n          }, \n          \"required\": [\n            \"line1\", \n            \"line2\", \n            \"city\", \n            \"state\", \n            \"zipcode\",\n\t\t\t\"country\"\n          ]\n        }\n      }, \n      \"required\": [\n        \"id\", \n        \"firstName\", \n        \"lastName\", \n        \"email\", \n        \"address\"\n      ]\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"comments\": {\n      \"type\": \"array\", \n      \"items\": {\n        \"type\": \"object\", \n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          }, \n          \"ticketId\": {\n            \"type\": \"integer\"\n          }, \n          \"content\": {\n            \"type\": \"string\"\n          }, \n          \"clientId\": {\n            \"type\": \"integer\"\n          }, \n          \"agentId\": {\n            \"type\": \"integer\"\n          }\n\t\t},\n\t\t\"required\": [\n          \"id\", \n          \"ticketId\", \n          \"content\", \n          \"clientId\", \n          \"agentId\"\n        ]\n\t  }\n\t}\n  }, \n  \"required\": [\n    \"id\", \n    \"title\", \n    \"description\", \n    \"status\", \n    \"client\", \n    \"agentId\", \n    \"productSerialNumber\", \n    \"comments\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedTicketListSchema",
+			"value": "{\n  \"type\": \"array\", \n  \"items\": {\n\t  \"type\": \"object\", \n\t  \"properties\": {\n\t\t\"id\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"title\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"description\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"status\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"productSerialNumber\": {\n\t\t  \"type\": \"string\"\n\t\t},\n\t\t\"client\": {\n\t\t  \"type\": \"object\", \n\t\t  \"properties\": {\n\t\t\t\"id\": {\n\t\t\t  \"type\": \"integer\"\n\t\t\t}, \n\t\t\t\"firstName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"lastName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"email\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"address\": {\n\t\t\t  \"type\": \"object\", \n\t\t\t  \"properties\": {\n\t\t\t\t\"line1\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"line2\": {\n\t\t\t\t  \"type\": [\n\t\t\t\t  \"string\",\n\t\t\t\t  \"null\"\n\t\t\t\t  ]\n\t\t\t\t}, \n\t\t\t\t\"city\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"state\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"zipcode\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"country\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}\n\t\t\t  }, \n\t\t\t  \"required\": [\n\t\t\t\t\"line1\", \n\t\t\t\t\"line2\", \n\t\t\t\t\"city\", \n\t\t\t\t\"state\", \n\t\t\t\t\"zipcode\",\n\t\t\t\t\"country\"\n\t\t\t  ]\n\t\t\t}\n\t\t  }, \n\t\t  \"required\": [\n\t\t\t\"id\", \n\t\t\t\"firstName\", \n\t\t\t\"lastName\", \n\t\t\t\"email\", \n\t\t\t\"address\"\n\t\t  ]\n\t\t}, \n\t\t\"agentId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"comments\": {\n\t\t  \"type\": \"array\", \n\t\t  \"items\": {\n\t\t\t\"type\": \"object\", \n\t\t\t\"properties\": {\n\t\t\t  \"id\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }, \n\t\t\t  \"ticketId\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }, \n\t\t\t  \"content\": {\n\t\t\t\t\"type\": \"string\"\n\t\t\t  }, \n\t\t\t  \"clientId\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }, \n\t\t\t  \"agentId\": {\n\t\t\t\t\"type\": \"integer\"\n\t\t\t  }\n\t\t\t},\n\t\t\t\"required\": [\n\t\t\t  \"id\", \n\t\t\t  \"ticketId\", \n\t\t\t  \"content\", \n\t\t\t  \"clientId\", \n\t\t\t  \"agentId\"\n\t\t\t]\n\t\t  }\n\t\t}\n\t  }, \n\t  \"required\": [\n\t\t\"id\", \n\t\t\"title\", \n\t\t\"description\", \n\t\t\"status\", \n\t\t\"client\", \n\t\t\"agentId\", \n\t\t\"productSerialNumber\", \n\t\t\"comments\"\n\t  ]\n\t}\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "postReviewSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"agentId\", \n    \"content\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "putReviewSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"clientId\": {\n      \"type\": \"integer\"\n    }\n  }\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedReviewSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"dateCreated\": {\n      \"type\": \"string\"\n    }, \n    \"client\": {\n      \"type\": \"object\", \n      \"properties\": {\n        \"id\": {\n          \"type\": \"integer\"\n        }, \n        \"firstName\": {\n          \"type\": \"string\"\n        }, \n        \"lastName\": {\n          \"type\": \"string\"\n        }, \n        \"email\": {\n          \"type\": \"string\"\n        }, \n        \"address\": {\n          \"type\": \"object\", \n          \"properties\": {\n            \"line1\": {\n              \"type\": \"string\"\n            }, \n\t\t\t\"line2\": {\n\t\t\t  \"type\": [\n\t\t\t  \"string\",\n\t\t\t  \"null\"\n\t\t\t  ]\n\t\t\t}, \n            \"city\": {\n              \"type\": \"string\"\n            }, \n            \"state\": {\n              \"type\": \"string\"\n            }, \n            \"zipcode\": {\n              \"type\": \"string\"\n            }, \n            \"country\": {\n              \"type\": \"string\"\n            }\n          }, \n          \"required\": [\n            \"line1\", \n            \"line2\", \n            \"city\", \n            \"state\", \n            \"zipcode\", \n            \"country\"\n          ]\n        }\n      }, \n      \"required\": [\n        \"id\", \n        \"firstName\", \n        \"lastName\", \n        \"email\", \n        \"address\"\n      ]\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"agentId\", \n    \"content\", \n    \"dateCreated\", \n    \"client\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedReviewListSchema",
+			"value": "{\n  \"type\": \"array\", \n  \"items\": {\n\t  \"type\": \"object\", \n\t  \"definitions\": {}, \n\t  \"properties\": {\n\t\t\"id\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"agentId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"content\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"dateCreated\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"client\": {\n\t\t  \"type\": \"object\", \n\t\t  \"properties\": {\n\t\t\t\"id\": {\n\t\t\t  \"type\": \"integer\"\n\t\t\t}, \n\t\t\t\"firstName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"lastName\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"email\": {\n\t\t\t  \"type\": \"string\"\n\t\t\t}, \n\t\t\t\"address\": {\n\t\t\t  \"type\": \"object\", \n\t\t\t  \"properties\": {\n\t\t\t\t\"line1\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"line2\": {\n\t\t\t\t  \"type\": [\n\t\t\t\t  \"string\",\n\t\t\t\t  \"null\"\n\t\t\t\t  ]\n\t\t\t\t}, \n\t\t\t\t\"city\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"state\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"zipcode\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}, \n\t\t\t\t\"country\": {\n\t\t\t\t  \"type\": \"string\"\n\t\t\t\t}\n\t\t\t  }, \n\t\t\t  \"required\": [\n\t\t\t\t\"line1\", \n\t\t\t\t\"line2\", \n\t\t\t\t\"city\", \n\t\t\t\t\"state\", \n\t\t\t\t\"zipcode\", \n\t\t\t\t\"country\"\n\t\t\t  ]\n\t\t\t}\n\t\t  }, \n\t\t  \"required\": [\n\t\t\t\"id\", \n\t\t\t\"firstName\", \n\t\t\t\"lastName\", \n\t\t\t\"email\", \n\t\t\t\"address\"\n\t\t  ]\n\t\t}\n\t  }, \n\t  \"required\": [\n\t\t\"id\", \n\t\t\"agentId\", \n\t\t\"content\", \n\t\t\"dateCreated\", \n\t\t\"client\"\n\t  ]\n\t}\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "postCommentSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"ticketId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }\n  }, \n  \"required\": [\n    \"ticketId\", \n    \"content\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "putCommentSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"ticketId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }\n  }\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedCommentSchema",
+			"value": "{\n  \"type\": \"object\", \n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    }, \n    \"ticketId\": {\n      \"type\": \"integer\"\n    }, \n    \"content\": {\n      \"type\": \"string\"\n    }, \n    \"clientId\": {\n      \"type\": \"integer\"\n    }, \n    \"agentId\": {\n      \"type\": \"integer\"\n    }\n  }, \n  \"required\": [\n    \"id\", \n    \"ticketId\", \n    \"content\", \n    \"clientId\", \n    \"agentId\"\n  ]\n}",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "returnedCommentListSchema",
+			"value": "{\n  \"type\": \"array\", \n  \"items\": \n\t  {\n\t  \"type\": \"object\", \n\t  \"properties\": {\n\t\t\"id\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"ticketId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"content\": {\n\t\t  \"type\": \"string\"\n\t\t}, \n\t\t\"clientId\": {\n\t\t  \"type\": \"integer\"\n\t\t}, \n\t\t\"agentId\": {\n\t\t  \"type\": \"integer\"\n\t\t}\n\t  }, \n\t  \"required\": [\n\t\t\"id\", \n\t\t\"ticketId\", \n\t\t\"content\", \n\t\t\"clientId\", \n\t\t\"agentId\"\n\t  ]\n\t}\n}",
+			"enabled": true,
+			"type": "text"
+		}
+	],
+	"results": [
+		{
+			"name": "Get All Clients",
+			"id": "cdb05ac2-6cfe-437b-9659-22a735fbab2c",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"273"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "273",
+			"totalRequestTime": "273",
+			"iterationResults": {}
+		},
+		{
+			"name": "Create Client",
+			"id": "681628ec-639d-42c5-96a6-769ff8254d19",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 201": true,
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"621"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 201": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "621",
+			"totalRequestTime": "621",
+			"iterationResults": {}
+		},
+		{
+			"name": "Update Client",
+			"id": "6d671209-3658-47da-9153-ef3ba030c2a8",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"433"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 204": true
+				}
+			],
+			"time": "433",
+			"totalRequestTime": "433",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get Client By ID",
+			"id": "d49585e4-d78a-46de-bbed-5d993b30c86b",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"169"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "169",
+			"totalRequestTime": "169",
+			"iterationResults": {}
+		},
+		{
+			"name": "Delete Client",
+			"id": "4e05dab6-29e4-41f3-a91b-bb665b453379",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Status code is 204",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"440"
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			],
+			"time": "440",
+			"totalRequestTime": "440",
+			"iterationResults": {}
+		},
+		{
+			"name": "Confirm Client Deleted",
+			"id": "7805b7c6-d9c0-4eec-8f99-63fdc6cf9711",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"name": "Status code is 404",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"183"
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			],
+			"time": "183",
+			"totalRequestTime": "183",
+			"iterationResults": {}
+		},
+		{
+			"name": "Re-Create Client",
+			"id": "aa440ac8-6e9d-476b-9200-903230a9ed9f",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 201": true,
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"417"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 201": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "417",
+			"totalRequestTime": "417",
+			"iterationResults": {}
+		},
+		{
+			"name": "Check Product S00001 Exists and Is Sold (From Inventory)",
+			"id": "03dcc5d4-0c28-4735-aae8-6903228dc599",
+			"url": "https://inventory343.azurewebsites.net/api/Products/S00001",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Product found": true,
+				"Product is sold": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product is sold": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"83"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Product found": true,
+					"Product is sold": true
+				}
+			],
+			"time": "83",
+			"totalRequestTime": "83",
+			"iterationResults": {}
+		},
+		{
+			"name": "Create Ticket",
+			"id": "b0476760-51f9-499a-bbab-e16c504c3c12",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets?clientId=179",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 201": true,
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"552"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 201": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "552",
+			"totalRequestTime": "552",
+			"iterationResults": {}
+		},
+		{
+			"name": "Update Ticket",
+			"id": "a4701ae2-eb11-44f4-b5f6-285362abbe72",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"474"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 204": true
+				}
+			],
+			"time": "474",
+			"totalRequestTime": "474",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get Ticket By ID",
+			"id": "1e66d8e4-5e7e-4df2-b636-88c2737f86e0",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true,
+				"Ticket exists": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ticket exists": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"151"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true,
+					"Ticket exists": true
+				}
+			],
+			"time": "151",
+			"totalRequestTime": "151",
+			"iterationResults": {}
+		},
+		{
+			"name": "Filter Tickets By Agent, Client, and Product",
+			"id": "e6a446fb-93b0-4d3e-b092-5bd772e97104",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets?agentId=4&clientId=179",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true,
+				"Ticket exists": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ticket exists": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"160"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true,
+					"Ticket exists": true
+				}
+			],
+			"time": "160",
+			"totalRequestTime": "160",
+			"iterationResults": {}
+		},
+		{
+			"name": "Delete Ticket",
+			"id": "433bdf81-532b-4792-8eb4-c9d4a0b4c3b9",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Status code is 204",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"441"
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			],
+			"time": "441",
+			"totalRequestTime": "441",
+			"iterationResults": {}
+		},
+		{
+			"name": "Check Ticket Deleted",
+			"id": "6b597df7-8982-40cf-9e88-a76d1ec60440",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"name": "Status code is 404",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"169"
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			],
+			"time": "169",
+			"totalRequestTime": "169",
+			"iterationResults": {}
+		},
+		{
+			"name": "Re-Create Ticket",
+			"id": "6cfa1f26-b450-4164-ba75-68a750f6abac",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets?clientId=179",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 201": true,
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"584"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 201": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "584",
+			"totalRequestTime": "584",
+			"iterationResults": {}
+		},
+		{
+			"name": "Create Review",
+			"id": "c090637f-2a01-4037-acf1-b0caf0a1e4cb",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews?clientId=179",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 201": true,
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"397"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 201": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "397",
+			"totalRequestTime": "397",
+			"iterationResults": {}
+		},
+		{
+			"name": "Update Review",
+			"id": "89b9513c-acee-490e-a927-8b750cd93f57",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"411"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 204": true
+				}
+			],
+			"time": "411",
+			"totalRequestTime": "411",
+			"iterationResults": {}
+		},
+		{
+			"name": "Filter Reviews By Agent",
+			"id": "e5c1e5b9-a879-47d2-b1f9-3dbd76ca6768",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/?agentId=4",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"154"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "154",
+			"totalRequestTime": "154",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get Review By ID",
+			"id": "4dde4e5c-03d5-47f7-b931-ab6164792c77",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"168"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "168",
+			"totalRequestTime": "168",
+			"iterationResults": {}
+		},
+		{
+			"name": "Delete Review",
+			"id": "822cf1c7-4226-46da-9aa6-a710af5d5c91",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Status code is 204",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"466"
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			],
+			"time": "466",
+			"totalRequestTime": "466",
+			"iterationResults": {}
+		},
+		{
+			"name": "Check Review Deleted",
+			"id": "c062578b-2177-4858-b5b4-9900f0be6901",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"name": "Status code is 404",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"154"
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			],
+			"time": "154",
+			"totalRequestTime": "154",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get All Comments",
+			"id": "885676d4-c902-4ebe-931a-e99d0226bda7",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"153"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "153",
+			"totalRequestTime": "153",
+			"iterationResults": {}
+		},
+		{
+			"name": "Create Comment By Agent",
+			"id": "c64fd79a-9165-496e-ac73-007fa3441376",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/?ticketId=48&agentId=4",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 201": true,
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"458"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 201": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "458",
+			"totalRequestTime": "458",
+			"iterationResults": {}
+		},
+		{
+			"name": "Update Comment",
+			"id": "a9b15d54-5822-45d6-997b-693f93b27cb3",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"466"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 204": true
+				}
+			],
+			"time": "466",
+			"totalRequestTime": "466",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get Comment By ID",
+			"id": "64598004-9c86-4d98-bee0-5e9f867b6e48",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Status code is 200",
+				"status": "pass",
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"174"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "174",
+			"totalRequestTime": "174",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get Comment By Ticket",
+			"id": "a6df5150-8d9a-45fc-814b-81cdeaca6121",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/48",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Ticket has comment",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Ticket has comment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"166"
+			],
+			"allTests": [
+				{
+					"Ticket has comment": true
+				}
+			],
+			"time": "166",
+			"totalRequestTime": "166",
+			"iterationResults": {}
+		},
+		{
+			"name": "Delete Comment",
+			"id": "b37c41c3-66fe-455e-99e3-773542f18fcf",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"name": "Status code is 204",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"424"
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			],
+			"time": "424",
+			"totalRequestTime": "424",
+			"iterationResults": {}
+		},
+		{
+			"name": "Check Comment Deleted",
+			"id": "83315f78-6638-4705-9f6d-f576090a174b",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"name": "Status code is 404",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"166"
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			],
+			"time": "166",
+			"totalRequestTime": "166",
+			"iterationResults": {}
+		},
+		{
+			"name": "Create Comment By Client",
+			"id": "64498b1d-2d32-452a-b2e1-12920c4d2c57",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/?ticketId=48&clientId=179",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Pre-request body is valid",
+				"status": "pass",
+				"Status code is 201": true,
+				"Response body is valid": true
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"480"
+			],
+			"allTests": [
+				{
+					"Pre-request body is valid": true,
+					"Status code is 201": true,
+					"Response body is valid": true
+				}
+			],
+			"time": "480",
+			"totalRequestTime": "480",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get Comment By Ticket",
+			"id": "a359e6dc-74b1-4851-bf2d-e417d4dd83b9",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/48",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Ticket has comment",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Ticket has comment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"149"
+			],
+			"allTests": [
+				{
+					"Ticket has comment": true
+				}
+			],
+			"time": "149",
+			"totalRequestTime": "149",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 60,
+	"totalFail": 0,
+	"totalTime": 9536,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "Get All Clients",
+			"id": "cdb05ac2-6cfe-437b-9659-22a735fbab2c",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Create Client",
+			"id": "681628ec-639d-42c5-96a6-769ff8254d19",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Update Client",
+			"id": "6d671209-3658-47da-9153-ef3ba030c2a8",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get Client By ID",
+			"id": "d49585e4-d78a-46de-bbed-5d993b30c86b",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Delete Client",
+			"id": "4e05dab6-29e4-41f3-a91b-bb665b453379",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Confirm Client Deleted",
+			"id": "7805b7c6-d9c0-4eec-8f99-63fdc6cf9711",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients/178",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Re-Create Client",
+			"id": "aa440ac8-6e9d-476b-9200-903230a9ed9f",
+			"url": "https://api-customerservice.azurewebsites.net/api/clients",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Check Product S00001 Exists and Is Sold (From Inventory)",
+			"id": "03dcc5d4-0c28-4735-aae8-6903228dc599",
+			"url": "https://inventory343.azurewebsites.net/api/Products/S00001",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Product is sold": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Create Ticket",
+			"id": "b0476760-51f9-499a-bbab-e16c504c3c12",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets?clientId=179",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Update Ticket",
+			"id": "a4701ae2-eb11-44f4-b5f6-285362abbe72",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get Ticket By ID",
+			"id": "1e66d8e4-5e7e-4df2-b636-88c2737f86e0",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ticket exists": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Filter Tickets By Agent, Client, and Product",
+			"id": "e6a446fb-93b0-4d3e-b092-5bd772e97104",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets?agentId=4&clientId=179",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ticket exists": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Delete Ticket",
+			"id": "433bdf81-532b-4792-8eb4-c9d4a0b4c3b9",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Check Ticket Deleted",
+			"id": "6b597df7-8982-40cf-9e88-a76d1ec60440",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/47",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Re-Create Ticket",
+			"id": "6cfa1f26-b450-4164-ba75-68a750f6abac",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets?clientId=179",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Create Review",
+			"id": "c090637f-2a01-4037-acf1-b0caf0a1e4cb",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews?clientId=179",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Update Review",
+			"id": "89b9513c-acee-490e-a927-8b750cd93f57",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Filter Reviews By Agent",
+			"id": "e5c1e5b9-a879-47d2-b1f9-3dbd76ca6768",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/?agentId=4",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get Review By ID",
+			"id": "4dde4e5c-03d5-47f7-b931-ab6164792c77",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Delete Review",
+			"id": "822cf1c7-4226-46da-9aa6-a710af5d5c91",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Check Review Deleted",
+			"id": "c062578b-2177-4858-b5b4-9900f0be6901",
+			"url": "https://api-customerservice.azurewebsites.net/api/reviews/26",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get All Comments",
+			"id": "885676d4-c902-4ebe-931a-e99d0226bda7",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Create Comment By Agent",
+			"id": "c64fd79a-9165-496e-ac73-007fa3441376",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/?ticketId=48&agentId=4",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Update Comment",
+			"id": "a9b15d54-5822-45d6-997b-693f93b27cb3",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get Comment By ID",
+			"id": "64598004-9c86-4d98-bee0-5e9f867b6e48",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get Comment By Ticket",
+			"id": "a6df5150-8d9a-45fc-814b-81cdeaca6121",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/48",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Ticket has comment": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Delete Comment",
+			"id": "b37c41c3-66fe-455e-99e3-773542f18fcf",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Check Comment Deleted",
+			"id": "83315f78-6638-4705-9f6d-f576090a174b",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/65",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Create Comment By Client",
+			"id": "64498b1d-2d32-452a-b2e1-12920c4d2c57",
+			"url": "https://api-customerservice.azurewebsites.net/api/comments/?ticketId=48&clientId=179",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Pre-request body is valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get Comment By Ticket",
+			"id": "a359e6dc-74b1-4851-bf2d-e417d4dd83b9",
+			"url": "https://api-customerservice.azurewebsites.net/api/tickets/48",
+			"time": "2018-04-24T04:18:21.982Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Ticket has comment": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		}
+	],
+	"synced": false
+}
